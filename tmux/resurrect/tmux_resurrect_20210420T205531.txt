@@ -1,0 +1,15 @@
+pane	1	1	:zsh	1	:*	0	:/home/thaeronline	1	zsh	:
+pane	init	1	:Monitor	0	:	0	:/home/thaeronline	1	zsh	:
+pane	init	2	:File Manager	0	:	0	:/home/thaeronline/Music	1	python	:/usr/bin/python -O /usr/bin/ranger
+pane	init	3	:~	0	:	0	:/home/thaeronline/Rust	1	zsh	:
+pane	init	4	:~	0	:	0	:/run/media/linux/lvm-home/thaeronline/rust	1	zsh	:
+pane	init	5	:zsh	0	:-	0	:/home/thaeronline/youtube	1	zsh	:
+pane	init	6	:root	1	:*	0	:/home/thaeronline	1	zsh	:su
+window	1	1	1	:*	c33e,134x36,0,0,1
+window	init	1	0	:	c33f,134x36,0,0,2
+window	init	2	0	:	c340,134x36,0,0,3
+window	init	3	0	:	c341,134x36,0,0,4
+window	init	4	0	:	c342,134x36,0,0,5
+window	init	5	0	:-	c343,134x36,0,0,6
+window	init	6	1	:*	c344,134x36,0,0,7
+state	init	1

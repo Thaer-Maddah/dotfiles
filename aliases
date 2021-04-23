@@ -24,17 +24,19 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 
-# Reload bash shell 
+# Bash shell 
 #alias load='source ~/.bashrc'
 
-# Reload zsh shell 
+# ZSH shell 
 alias load='source ~/.zshrc && clear'
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
+alias zshconfig="nvim ~/.zshrc"
+alias myzsh="nvim ~/.oh-my-zsh"
 
+# Kill process
 alias k9='sudo kill -9'
 alias pk9='sudo pkill -9'
 
+# Find
 #alias find='find -iname'
 
 # DNF Stuff
@@ -83,8 +85,6 @@ alias dev='cd /dev'
 alias share='cd /usr/share'
 alias .share='cd ~/.local/share'
 alias .config='cd ~/.config'
-alias disk1='cd /run/media/thaeronline/Partition1'
-alias disk2='cd /run/media/thaeronline/Partition2'
 alias i3config='nvim ~/.config/i3/config'
 alias proxychains='proxychains4'
 
@@ -102,11 +102,13 @@ alias vimrc='vim ~/.vimrc'
 # Multimedia Stuff
 alias play='du -a | cut -f2- | grep -iE "mp4$|mp3$|webm$|m4a$|wav$|ogg$|mkv$" | dmenu -i -l 30 -sb "#C95A49" | xargs -I {} mpv "{}"' # || clear && dialog --msgbox "MPV does not support selected file format" 5 45'
 
-#else
-alias release='cat /etc/redhat-release'
+# OS release
+alias release='lsb_release -a'
 
-#Other stuff
+# Boot Stuff
 alias grub='sudo grub2-mkconfig -o /boot/grub2/grub.cfg'
+
+# VPN Stuff
 alias vpn='sudo openvpn --config'
 
 #Network Stuff

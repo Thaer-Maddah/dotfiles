@@ -3,6 +3,6 @@
 #======================================================
 
 This is my configuration files
-You can downloaded and use it.
+You can download it and use it.
 Good Luck!
 

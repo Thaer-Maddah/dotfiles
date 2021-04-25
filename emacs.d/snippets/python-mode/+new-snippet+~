@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: author
+# key: /author
+# --
+# ==================================
+# Author: ${1:Thaer Maddah}
+# Filename:`(file-name-nondirectory(buffer-file-name))`
+# Copyright `(format-time-string "%Y")`
+# ==================================

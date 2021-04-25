@@ -1,3 +1,7 @@
+# ==========================
+# File Location: ~/.aliases
+# ==========================
+# 
 # Systemd Stuff
 alias start='sudo systemctl start'
 alias stop='sudo systemctl stop'

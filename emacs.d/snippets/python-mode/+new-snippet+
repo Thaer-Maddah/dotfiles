@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: author
+# key: /author
+# --
+# ==============${2:$(make-string (string-width yas-text) ?\=)}
+# Author: ${1:Thaer Maddah}
+# Filename:`(file-name-nondirectory(buffer-file-name))`
+# Copyright `(format-time-string "%Y")`
+# Description: ${2:Description here}
+# ==============${2:$(make-string (string-width yas-text) ?\=)}

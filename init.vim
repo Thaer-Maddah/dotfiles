@@ -1,5 +1,6 @@
+" ======================================
 " File Location: ~/.config/nvim/init.vim
-"
+" ======================================
 " call plug#begin('~/.vim/plugged')
 call plug#begin('~/.local/share/nvim/plugged')
 

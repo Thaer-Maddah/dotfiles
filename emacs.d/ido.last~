@@ -1,0 +1,65 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/thaeronline/git/" . "dotfiles/")
+ ("/home/thaeronline/.config/" . "termite/")
+ ("/home/" . "thaeronline/")
+ ("/" . "home/")
+ ("/home/thaeronline/.emacs.d/" . "auto-save-list/")
+ ("/home/thaeronline/Code/Python/" . "pandas/")
+ ("/home/thaeronline/Code/" . "Python/")
+ ("/home/thaeronline/" . "git/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/thaeronline/git/dotfiles/"
+ "/home/thaeronline/.emacs.d/"
+ "/home/thaeronline/.config/termite/"
+ "/home/thaeronline/.config/nvim/"
+ "/home/thaeronline/Code/Python/pandas/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "emacs.el"
+ "install.py"
+ "init.el"
+ "config"
+ "init.vim"
+ "ex1.py"
+ "ex1.py~"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/thaeronline/git/dotfiles/" (24708 37662 356725 721000) "vifm/" "./" "install.py~" "tmux/" "polybar/" "README.md" "emacs.el" "{floc}" "termite.conf" "../" "fonts/" "aliases" "ranger/" "install.py" ".git/" "zsh/" "i3config" "rtorrent.rc" "init.vim")
+
+ ("/home/thaeronline/" (24708 34894 626670 519000) "yay-git/" ".icewm/" "repos/" "Pictures/" ".rtorrent.rc" "go/" "git/" ".zshenv" ".mozilla/" ".lesshst" ".aliases-old" "./" ".zcompdump-arch-laptop-5.8" ".tmux.conf" ".aliases" "Templates/" ".bash_profile" ".thunderbird/" "hacking/" "rtorrent/" ".bashrc" "Documents/" ".fzf.zsh" ".git-credentials" ".viminfo" ".gnupg/" ".bash_history" ".fehbg" "youtube/" ".festivalrc" "Downloads/" "Videos/" ".fonts/" ".zsh_history" ".pki/" ".xinitrc" "Stremio/" ".xmonad/" ".surf/" ".vim" ".fzf/" ".oh-my-zsh/" "../" ".ICEauthority" ".zshrc" ".vscode/" ".config/" ".python_history" "Desktop/" ".emacs.d/" "openvpn/" ".ipython/" "Public/" ".gitconfig" ".tmux/" ".anydesk/" ".stremio-server/" "Code/" ".local/" ".cache/" "MEGA/" ".bash_logout" ".vim-fuf-data/" ".festival_history" "Music/" "Acc/" ".password-store/")
+
+ ("/home/thaeronline/.emacs.d/" (24707 35085 762349 323000) "init.el~" "transient/" "eshell/" "./" "elpy/" "ido.last" "ac-comphist.dat" "tutorial/" "emacs-lght" "ido.last~" "init.el-old" "auto-save-list/" "#init.el#" "elpa/" "../" "init.el" "snippets/")
+
+ ("/home/thaeronline/Code/Python/pandas/" (24706 60263 353395 168000) "ex1.py" "./" "#ex1.py#" "ex1.py~" "../")
+
+ ("/home/thaeronline/.config/nvim/" (24707 4496 22571 399000) ".netrwhist" "./" "../" "init.vim")
+
+ ("/home/thaeronline/.config/termite/" (24707 5547 912593 783000) "config" "./" "../")
+
+ ("/home/thaeronline/git/" (24707 31705 722276 566000) "vim/" "./" "dotfiles/" "../")
+
+ ("/home/thaeronline/.config/" (24695 20946 543376 413000) "youtube-dl/" "gnome-boxes/" "vifm/" "nnn/" "ibus/" "goa-1.0/" "dconf/" "epiphany/" "totem/" "mimeapps.list" "autostart/" "qtile/" "./" "xmobar/" "lf/" "obs-studio/" "dleyna-renderer-service.conf" "netsurf/" "ristretto/" "nvim/" "polybar/" "gnome-control-center/" "Electron/" "pavucontrol.ini" "i3/" "nautilus/" "gedit/" "xfce4/" "QtProject.conf" "libreoffice/" "termite/" "bashtop/" "vimb/" "dleyna-server-service.conf" "gnome-session/" "evolution/" "mpv/" "qutebrowser/" "neofetch/" "Min/" "uGet/" "gtk-3.0/" "gtk-4.0/" "../" "Thunar/" "ranger/" "user-dirs.dirs" "midori/" "guvcview2/" "rofi/" "htop/" "pulse/" "vlc/" "user-dirs.locale" "Code/" "chromium/" "GIMP/")
+
+ ("/home/thaeronline/Code/Python/" (24706 52090 896744 37000) "func2.py" "blockchain/" "test.php" "ex18.py" "data_mining/" "finicky_counter.py" "readfiles_colab.py" "#ex25.py#" "google_stock_data.csv" "#ex13.py#" "ex16.py" "Qt/" "strings.py" "maitre_d.py" "./" "file.txt" "idle/" "exception.py" "ex14.py" "Exercise9.py" "argparse.py" "Exedit.py~" "ML/" "read_csv.py~" ".idea/" "password.py" "file" "loop_in_list.py" "ex21.py" "brightness_set" "func1.py" "input.py" "ex15.py" "ex25.py" "ex17.py" "nvim.log" "argparse1.py" "tmux-client-14854.log" "benchmark/" "ex20.py" "test.py" "Telegram/" "ex25.py~" "constructor.py" "read_csv.py" "for_loop.py" "testEmacs.py~" "loop.py" "__pycache__/" ".ropeproject/" "poll_project/" "App/" "ex25.pyc" "bus.py" "Exercise10.py" "Transforming/" "iterator.py" "argparse.py~" "wifiPass" "testEmacs.py" "reload_module.py" "ex13.py" "Exedit.py" "../" "dictionary.py" "test.txt" "NeuralNetwork/" "tutorial.py" "pandas/" "#testEmacs.py#" "ex32.py" "inheritance.py" "readfile.py" "#Exedit.py#" "lists.py" "scope.py" "rt22.xml" "e-learning/" "class1.py" "ex20.py~")
+
+ ("/home/thaeronline/.emacs.d/auto-save-list/" (24706 4593 304351 481000) ".saves-85492-arch-laptop~" "./" ".saves-25930-arch-laptop~" "../" ".saves-95550-arch-laptop~")
+
+ ("/home/thaeronline/Code/Python/App/" (24703 35943 772029 661000) "./" "dist/" "__pycache__/" "main.spec" "build/" "../" "main.py")
+
+ ("/home/" (24674 30530 517778 428000) "./" "thaeronline/" "../")
+
+ ("/home/thaeronline/Code/" (24703 35906 88695 531000) "./" "Python/" "Rust/" "../")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

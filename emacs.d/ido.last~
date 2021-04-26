@@ -23,8 +23,8 @@
 
 ;; ----- ido-work-file-list -----
 (
- "emacs.el"
  "install.py"
+ "emacs.el"
  "init.el"
  "config"
  "init.vim"
@@ -34,9 +34,9 @@
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/thaeronline/git/dotfiles/" (24708 37662 356725 721000) "vifm/" "./" "install.py~" "tmux/" "polybar/" "README.md" "emacs.el" "{floc}" "termite.conf" "../" "fonts/" "aliases" "ranger/" "install.py" ".git/" "zsh/" "i3config" "rtorrent.rc" "init.vim")
+ ("/home/thaeronline/git/dotfiles/" (24708 51916 433339 723000) "vifm/" "emacs.d/" "./" "install.py~" "tmux/" "polybar/" "README.md" "emacs.el" "termite.conf" "../" "fonts/" "aliases" "ranger/" "install.py" ".git/" "zsh/" "i3config" "rtorrent.rc" "init.vim")
 
- ("/home/thaeronline/" (24708 34894 626670 519000) "yay-git/" ".icewm/" "repos/" "Pictures/" ".rtorrent.rc" "go/" "git/" ".zshenv" ".mozilla/" ".lesshst" ".aliases-old" "./" ".zcompdump-arch-laptop-5.8" ".tmux.conf" ".aliases" "Templates/" ".bash_profile" ".thunderbird/" "hacking/" "rtorrent/" ".bashrc" "Documents/" ".fzf.zsh" ".git-credentials" ".viminfo" ".gnupg/" ".bash_history" ".fehbg" "youtube/" ".festivalrc" "Downloads/" "Videos/" ".fonts/" ".zsh_history" ".pki/" ".xinitrc" "Stremio/" ".xmonad/" ".surf/" ".vim" ".fzf/" ".oh-my-zsh/" "../" ".ICEauthority" ".zshrc" ".vscode/" ".config/" ".python_history" "Desktop/" ".emacs.d/" "openvpn/" ".ipython/" "Public/" ".gitconfig" ".tmux/" ".anydesk/" ".stremio-server/" "Code/" ".local/" ".cache/" "MEGA/" ".bash_logout" ".vim-fuf-data/" ".festival_history" "Music/" "Acc/" ".password-store/")
+ ("/home/thaeronline/" (24708 54203 183388 404000) "yay-git/" ".icewm/" "repos/" "Pictures/" ".rtorrent.rc" "go/" "git/" ".zshenv" ".mozilla/" ".lesshst" ".aliases-old" "./" ".zcompdump-arch-laptop-5.8" ".tmux.conf" ".aliases" "Templates/" ".bash_profile" ".thunderbird/" "hacking/" "rtorrent/" ".bashrc" "Documents/" ".fzf.zsh" ".git-credentials" ".viminfo" ".gnupg/" ".bash_history" ".fehbg" "youtube/" ".festivalrc" "Downloads/" "Videos/" ".fonts/" ".zsh_history" ".pki/" ".xinitrc" "Stremio/" ".xmonad/" ".surf/" ".vim" ".fzf/" ".oh-my-zsh/" "../" ".ICEauthority" ".zshrc" ".vscode/" ".config/" ".python_history" "Desktop/" ".emacs.d/" "openvpn/" ".ipython/" "Public/" ".gitconfig" ".tmux/" ".anydesk/" ".stremio-server/" "Code/" ".local/" ".cache/" "MEGA/" ".bash_logout" ".vim-fuf-data/" ".festival_history" "Music/" ".emacs.d-old/" "Acc/" ".password-store/")
 
  ("/home/thaeronline/.emacs.d/" (24707 35085 762349 323000) "init.el~" "transient/" "eshell/" "./" "elpy/" "ido.last" "ac-comphist.dat" "tutorial/" "emacs-lght" "ido.last~" "init.el-old" "auto-save-list/" "#init.el#" "elpa/" "../" "init.el" "snippets/")
 

@@ -101,6 +101,7 @@ def install():
                     try:
                         floc = line.split("~")[1].strip()
                         floc = homedir + floc
+                        print("'" + floc + "'")
                         # check if file existes
                         file_exist = os.path.exists(floc)
                     except FileNotFoundError:
@@ -136,6 +137,8 @@ def install():
                         except IOError:
                             pass
                             # print('IOError encounterd')
+                    else:
+                        print("Error")
 
                 else:
                     pass

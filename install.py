@@ -75,11 +75,11 @@ def printProgressBar(iteration, total=10, prefix='', suffix='',
 def install():
     # Search for file location
     homedir = os.environ['HOME']
-    ltag = 'File Location:'
+    location_tag = 'File Location:'
 
     # Open file for read
-    path = os.getcwd()
-    files = os.listdir(path)
+    dir_path = os.getcwd()
+    files = os.listdir(dir_path)
 
     # execluded python files and it's backup
     # that created by emacs or another text editor
@@ -87,31 +87,34 @@ def install():
 
     index = 0
 
-    for f in files:
-        if os.path.isfile(f) and not x.match(f):
-            fname = path + "/" + f
-            infile = open(fname, "r")
+    for file_name in files:
+        if os.path.isfile(file_name) and not x.match(file_name):
+            full_path_name = dir_path + "/" + file_name
+            file_content = open(full_path_name, "r")
             index += 1
-            for line in infile:
-                line = infile.readline()
-                if ltag in line:
-                    print(index, f, "\t\t| File |")
+            for line in file_content:
+                line = file_content.readline()
+                if location_tag in line:
+                    print(index, file_name, "\t\t| File |")
 
                     # get path from file and remove special characters
                     try:
-                        floc = line.split("~")[1].strip()
-                        floc = homedir + floc
-                        print("'" + floc + "'")
+                        file_location = line.split("~")[1].strip()
+                        file_dest = homedir + file_location
                         # check if file existes
-                        file_exist = os.path.exists(floc)
+                        file_exist = os.path.exists(file_dest)
                     except FileNotFoundError:
                         print(FileNotFoundError)
                         # pass
 
                     if file_exist:
                         try:
-                            subprocess.run(['rm', floc])
-                            res = subprocess.run(['ln', '-s', fname, floc])
+                            # Remove destination file if exists
+                            subprocess.run(['rm', file_dest])
+                            # create links to the config files
+                            res = subprocess.run(['ln', '-s',
+                                                  full_path_name,
+                                                  file_dest])
                             if res.returncode:
                                 print("File not copied!.")
                             else:
@@ -124,20 +127,25 @@ def install():
                                 
                                 for i in range(10):
                                     # Do stuff...
-                                    sleep(0.03)
+                                    sleep(0.02)
                                     # Update Progress Bar
                                     printProgressBar(i + 1, 10,
                                                      prefix='Progress:',
                                                      suffix='Complete',
                                                      length=30)
 
-                                print(f"File {f} copied!")
+                                print(f"File {file_name} copied!")
                                 # progress(f)
 
                         except IOError:
                             pass
                             # print('IOError encounterd')
                     else:
+                        """Check whether `name` is on PATH and marked as executable."""
+                        # from whichcraft import which
+                        from shutil import which
+
+                        return which(file_dest) is not None
                         print("Error")
 
                 else:

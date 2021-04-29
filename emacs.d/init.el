@@ -20,6 +20,9 @@
 ;; Enable Ido-mode
 (ido-mode t)
 
+;; Scroll line by line
+(setq scroll-step 1
+      scroll-conservatively 10000)
 (linum-mode 1)
 (winner-mode 1)  ;; For undo and redo
 (setq tab-always-indent 'complete)
@@ -27,6 +30,23 @@
 (display-time-mode 1)
 (global-visual-line-mode t)
 (global-display-line-numbers-mode t)
+(setq column-number-mode t)
+
+(setq-default fill-column 80)
+(global-display-fill-column-indicator-mode t)
+(setq-default display-fill-column-indicator-character ?\N{U+2506})
+
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
+
+;; draw colum at line 80
+;; (require 'fill-column-indicator)
+;; (setq fci-rule-width 3)
+;; (add-hook 'python-mode-hook 'fci-mode)
+;; (setq fci-rule-color "darkblue")
+
 ;; (menu-bar--display-line-numbers-mode-relative)
     ;; (lambda ()
     ;;   (interactive)

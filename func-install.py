@@ -34,7 +34,10 @@ def main():
             # install()
             # list1 = readContent()
             # print(list1[2])
-            installFiles()
+            files = readFiles()
+            # print(files)
+            readContent(files)
+            # installFiles()
         else:
             print("Process canceld by user!.")
             exit()
@@ -66,44 +69,51 @@ def readFiles():
     return file_name, full_path_name, file_content
 
 
-def readContent():
+def readContent(files=[]):
     index = 0
     counter = 0
     file_location = []
     file_dest = []
     file_exists = []
-    rf = readFiles()
     line = []
-    for lines in rf[2]:
+    print(files)
+    for lines in files[2]:
         lines = lines.readlines()
+        print(lines)
         for line in lines:
             counter += 1
             if location_tag in line:
                 # print("Line{}: {}".format(counter, line.strip()))
                 # print(index, rf[0], "\t\t| File |")
-                index += 1
+
                 # get path from file and remove special characters
                 try:
-                    file_location = line.split("~")[1].strip()
-                    file_dest = homedir + file_location
+                    file_location.append(line.split("~")[1].strip())
+                    file_dest.append(homedir + file_location[index])
                     # check if file existes
-                    file_exists = os.path.exists(file_dest)
-
-                    # print(file_dest)
+                    file_exists.append(os.path.exists(file_dest[index]))
+                    index += 1
+                    print(file_dest)
                 except FileNotFoundError:
                     print(FileNotFoundError)
                     # pass
+
+            # yield line
 
     return file_location, file_dest, file_exists
 
 
 def installFiles():
-    # files = readFiles()
-    data = readContent()
-    counter = 0
-
-    for i in data[0]:
-        print(data[0])
+    files = readFiles()
+    data = readContent(files)
+    # dict(zip(files[1], data[1]))
+    
+    for files_exists, name in zip(data[2], files[0]):
+        print(name, files_exists)
+    # counter = 0
+    # for i in data[0]:
+    #     print(data[i])
+    #     counter += 1
         # file_exists = data[2]
         # if file_exists:
         #     try:

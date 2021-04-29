@@ -36,6 +36,25 @@
 (global-display-fill-column-indicator-mode t)
 (setq-default display-fill-column-indicator-character ?\N{U+2506})
 
+;; Transparency 
+(set-frame-parameter (selected-frame) 'alpha '(90 . 50))
+;; (add-to-list 'default-frame-alist '(alpha . (85 . 50)))
+
+(defun toggle-transparency ()
+  (interactive)
+  (let ((alpha (frame-parameter nil 'alpha)))
+    (set-frame-parameter
+     nil 'alpha
+     (if (eql (cond ((numberp alpha) alpha)
+                    ((numberp (cdr alpha)) (cdr alpha))
+                    ;; Also handle undocumented (<active> <inactive>) form.
+                    ((numberp (cadr alpha)) (cadr alpha)))
+              100)
+         '(90 . 50) '(100 . 100)))))
+(global-set-key (kbd "C-c t") 'toggle-transparency)
+
+
+;; Resize windows
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "S-C-<down>") 'shrink-window)

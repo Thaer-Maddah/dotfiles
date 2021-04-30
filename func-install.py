@@ -1,3 +1,4 @@
+
 # ======================================================
 # Author: Thaer Maddah
 # Filename:install.py
@@ -37,7 +38,7 @@ def main():
             files = readFiles()
             # print(files)
             readContent(files)
-            # installFiles()
+            installFiles()
         else:
             print("Process canceld by user!.")
             exit()
@@ -76,10 +77,10 @@ def readContent(files=[]):
     file_dest = []
     file_exists = []
     line = []
-    print(files)
+    # print(files)
     for lines in files[2]:
         lines = lines.readlines()
-        print(lines)
+        # print(lines)
         for line in lines:
             counter += 1
             if location_tag in line:
@@ -93,11 +94,11 @@ def readContent(files=[]):
                     # check if file existes
                     file_exists.append(os.path.exists(file_dest[index]))
                     index += 1
-                    print(file_dest)
+
                 except FileNotFoundError:
                     print(FileNotFoundError)
                     # pass
-
+    # print(file_dest)
             # yield line
 
     return file_location, file_dest, file_exists
@@ -107,47 +108,44 @@ def installFiles():
     files = readFiles()
     data = readContent(files)
     # dict(zip(files[1], data[1]))
-    
-    for files_exists, name in zip(data[2], files[0]):
-        print(name, files_exists)
-    # counter = 0
-    # for i in data[0]:
-    #     print(data[i])
-    #     counter += 1
-        # file_exists = data[2]
-        # if file_exists:
-        #     try:
-        #         pass
-        #         # subprocess.run(['rm', data[1]])
-        #         # create links to the config files
-        #         res = subprocess.run(['ln', '-s',
-        #                               data[0],
-        #                               data[1]])
-        #         if res.returncode:
-        #             print("File not copied!.")
-        #         else:
-        #             # Initial call to print 0% progress
-        #             # total = 10
-        #             printProgressBar(0, 10,
-        #                              prefix='Progress:',
-        #                              suffix='Complete',
-        #                              length=30)
 
-        #             for i in range(10):
-        #                 # Do stuff...
-        #                 sleep(0.02)
-        #                 # Update Progress Bar
-        #                 printProgressBar(i + 1, 10,
-        #                                  prefix='Progress:',
-        #                                  suffix='Complete',
-        #                                  length=30)
+    for file_exists, file_name, file_location, file_dest \
+        in zip(data[2], files[0], files[1], data[1]):
+        print(file_name + '\t\t| ', file_location + '\t|',
+              file_dest + '\t| ', file_exists, '| ')
+        if file_exists:
+            try:
+                pass
+                subprocess.run(['rm', file_dest])
+                # create links to the config files
+                res = subprocess.run(['ln', '-s',
+                                      file_location,
+                                      file_dest])
+                if res.returncode:
+                    print("File not copied!.")
+                else:
+                    # Initial call to print 0% progress
+                    # total = 10
+                    printProgressBar(0, 10,
+                                     prefix='Progress:',
+                                     suffix='Complete',
+                                     length=30)
 
-        #             print(f"File {f[0]} copied!")
-        #             # progress(f)
+                    for i in range(10):
+                        # Do stuff...
+                        sleep(0.02)
+                        # Update Progress Bar
+                        printProgressBar(i + 1, 10,
+                                         prefix='Progress:',
+                                         suffix='Complete',
+                                         length=30)
 
-        #     except IOError:
-        #         pass
-        #         # print('IOError encounterd')
+                    print(f"File {file_name} copied!")
+                    # progress(f)
+
+            except IOError:
+                pass
+                # print('IOError encounterd')
         # else:
         #     # Check whether name is on PATH and marked as executable.
         #     # from whichcraft import which

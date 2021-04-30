@@ -1,3 +1,4 @@
+
 # ======================================================
 # Author: Thaer Maddah
 # Filename:install.py
@@ -124,7 +125,6 @@ def install():
                                                  prefix='Progress:',
                                                  suffix='Complete',
                                                  length=30)
-                                
                                 for i in range(10):
                                     # Do stuff...
                                     sleep(0.02)
@@ -133,20 +133,43 @@ def install():
                                                      prefix='Progress:',
                                                      suffix='Complete',
                                                      length=30)
-
                                 print(f"File {file_name} copied!")
                                 # progress(f)
-
                         except IOError:
                             pass
                             # print('IOError encounterd')
                     else:
-                        """Check whether `name` is on PATH and marked as executable."""
-                        # from whichcraft import which
-                        from shutil import which
+                        # Remove destination file if exists
+                        # subprocess.run(['rm', file_dest])
+                        # create links to the config files
+                        res = subprocess.run(['ln', '-s',
+                                              full_path_name,
+                                              file_dest])
+                        if res.returncode:
+                            print("File not copied!.")
+                        else:
+                            # Initial call to print 0% progress
+                            # total = 10
+                            printProgressBar(0, 10,
+                                             prefix='Progress:',
+                                             suffix='Complete',
+                                             length=30)
+                            for i in range(10):
+                                # Do stuff...
+                                sleep(0.02)
+                                # Update Progress Bar
+                                printProgressBar(i + 1, 10,
+                                                 prefix='Progress:',
+                                                 suffix='Complete',
+                                                 length=30)
+                            print(f"File {file_name} copied!")
+                    # else:
+                    #     """Check whether `name` is on PATH and marked as executable."""
+                    #     # from whichcraft import which
+                    #     from shutil import which
 
-                        return which(file_dest) is not None
-                        print("Error")
+                    #     return which(file_dest) is not None
+                    #     print("Error")
 
                 else:
                     pass

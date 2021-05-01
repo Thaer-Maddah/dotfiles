@@ -65,9 +65,10 @@ def checkApp(app_name):
         chk = False
     return chk
 
+
 def readFiles():
-    # execluded python, README.md files and it's backup which  created by emacs
-    x = re.compile('^.[a-z_-]*[1-9]*\.(py)?(md)?(.)?$', re.IGNORECASE)
+    # execluded python, README.md files and their backups which created by emacs
+    x = re.compile('^.*\.(py)?(md)?(~)?$', re.IGNORECASE)
     file_name, full_path_name, file_content = [], [], []
     index = 0
     for i in files:

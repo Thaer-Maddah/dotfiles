@@ -56,9 +56,18 @@ def checkSystem():
         raise SystemExit("Must be using Python 3")
 
 
+def checkApp(app_name):
+    # Check whether name is on PATH and marked as executable.
+    # from whichcraft import which
+    from shutil import which
+    if not which('emacs'):
+        print("App not found!.")  # line to check
+        chk = False
+    return chk
+
 def readFiles():
     # execluded python files and it's backup which  created by emacs
-    x = re.compile('^.[a-z_-]*[1-9]*.py(.)?$', re.IGNORECASE)
+    x = re.compile('^.[a-z_-]*[1-9]*\.(py)?(md)?(.)?$', re.IGNORECASE)
     file_name, full_path_name, file_content = [], [], []
     index = 0
     for i in files:
@@ -98,6 +107,9 @@ def readContent(files=[]):
                 except FileNotFoundError:
                     print(FileNotFoundError)
                     # pass
+            else:
+                pass
+                    
     # print(file_dest)
             # yield line
 
@@ -147,12 +159,6 @@ def installFiles():
                 pass
                 # print('IOError encounterd')
         # else:
-        #     # Check whether name is on PATH and marked as executable.
-        #     # from whichcraft import which
-        #     from shutil import which
-
-        #     if not which('emacs'):
-        #         print("Error")
 
     else:
         pass

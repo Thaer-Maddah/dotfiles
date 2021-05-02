@@ -9,19 +9,14 @@ import os
 import sys
 import re
 import subprocess
-from time import sleep
-
-# Search for file location
-homedir = os.environ['HOME']
-location_tag = 'File Location:'
-app_tag = 'Binary App:'
-
-# Open file for read
-dir_path = os.getcwd()
-files = os.listdir(dir_path)
+from time import sleep, time
 
 
 def main():
+    # Open file for read
+    dir_path = os.getcwd()
+    files = os.listdir(dir_path)
+
     # Check OS and Python verion
     checkSystem()
 
@@ -31,13 +26,17 @@ def main():
                          "/" + "\033[091m\033[01m" + "No\033[0m]> ")
         if (response.upper() in "Y" or response.upper() in "YES") \
                 and response not in "":
-            # install()
-            # list1 = readContent()
-            # print(list1[2])
-            getfiles = readFiles()
-            # print(files)
-            app_name = readContent(getfiles)
-            installFiles()
+            # Start timer
+            start_time = time()
+
+            getfiles = readFiles(files, dir_path)
+            data = readContent(getfiles)
+            installFiles(data, getfiles)
+
+            # End timer
+            end_time = time()
+            timer = end_time - start_time
+            print(timer)
         else:
             print("Process canceld by user!.")
             exit()
@@ -70,7 +69,7 @@ def checkApp(app_name, file_name):
     return check_app
 
 
-def readFiles():
+def readFiles(files, dir_path):
 
     # execluded python, README.md files and their backups which created by emacs
     x = re.compile('^.*\.(py)?(md)?(~)?$', re.IGNORECASE)
@@ -88,17 +87,22 @@ def readFiles():
     return file_name, full_path_name, file_content
 
 
-def readContent(files=[]):
+def readContent(files):
     index = 0
     file_location = []
     file_dest = []
     file_exists = []
     app_name = []
-    line = []
+
+    # Tags for file location and app name
+    homedir = os.environ['HOME']
+    location_tag = 'File Location:'
+    app_tag = 'Binary App:'
+
     # print(files)
     for lines in files[2]:
         lines = lines.readlines()
-
+        
         for line in lines:
             if location_tag in line:
                 # print("Line{}: {}".format(index, line.strip()))
@@ -125,20 +129,15 @@ def readContent(files=[]):
     return file_location, file_dest, file_exists, app_name
 
 
-def installFiles():
-    files = readFiles()
-    data = readContent(files)
-    # dict(zip(files[1], data[1]))
-
+def installFiles(data, files):
     for file_exists, file_name, file_location, file_dest, app_name \
             in zip(data[2], files[0], files[1], data[1], data[3]):
-        print(file_name + '\t\t| ', file_location + '\t|',
-              file_dest + '\t| ', file_exists, '| ', app_name)
-        if checkApp(app_name, file_name):
-            break
+        # print(file_name + '\t\t| ', file_location + '\t|',
+        #       file_dest + '\t| ', file_exists, '| ', app_name)
+        # if checkApp(app_name, file_name):
+        #     break
         if file_exists:
             try:
-                pass
                 subprocess.run(['rm', file_dest])
                 # create links to the config files
                 res = subprocess.run(['ln', '-s',
@@ -149,22 +148,21 @@ def installFiles():
                 else:
                     # Initial call to print 0% progress
                     # total = 10
-                    printProgressBar(0, 10,
-                                     prefix='Progress:',
-                                     suffix='Complete',
-                                     length=30)
+                    # printProgressBar(0, 10,
+                    #                  prefix='Progress:',
+                    #                  suffix='Complete',
+                    #                  length=30)
 
-                    for i in range(10):
-                        # Do stuff...
-                        sleep(0.02)
-                        # Update Progress Bar
-                        printProgressBar(i + 1, 10,
-                                         prefix='Progress:',
-                                         suffix='Complete',
-                                         length=30)
+                    # for i in range(10):
+                    #     # Do stuff...
+                    #     sleep(0.01)
+                    #     # Update Progress Bar
+                    #     printProgressBar(i + 1, 10,
+                    #                      prefix='Progress:',
+                    #                      suffix='Complete',
+                    #                      length=30)
 
                     print(f"File {file_name} copied!")
-                    # progress(f)
 
             except IOError:
                 pass

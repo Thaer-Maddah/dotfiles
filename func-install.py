@@ -15,7 +15,7 @@ from time import sleep
 # Search for file location
 homedir = os.environ['HOME']
 location_tag = 'File Location:'
-type_tag = 'File Type:'
+app_tag = 'Binary App:'
 
 # Open file for read
 dir_path = os.getcwd()
@@ -60,10 +60,10 @@ def checkApp(app_name):
     # Check whether name is on PATH and marked as executable.
     # from whichcraft import which
     from shutil import which
-    if not which('emacs'):
+    if not which(app_name):
         print("App not found!.")  # line to check
-        chk = False
-    return chk
+        check_app = False
+    return check_app
 
 
 def readFiles():
@@ -71,10 +71,13 @@ def readFiles():
     x = re.compile('^.*\.(py)?(md)?(~)?$', re.IGNORECASE)
     file_name, full_path_name, file_content = [], [], []
     index = 0
-    for i in files:
-        if os.path.isfile(i) and not x.match(i):
-            file_name.append(i)
-            full_path_name.append(dir_path + "/" + i)
+    # print(dict(enumerate(files)))
+    for idx, value in enumerate(files):
+        # print("for loop:", idx)
+        if os.path.isfile(value) and not x.match(value):
+            # print("after if", idx)
+            file_name.append(value)
+            full_path_name.append(dir_path + "/" + value)
             file_content.append(open(full_path_name[index], "r"))
             index += 1
     return file_name, full_path_name, file_content
@@ -82,19 +85,18 @@ def readFiles():
 
 def readContent(files=[]):
     index = 0
-    counter = 0
     file_location = []
     file_dest = []
     file_exists = []
+    app_name = []
     line = []
     # print(files)
     for lines in files[2]:
         lines = lines.readlines()
-        # print(lines)
+
         for line in lines:
-            counter += 1
             if location_tag in line:
-                # print("Line{}: {}".format(counter, line.strip()))
+                # print("Line{}: {}".format(index, line.strip()))
                 # print(index, rf[0], "\t\t| File |")
 
                 # get path from file and remove special characters
@@ -105,16 +107,23 @@ def readContent(files=[]):
                     file_exists.append(os.path.exists(file_dest[index]))
                     index += 1
 
+                    # break
+
                 except FileNotFoundError:
                     print(FileNotFoundError)
+                    
                     # pass
+                print(line)
             else:
                 pass
-                    
+
+            # if app_tag in line:
+            #     app_name.append(line.split(' ')[3].strip())
+
     # print(file_dest)
             # yield line
 
-    return file_location, file_dest, file_exists
+    return file_location, file_dest, file_exists, app_name
 
 
 def installFiles():
@@ -122,10 +131,11 @@ def installFiles():
     data = readContent(files)
     # dict(zip(files[1], data[1]))
 
-    for file_exists, file_name, file_location, file_dest \
-        in zip(data[2], files[0], files[1], data[1]):
+    for file_exists, file_name, file_location, file_dest, app_name \
+        in zip(data[2], files[0], files[1], data[1], data[3]):
         print(file_name + '\t\t| ', file_location + '\t|',
-              file_dest + '\t| ', file_exists, '| ')
+              file_dest + '\t| ', file_exists, '| ', app_name)
+        
         if file_exists:
             try:
                 pass

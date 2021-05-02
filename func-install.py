@@ -1,4 +1,3 @@
-
 # ======================================================
 # Author: Thaer Maddah
 # Filename:install.py
@@ -35,9 +34,9 @@ def main():
             # install()
             # list1 = readContent()
             # print(list1[2])
-            files = readFiles()
+            getfiles = readFiles()
             # print(files)
-            readContent(files)
+            app_name = readContent(getfiles)
             installFiles()
         else:
             print("Process canceld by user!.")
@@ -56,17 +55,23 @@ def checkSystem():
         raise SystemExit("Must be using Python 3")
 
 
-def checkApp(app_name):
+def checkApp(app_name, file_name):
     # Check whether name is on PATH and marked as executable.
     # from whichcraft import which
     from shutil import which
+    # for app, fname in zip(app_name[3], file_name[0]):
     if not which(app_name):
-        print("App not found!.")  # line to check
+        print(file_name, "not found!.")  # line to check
         check_app = False
+    else:
+        print(app_name)
+        check_app = True
+
     return check_app
 
 
 def readFiles():
+
     # execluded python, README.md files and their backups which created by emacs
     x = re.compile('^.*\.(py)?(md)?(~)?$', re.IGNORECASE)
     file_name, full_path_name, file_content = [], [], []
@@ -98,7 +103,6 @@ def readContent(files=[]):
             if location_tag in line:
                 # print("Line{}: {}".format(index, line.strip()))
                 # print(index, rf[0], "\t\t| File |")
-
                 # get path from file and remove special characters
                 try:
                     file_location.append(line.split("~")[1].strip())
@@ -106,19 +110,14 @@ def readContent(files=[]):
                     # check if file existes
                     file_exists.append(os.path.exists(file_dest[index]))
                     index += 1
-
-                    # break
-
                 except FileNotFoundError:
                     print(FileNotFoundError)
-                    
-                    # pass
-                print(line)
+                # print(line)
             else:
                 pass
 
-            # if app_tag in line:
-            #     app_name.append(line.split(' ')[3].strip())
+            if app_tag in line:
+                app_name.append(line.split(' ')[3].strip())
 
     # print(file_dest)
             # yield line
@@ -132,10 +131,11 @@ def installFiles():
     # dict(zip(files[1], data[1]))
 
     for file_exists, file_name, file_location, file_dest, app_name \
-        in zip(data[2], files[0], files[1], data[1], data[3]):
+            in zip(data[2], files[0], files[1], data[1], data[3]):
         print(file_name + '\t\t| ', file_location + '\t|',
               file_dest + '\t| ', file_exists, '| ', app_name)
-        
+        if checkApp(app_name, file_name):
+            break
         if file_exists:
             try:
                 pass

@@ -1,0 +1,96 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/" . "home/")
+ ("/home/thaeronline/git/dotfiles/" . "emacs.d/")
+ ("/home/thaeronline/git/" . "dotfiles/")
+ ("/home/thaeronline/MEGA/Learning/" . "Networking/")
+ ("/home/" . "thaeronline/")
+ ("/home/thaeronline/MEGA/" . "Tweaks/")
+ ("/home/thaeronline/Code/Python/Tutor/" . "recordscreen/")
+ ("/home/thaeronline/Code/Python/" . "qrcode/")
+ ("/home/thaeronline/Code/" . "Python/")
+ ("/home/thaeronline/" . "Emacs/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/thaeronline/Emacs/"
+ "/home/thaeronline/git/dotfiles/emacs.d/"
+ "/home/thaeronline/git/dotfiles/"
+ "/home/thaeronline/Code/Python/qrcode/"
+ "/home/thaeronline/MEGA/MySettings/"
+ "/home/thaeronline/.emacs.d/"
+ "/home/thaeronline/MEGA/Tweaks/"
+ "/home/thaeronline/"
+ "/home/thaeronline/MEGA/Learning/Networking/"
+ "/home/thaeronline/MEGA/Hardware/"
+ "/home/thaeronline/Code/Python/Tutor/recordscreen/"
+ "/home/thaeronline/Code/Python/Tutor/"
+ "/home/thaeronline/Code/Python/svu/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "Test.org"
+ "init.el"
+ "i3config"
+ "qr.py"
+ "qr_code.py"
+ ".emacs"
+ "Test.html"
+ "problems"
+ ".git-credentials"
+ "Get public IP"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/thaeronline/Emacs/" (25180 51722 499178 815000) "Test.html" "Test.odt" "./" "Test.org_archive~" "Test.org_archive" "Test.org~" "../" "Test.org")
+
+ ("/home/thaeronline/" (25181 11336 436604 533000) ".zcompdump-arch-laptop-5.8.1" "yay-git/" ".icewm/" "repos/" "Pictures/" ".rtorrent.rc" ".steampid" "go/" "pychess.scout" "git/" ".zshenv" ".mozilla/" ".lesshst" ".wget-hsts" ".aliases-old" "pychess.pgn" "./" ".templateengine/" "Test/" ".zcompdump-arch-laptop-5.8" "nvim" ".tmux.conf" ".aliases" ".steam/" ".cert/" "Templates/" ".bash_profile" ".thunderbird/" "hacking/" "rtorrent/" ".bashrc" "Documents/" ".fzf.zsh" "Emacs/" "pychess.sqlite" ".git-credentials" ".viminfo" ".gnupg/" ".bash_history" ".dotnet/" "mpv-shot0001.jpg" ".fehbg" "youtube/" ".festivalrc" ".cargo/" "Downloads/" "Videos/" ".fonts/" ".zsh_history" "gnugame.pgn" ".pki/" ".streamlit/" ".xinitrc" ".gnome/" ".steampath" "Stremio/" ".xmonad/" ".surf/" ".vim" ".pulse-cookie" ".vscode-oss/" ".fzf/" ".oh-my-zsh/" ".npm/" "../" ".nuget/" ".ICEauthority" ".zshrc" ".vscode/" ".config/" ".python_history" "Desktop/" ".emacs.d/" "openvpn/" ".ipython/" "Public/" ".gitconfig" ".tmux/" ".anydesk/" ".stremio-server/" "Code/" ".local/" ".cache/" "MEGA/" ".bash_logout" ".omnisharp/" ".ssh/" ".vim-fuf-data/" ".festival_history" "LucasChessR/" "Music/" ".emacs.d-old/" "Acc/" "tmp/" ".password-store/")
+
+ ("/home/thaeronline/Test/" (25180 35162 297749 199000) "./" "python-qrcode/" "../")
+
+ ("/home/thaeronline/git/dotfiles/emacs.d/" (25180 45137 492270 550000) "init.el~" "session.25d4ca973-4fab-4e7e-8245-1b1bdc00d00f" "transient/" "./" "elpy/" "ido.last" "tutorial/" "emacs-lght" "ido.last~" "auto-save-list/" "#ido.last#" "elpa/" "../" "init.el" "snippets/")
+
+ ("/home/thaeronline/git/dotfiles/" (25180 31099 951468 948000) "vifm/" "emacs.d/" "./" "ranger.conf" "tmux/" "polybar/" "zshenv" "README.md" "func-install.py" "zshrc" "termite.conf" "../" "fonts/" "aliases" "install.py" ".git/" "i3config" "rtorrent.rc" "init.vim")
+
+ ("/home/thaeronline/Code/Python/qrcode/" (25180 29153 325648 387000) "qr.py" "./" "qr_code.py" "svu.png" "test1.png" "qr.py~" "header.jpg" "test3.png" "logo.png" "Whatsapp-icon.png" "__pycache__/" "qr_code.py~" "Info.png" "Vertical.png" "rounded.png" "../" "Horizontol.png" "signature.png" "test2.png")
+
+ ("/home/thaeronline/MEGA/Tweaks/" (25180 12793 252022 685000) "Fedy" "Gnome-Launcher" "copy-files" "find" "virtualbox" "plasma" "MyYoutubeStyle" "save-battery" "tar" "nvidia" "./" "graphical_tree,v" "[CentOS] Yum messages_ _usr_lib_liblzo.so.1 is not a symbolic link.html" "Encrypt" "Keyboard-layout" "vim.zip" "keyring" "i3" "VirtualBox/" "stylishsync.sqlite" "Netowrks-commands~" "problems~" "sound" "FixHDD.txt" "ffmpeg" "vim-tweak" "wifi-problem" "boot-time" "SYNAPTICS.xhtml" "sound~" "sign-kernel-headers.sh" "record-video~" "gnome-classic" "../" "SYNAPTICS_files/" "formatusb" "fonts" "record-video" "xorg-configurations/" "hardware" "wayland" "mount" "problems" "Git/" "Convert-pictures" "bluetooth")
+
+ ("/home/thaeronline/.emacs.d/" (25180 13646 779043 237000) "init.el~" "session.25d4ca973-4fab-4e7e-8245-1b1bdc00d00f" "transient/" "./" "elpy/" "ido.last" "tutorial/" "emacs-lght" "ido.last~" "auto-save-list/" "elpa/" "../" "init.el" "snippets/")
+
+ ("/home/thaeronline/git/" (24782 40325 24206 72000) "./" "dotfiles/" "../")
+
+ ("/home/thaeronline/Code/Python/" (25179 13664 470812 20000) "func2.py" "blockchain/" "test.php" "ex18.py" "data_mining/" "finicky_counter.py" "readfiles_colab.py" "#ex25.py#" "google_stock_data.csv" "#ex13.py#" "qrcode/" "ex16.py" "Qt/" "strings.py" "maitre_d.py" "./" "file.txt" "idle/" "exception.py" "ex14.py" "Exercise9.py" "argparse.py" "Exedit.py~" "ML/" "read_csv.py~" ".idea/" "password.py" "file" "loop_in_list.py" "ex21.py" "brightness_set" "func1.py" "input.py" "ex15.py" "yt/" "ex25.py" "ex17.py" "nvim.log" "argparse1.py" "password_generator.py" "tmux-client-14854.log" "benchmark/" "ex20.py" "test.py" "Telegram/" "ex25.py~" "constructor.py" "read_csv.py" "for_loop.py" "networks/" "testEmacs.py~" "loop.py" "__pycache__/" ".ropeproject/" "poll_project/" "App/" "ex25.pyc" "django/" "bus.py" "Exercise10.py" "Transforming/" "iterator.py" "argparse.py~" "wifiPass" "testEmacs.py" "reload_module.py" "ex13.py" "Exedit.py" "../" "dictionary.py" "test.txt" "NeuralNetwork/" "Tutor/" "tutorial.py" "pandas/" "#testEmacs.py#" "ex32.py" "inheritance.py" "readfile.py" "#Exedit.py#" "password_generator.py~" "lists.py" "svu/" "scope.py" "rt22.xml" "e-learning/" "class1.py" "Cipher/" "ex20.py~")
+
+ ("/home/thaeronline/Code/Python/Tutor/recordscreen/" (25179 9546 677459 388000) "./" "#recordscreen.py#" "out_0001.mkv" "recordscreen.py" "../" "av-recordscreen.py" ".git/")
+
+ ("/home/thaeronline/MEGA/Learning/Networking/" (24677 21080 103463 235000) "./" "Get public IP" "network_tool" "../")
+
+ ("/home/thaeronline/MEGA/Learning/" (24677 21080 110129 901000) "./" "history" "Terminal/" "../" "Networking/")
+
+ ("/home/thaeronline/MEGA/MySettings/" (24717 64094 865675 374000) "MyPrograms" "vim/" "./" ".emacs" "neovim/" ".tmux.conf" ".aliases" ".vimrc" ".bash_profile" ".bashrc" "MyPrograms~" ".profile" "etc/" "sign-kernel-headers.sh" "../" ".zshrc" "ssh/" "bin/" "#MyPrograms#")
+
+ ("/home/thaeronline/MEGA/Arch/" (25116 58517 692483 643000) "./" "keyring-update" "arch-lvm.conf" "multi-boot" "../" "multi-boot~" "arch-lvm.conf~")
+
+ ("/home/thaeronline/MEGA/Configs/" (24677 21079 473463 224000) "loader/" "./" "efi-boot" "../")
+
+ ("/home/thaeronline/MEGA/Hardware/" (24677 21054 70129 353000) "./" "usb-buses_with_ports" "../" "pci-kernel-module" "hardware" "usb-bus")
+
+ ("/home/" (24891 32788 416671 697000) "./" "salma/" "thaeronline/" "../")
+
+ ("/home/thaeronline/MEGA/" (24732 36712 672534 76000) "Blocker-GUI/" "systemd/" "Certificate/" "Textnow-app" "./" "BIT_ITP390_thaer_23437_C3_F12.zip" ".debris/" "Arch/" "i3/" "appteco" "awesome.tar.gz" "MyAcc-30122017.tar.gz.gpg" "Database.kdbx" "quotes" "Mobile/" "Hardware/" "../" "Networks/" "fonts/" "Tweaks/" "scripts/" "Learning/" "MyAcc-30122017.tar.gz.crypt" "Configs/" "MySettings/")
+
+ ("/home/thaeronline/Code/Python/svu/" (24814 20352 623194 105000) ".~lock.svu.xlsx#" "count.py" "./" ".venv/" "svu.xlsx" "../" "count.py~")
+
+ ("/home/thaeronline/Code/Python/Tutor/" (25179 9141 461587 238000) "rsc.py" "./" "re" "new-cast.py" "recording.mp4" "recordscreen/" "new-cast.py~" ".venv/" "__pycache__/" "readme.md" "vlc-recording.mp4" "cast.py~" "../" "cast.py" "get-fps.py" "sys" "Screen-Casting/")
+
+ ("/home/thaeronline/Code/" (24734 48419 533333 724000) "./" "CSharp/" "Python/" "Rust/" "C/" "../" "php/")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

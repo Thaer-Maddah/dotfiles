@@ -196,9 +196,10 @@ filextype *.djvu
 
 " Audio
 filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus
-       \ {Play using ffplay}
+       \ {Play using mpv}
        " \ ffplay -nodisp -autoexit %c,
-       \ i3-msg workspace 10 && ffplay -showmode 1 -autoexit %c </dev/null &>/dev/null &,
+       " \ i3-msg workspace 10 && ffplay -showmode 1 -autoexit %c </dev/null &>/dev/null &,
+       \ i3-msg workspace 10 && mpv --window-scale=1 --force-window=yes %f </dev/null &>/dev/null &,
        \ {Play using MPlayer}
        \ i3-msg workspace 10 && mplayer %f,
 fileviewer *.mp3 mp3info

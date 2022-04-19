@@ -32,6 +32,10 @@
 (global-display-line-numbers-mode t)
 (setq column-number-mode t)
 
+;; Prevent emacs from transfers the clipboard data to the clipboard manager
+;; to prevent dealy when exit emacs or reload config file
+(setq x-select-enable-clipboard-manager nil)
+
 (setq-default fill-column 80)
 (global-display-fill-column-indicator-mode t)
 (setq-default display-fill-column-indicator-character ?\N{U+2506})
@@ -122,11 +126,12 @@
  '(global-command-log-mode nil)
  '(global-display-line-numbers-mode t)
  '(inhibit-startup-screen t)
+ '(minimap-window-location 'left)
  '(package-archives
    '(("melpa" . "http://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-selected-packages
-   '(minimap engine-mode i3wm-config-mode i3wm org-modern org-download org org-bullets dracula-theme transpose-frame virtualenv lsp-jedi jedi command-log-mode popup yasnippet blacken flycheck py-autopep8 better-defaults elpy projectile magit zenburn-theme))
+   '(go-projectile go-mode beacon minimap engine-mode i3wm-config-mode i3wm org-modern org-download org org-bullets dracula-theme transpose-frame virtualenv lsp-jedi jedi command-log-mode popup yasnippet blacken flycheck py-autopep8 better-defaults elpy projectile magit zenburn-theme))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -187,12 +192,19 @@
 (add-hook 'yas-minor-mode-hook(lambda()
 				(yas-activate-extra-mode 'fundamental-mode)))
 
-				
-
 ;; (use-package yasnippet
 ;; 	     :ensure t
 ;; 	     :init
 ;; 	     (yas-global-mode 1))
+
+(add-hook 'go-mode-hook (lambda ()
+    (setq tab-width 4)))
+
+(require 'flycheck)
+(global-flycheck-mode 1)
+
+(require 'lsp-mode)
+(add-hook 'go-mode-hook #'lsp)
 
 ;; Org mode
 (global-set-key (kbd "C-c l") #'org-store-link)
@@ -229,3 +241,11 @@
 (defengine youtube
   "http://www.youtube.com/results?aq=f&oq=&search_query=%s"
   :keybinding "y")
+
+;; Minimap Mode
+(minimap-mode t)
+(setq minimap-window-location 'right)
+
+;; Beacon Mode
+;; This mode highlighting cursor
+(beacon-mode t)

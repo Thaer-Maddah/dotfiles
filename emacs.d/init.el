@@ -126,7 +126,7 @@
    '(("melpa" . "http://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-selected-packages
-   '(i3wm-config-mode i3wm org-modern org-download org org-bullets dracula-theme transpose-frame virtualenv lsp-jedi jedi command-log-mode popup yasnippet blacken flycheck py-autopep8 better-defaults elpy projectile magit zenburn-theme))
+   '(engine-mode i3wm-config-mode i3wm org-modern org-download org org-bullets dracula-theme transpose-frame virtualenv lsp-jedi jedi command-log-mode popup yasnippet blacken flycheck py-autopep8 better-defaults elpy projectile magit zenburn-theme))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -203,3 +203,27 @@
 (add-to-list 'ispell-skip-region-alist '(":\\(PROPERTIES\\|LOGBOOK\\):" . ":END:"))
 (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_SRC" . "#\\+END_SRC"))
 (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_EXAMPLE" . "#\\+END_EXAMPLE"))
+
+;; Engine Mode
+(engine-mode t)
+(setq engine/browser-function 'browse-url-chromium)
+
+(defengine duckduckgo
+  "https://duckduckgo.com/?q=%s"
+  :keybinding "d")
+
+(defengine google
+  "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
+  :keybinding "g")
+
+(defengine github
+  "https://github.com/search?ref=simplesearch&q=%s"
+  :keybinding "h")
+
+(defengine stack-overflow
+  "https://stackoverflow.com/search?q=%s"
+  :keybinding "s")
+
+(defengine youtube
+  "http://www.youtube.com/results?aq=f&oq=&search_query=%s"
+  :keybinding "y")

@@ -32,6 +32,10 @@
 (global-display-line-numbers-mode t)
 (setq column-number-mode t)
 
+;; Prevent emacs from transfers the clipboard data to the clipboard manager
+;; to prevent dealy when exit emacs or reload config file
+(setq x-select-enable-clipboard-manager nil)
+
 (setq-default fill-column 80)
 (global-display-fill-column-indicator-mode t)
 (setq-default display-fill-column-indicator-character ?\N{U+2506})
@@ -126,7 +130,7 @@
    '(("melpa" . "http://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-selected-packages
-   '(engine-mode i3wm-config-mode i3wm org-modern org-download org org-bullets dracula-theme transpose-frame virtualenv lsp-jedi jedi command-log-mode popup yasnippet blacken flycheck py-autopep8 better-defaults elpy projectile magit zenburn-theme))
+   '(beacon minimap engine-mode i3wm-config-mode i3wm org-modern org-download org org-bullets dracula-theme transpose-frame virtualenv lsp-jedi jedi command-log-mode popup yasnippet blacken flycheck py-autopep8 better-defaults elpy projectile magit zenburn-theme))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -205,6 +209,8 @@
 (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_EXAMPLE" . "#\\+END_EXAMPLE"))
 
 ;; Engine Mode
+;; the default keymap prefix is C-x / and the search engine shortcut
+;; like C-x / d to search by DuckDuckGO engine
 (engine-mode t)
 (setq engine/browser-function 'browse-url-chromium)
 
@@ -227,3 +233,10 @@
 (defengine youtube
   "http://www.youtube.com/results?aq=f&oq=&search_query=%s"
   :keybinding "y")
+
+;; Minimap Mode
+;; (minimap-mode t)
+
+;; Beacon Mode
+;; This mode highlighting cursor
+(beacon-mode t)

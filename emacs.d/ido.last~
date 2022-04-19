@@ -11,13 +11,13 @@
  ("/home/thaeronline/Code/Python/Tutor/" . "recordscreen/")
  ("/home/thaeronline/Code/Python/" . "qrcode/")
  ("/home/thaeronline/Code/" . "Python/")
- ("/home/thaeronline/" . "Emacs/")
+ ("/home/thaeronline/" . "git/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
- "/home/thaeronline/Emacs/"
  "/home/thaeronline/git/dotfiles/emacs.d/"
+ "/home/thaeronline/Emacs/"
  "/home/thaeronline/git/dotfiles/"
  "/home/thaeronline/Code/Python/qrcode/"
  "/home/thaeronline/MEGA/MySettings/"
@@ -33,8 +33,8 @@
 
 ;; ----- ido-work-file-list -----
 (
- "Test.org"
  "init.el"
+ "Test.org"
  "i3config"
  "qr.py"
  "qr_code.py"
@@ -47,15 +47,17 @@
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/thaeronline/Emacs/" (25180 51722 499178 815000) "Test.html" "Test.odt" "./" "Test.org_archive~" "Test.org_archive" "Test.org~" "../" "Test.org")
+ ("/home/thaeronline/git/dotfiles/emacs.d/" (25182 25588 964107 189000) "init.el~" "session.25d4ca973-4fab-4e7e-8245-1b1bdc00d00f" "transient/" "eshell/" "./" "elpy/" "ido.last" "tutorial/" "emacs-lght" "ido.last~" "auto-save-list/" "#ido.last#" "url/" "elpa/" "../" "init.el" "snippets/")
 
- ("/home/thaeronline/" (25181 11336 436604 533000) ".zcompdump-arch-laptop-5.8.1" "yay-git/" ".icewm/" "repos/" "Pictures/" ".rtorrent.rc" ".steampid" "go/" "pychess.scout" "git/" ".zshenv" ".mozilla/" ".lesshst" ".wget-hsts" ".aliases-old" "pychess.pgn" "./" ".templateengine/" "Test/" ".zcompdump-arch-laptop-5.8" "nvim" ".tmux.conf" ".aliases" ".steam/" ".cert/" "Templates/" ".bash_profile" ".thunderbird/" "hacking/" "rtorrent/" ".bashrc" "Documents/" ".fzf.zsh" "Emacs/" "pychess.sqlite" ".git-credentials" ".viminfo" ".gnupg/" ".bash_history" ".dotnet/" "mpv-shot0001.jpg" ".fehbg" "youtube/" ".festivalrc" ".cargo/" "Downloads/" "Videos/" ".fonts/" ".zsh_history" "gnugame.pgn" ".pki/" ".streamlit/" ".xinitrc" ".gnome/" ".steampath" "Stremio/" ".xmonad/" ".surf/" ".vim" ".pulse-cookie" ".vscode-oss/" ".fzf/" ".oh-my-zsh/" ".npm/" "../" ".nuget/" ".ICEauthority" ".zshrc" ".vscode/" ".config/" ".python_history" "Desktop/" ".emacs.d/" "openvpn/" ".ipython/" "Public/" ".gitconfig" ".tmux/" ".anydesk/" ".stremio-server/" "Code/" ".local/" ".cache/" "MEGA/" ".bash_logout" ".omnisharp/" ".ssh/" ".vim-fuf-data/" ".festival_history" "LucasChessR/" "Music/" ".emacs.d-old/" "Acc/" "tmp/" ".password-store/")
+ ("/home/thaeronline/.dotnet/" (24722 13204 956760 830000) "./" "5.0.202_MachineId.dotnetUserLevelCache" "TelemetryStorageService/" "5.0.202_IsDockerContainer.dotnetUserLevelCache" "5.0.202.aspNetCertificateSentinel" "corefx/" "5.0.202.toolpath.sentinel" "5.0.202.dotnetFirstUseSentinel" "MachineId.v1.dotnetUserLevelCache" "optimizationdata/" "../")
+
+ ("/home/thaeronline/" (25182 23240 380220 503000) ".zcompdump-arch-laptop-5.8.1" "play.sh" "yay-git/" ".icewm/" "repos/" "Pictures/" ".rtorrent.rc" ".steampid" "go/" "pychess.scout" "git/" ".zshenv" ".mozilla/" ".lesshst" ".wget-hsts" ".aliases-old" "pychess.pgn" "./" ".templateengine/" "Test/" ".zcompdump-arch-laptop-5.8" "nvim" ".tmux.conf" ".aliases" ".steam/" ".cert/" "Templates/" ".bash_profile" ".thunderbird/" "hacking/" "rtorrent/" ".bashrc" "Documents/" ".fzf.zsh" "Emacs/" "pychess.sqlite" ".git-credentials" ".viminfo" ".gnupg/" ".bash_history" ".dotnet/" "mpv-shot0001.jpg" ".fehbg" "youtube/" ".fzf.bash" ".festivalrc" ".cargo/" "Downloads/" "Videos/" ".fonts/" ".zsh_history" "gnugame.pgn" ".pki/" ".streamlit/" ".xinitrc" ".gnome/" ".steampath" "Stremio/" ".xmonad/" ".surf/" ".vim" ".pulse-cookie" ".vscode-oss/" ".fzf/" ".oh-my-zsh/" ".npm/" "../" ".nuget/" ".ICEauthority" ".zshrc" ".vscode/" ".config/" ".python_history" "Desktop/" ".emacs.d/" "openvpn/" ".ipython/" "Public/" ".gitconfig" ".tmux/" ".anydesk/" ".stremio-server/" "Code/" ".local/" ".cache/" "MEGA/" ".bash_logout" ".omnisharp/" ".ssh/" ".vim-fuf-data/" ".festival_history" "LucasChessR/" "Music/" ".emacs.d-old/" "Acc/" "tmp/" ".password-store/")
+
+ ("/home/thaeronline/git/dotfiles/" (25181 52392 145537 694000) "vifm/" "emacs.d/" "./" "ranger.conf" "tmux/" "polybar/" "zshenv" "README.md" "func-install.py" "zshrc" "termite.conf" "qutebrowser/" "../" "fonts/" "aliases" "install.py" ".git/" "i3config" "rtorrent.rc" "init.vim")
+
+ ("/home/thaeronline/Emacs/" (25181 65201 564498 833000) "Test.html" "Test.odt" "./" "Test.org_archive~" "Test.org_archive" "Test.org~" "../" "Test.org")
 
  ("/home/thaeronline/Test/" (25180 35162 297749 199000) "./" "python-qrcode/" "../")
-
- ("/home/thaeronline/git/dotfiles/emacs.d/" (25180 45137 492270 550000) "init.el~" "session.25d4ca973-4fab-4e7e-8245-1b1bdc00d00f" "transient/" "./" "elpy/" "ido.last" "tutorial/" "emacs-lght" "ido.last~" "auto-save-list/" "#ido.last#" "elpa/" "../" "init.el" "snippets/")
-
- ("/home/thaeronline/git/dotfiles/" (25180 31099 951468 948000) "vifm/" "emacs.d/" "./" "ranger.conf" "tmux/" "polybar/" "zshenv" "README.md" "func-install.py" "zshrc" "termite.conf" "../" "fonts/" "aliases" "install.py" ".git/" "i3config" "rtorrent.rc" "init.vim")
 
  ("/home/thaeronline/Code/Python/qrcode/" (25180 29153 325648 387000) "qr.py" "./" "qr_code.py" "svu.png" "test1.png" "qr.py~" "header.jpg" "test3.png" "logo.png" "Whatsapp-icon.png" "__pycache__/" "qr_code.py~" "Info.png" "Vertical.png" "rounded.png" "../" "Horizontol.png" "signature.png" "test2.png")
 

@@ -47,7 +47,7 @@
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/thaeronline/git/dotfiles/emacs.d/" (25182 26116 617689 168000) "init.el~" "session.25d4ca973-4fab-4e7e-8245-1b1bdc00d00f" "transient/" "eshell/" "./" "elpy/" "ido.last" "tutorial/" "emacs-lght" "ido.last~" "auto-save-list/" "#ido.last#" "url/" "elpa/" "../" "init.el" "snippets/")
+ ("/home/thaeronline/git/dotfiles/emacs.d/" (25182 26408 764482 617000) "init.el~" "session.25d4ca973-4fab-4e7e-8245-1b1bdc00d00f" "transient/" "eshell/" "./" "elpy/" "ido.last" "tutorial/" "emacs-lght" "ido.last~" "auto-save-list/" "#ido.last#" "url/" "elpa/" "../" "init.el" "snippets/")
 
  ("/home/thaeronline/.dotnet/" (24722 13204 956760 830000) "./" "5.0.202_MachineId.dotnetUserLevelCache" "TelemetryStorageService/" "5.0.202_IsDockerContainer.dotnetUserLevelCache" "5.0.202.aspNetCertificateSentinel" "corefx/" "5.0.202.toolpath.sentinel" "5.0.202.dotnetFirstUseSentinel" "MachineId.v1.dotnetUserLevelCache" "optimizationdata/" "../")
 

@@ -5,11 +5,11 @@ tmux/plugins/tmux-continuum/*
 tmux/resurrect/*
 
 # Vim files
-*~
+*.*~
 
 
 # Emacs files
-emacs.d/'#*#'
+emacs.d/#*#
 
 # Log files
 *.log

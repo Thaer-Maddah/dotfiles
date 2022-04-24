@@ -1,0 +1,15 @@
+# Tmux
+tmux/plugins/tmux-*/
+
+# Vim files
+*.*~
+
+# Emacs files
+'#*#'
+
+# Log files
+*.log
+
+# Vifm 
+*vifminfo*
+

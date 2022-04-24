@@ -1,7 +1,0 @@
-(load "~/.emacs.d/main" nil t)
-(load "~/.emacs.d/functions" nil t)
-(load "~/.emacs.d/modes" nil t)
-(load "~/.emacs.d/theme" nil t)
-(set-face-background  'region                 "color-17")
-(set-face-foreground  'region                 "white")
-(set-face-bold-p      'font-lock-builtin-face t )

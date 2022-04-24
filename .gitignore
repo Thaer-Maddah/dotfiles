@@ -3,6 +3,7 @@ tmux/plugins/tmux-resurrect/*
 tmux/plugins/tmux-sensible/*
 tmux/plugins/tmux-continuum/*
 tmux/resurrect/*
+tmux/auto-save-list/*
 
 # Vim files
 *.*~
@@ -10,6 +11,7 @@ tmux/resurrect/*
 
 # Emacs files
 emacs.d/#*#
+emacs.d/*.*~
 
 # Log files
 *.log
@@ -17,3 +19,5 @@ emacs.d/#*#
 # Vifm 
 vifm/vifminfo*
 
+# backup files 
+*.*~

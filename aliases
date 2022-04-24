@@ -71,7 +71,6 @@ alias nautilus='jhbuild run nautilus'
 alias ...='cd /'
 alias ..='cd ../'
 alias ~='cd ~'
-alias Appteco='cd ~/Appteco'
 alias Downloads='cd ~/Downloads'
 alias Documents='cd ~/Documents'
 alias Videos='cd ~/Videos'
@@ -94,7 +93,7 @@ alias proxychains='proxychains4'
 
 #mountd partitions
 alias lvm-root='cd /run/media/linux/lvm-root'
-alias lvm-home='cd /run/media/linux/lvm-home/thaeronline'
+alias lvm-home='cd /run/media/linux/lvm-home/'
 alias windows='cd /run/media/Windows'
 alias old-windows='cd /run/media/Old-Windows'
 

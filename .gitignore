@@ -1,15 +1,19 @@
 # Tmux
-tmux/plugins/tmux-*/
+tmux/plugins/tmux-resurrect/*
+tmux/plugins/tmux-sensible/*
+tmux/plugins/tmux-continuum/*
+tmux/resurrect/*
 
 # Vim files
-*.*~
+*~
+
 
 # Emacs files
-'#*#'
+emacs.d/'#*#'
 
 # Log files
 *.log
 
 # Vifm 
-*vifminfo*
+vifm/vifminfo*
 

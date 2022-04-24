@@ -102,6 +102,9 @@ Plug 'nvim-telescope/telescope.nvim'
 " Serach from Vim
 " Plug 'kien/ctrlp.vim'
 
+" Go Language
+Plug 'fatih/vim-go'
+
 call plug#end()
 
 
@@ -348,3 +351,6 @@ nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
+" Making the background trancparent
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none

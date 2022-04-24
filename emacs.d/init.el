@@ -134,12 +134,11 @@
  '(global-command-log-mode nil)
  '(global-display-line-numbers-mode t)
  '(inhibit-startup-screen t)
-
  '(package-archives
    '(("melpa" . "http://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-selected-packages
-   '(go-projectile go-mode beacon minimap engine-mode i3wm-config-mode i3wm org-modern org-download org org-bullets dracula-theme transpose-frame virtualenv lsp-jedi jedi command-log-mode popup yasnippet blacken flycheck py-autopep8 better-defaults elpy projectile magit zenburn-theme)))
+   '(go-complete go-projectile go-mode beacon minimap engine-mode i3wm-config-mode i3wm org-modern org-download org org-bullets dracula-theme transpose-frame virtualenv lsp-jedi jedi command-log-mode popup yasnippet blacken flycheck py-autopep8 better-defaults elpy projectile magit zenburn-theme)))
 
 ;; Minimap Mode
 (minimap-mode t)
@@ -235,7 +234,9 @@
       helm-echo-input-in-header-line t)
 
 (require 'company) ; code completion framework
+(company-mode 1)
 (require 'compile) ; per-language builds
+;; (require 'go-complete)
 
 (require 'lsp-mode) ; language server
 ;;(add-hook 'lsp-mode-hook 'lsp-ui-mode) ; display contextual overlay
@@ -283,5 +284,3 @@
 (defengine youtube
   "http://www.youtube.com/results?aq=f&oq=&search_query=%s"
   :keybinding "y")
-
-

@@ -12,11 +12,14 @@
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
+;;;;;;;;;;;; Personal preferences ;;;;;;;;;;;;;;;;;;;;;;;
+
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode -1)
 ;; use larger font
 (setq default-frame-alist '((font . "Monospace-12")))
+
 ;; Enable Ido-mode
 (ido-mode t)
 
@@ -31,6 +34,11 @@
 (global-visual-line-mode t)
 (global-display-line-numbers-mode t)
 (setq column-number-mode t)
+
+
+;; Beacon Mode
+;; This mode highlighting cursor
+(beacon-mode t)
 
 ;; Prevent emacs from transfers the clipboard data to the clipboard manager
 ;; to prevent dealy when exit emacs or reload config file
@@ -126,14 +134,16 @@
  '(global-command-log-mode nil)
  '(global-display-line-numbers-mode t)
  '(inhibit-startup-screen t)
- '(minimap-window-location 'left)
  '(package-archives
    '(("melpa" . "http://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-selected-packages
-   '(go-projectile go-mode beacon minimap engine-mode i3wm-config-mode i3wm org-modern org-download org org-bullets dracula-theme transpose-frame virtualenv lsp-jedi jedi command-log-mode popup yasnippet blacken flycheck py-autopep8 better-defaults elpy projectile magit zenburn-theme))
- '(show-paren-mode t)
- '(tool-bar-mode nil))
+   '(go-complete go-projectile go-mode beacon minimap engine-mode i3wm-config-mode i3wm org-modern org-download org org-bullets dracula-theme transpose-frame virtualenv lsp-jedi jedi command-log-mode popup yasnippet blacken flycheck py-autopep8 better-defaults elpy projectile magit zenburn-theme)))
+
+;; Minimap Mode
+(minimap-mode t)
+(setq minimap-window-location 'right)
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -141,7 +151,7 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; python
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Python Preferences ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq
  python-shell-interpreter "ipython"
  python-shell-interpreter-args "-i")
@@ -192,19 +202,52 @@
 (add-hook 'yas-minor-mode-hook(lambda()
 				(yas-activate-extra-mode 'fundamental-mode)))
 
-;; (use-package yasnippet
-;; 	     :ensure t
-;; 	     :init
-;; 	     (yas-global-mode 1))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Go Preferences ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'go-mode-hook (lambda ()
     (setq tab-width 4)))
 
+;; Advanced per-language checks.
 (require 'flycheck)
 (global-flycheck-mode 1)
+(setq flycheck-checker-error-threshold 1000) ; for large go files and the escape checker
 
 (require 'lsp-mode)
 (add-hook 'go-mode-hook #'lsp)
+
+;; Navigation inside code project
+(require 'projectile)
+(projectile-mode "1.0")
+
+;; Helm: incremental completion and selection narrowing inside menus/lists
+(require 'helm)
+(require 'helm-config)
+(require 'helm-projectile)
+(helm-mode 1)
+(helm-projectile-on)
+
+(setq helm-split-window-inside-p            t ; open helm buffer inside current window, not occupy whole other window
+      helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+      helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+      helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+      helm-ff-file-name-history-use-recentf t
+      helm-echo-input-in-header-line t)
+
+(require 'company) ; code completion framework
+(company-mode 1)
+(require 'compile) ; per-language builds
+;; (require 'go-complete)
+
+(require 'lsp-mode) ; language server
+;;(add-hook 'lsp-mode-hook 'lsp-ui-mode) ; display contextual overlay
+;;(with-eval-after-load 'flycheck
+;;  (add-to-list 'flycheck-checkers 'lsp-ui))
+;; (require 'company-lsp)
+;; (push 'company-lsp company-backends)
+
+;; Note: do not use 'lsp-ui-flycheck; this replaces the "advanced"
+;; Go checkers including our custom escape checker below.
+
 
 ;; Org mode
 (global-set-key (kbd "C-c l") #'org-store-link)
@@ -241,11 +284,3 @@
 (defengine youtube
   "http://www.youtube.com/results?aq=f&oq=&search_query=%s"
   :keybinding "y")
-
-;; Minimap Mode
-(minimap-mode t)
-(setq minimap-window-location 'right)
-
-;; Beacon Mode
-;; This mode highlighting cursor
-(beacon-mode t)

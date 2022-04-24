@@ -12,20 +12,20 @@
  ("/home/thaeronline/MEGA/" . "Tweaks/")
  ("/home/thaeronline/Code/Python/Tutor/" . "recordscreen/")
  ("/home/thaeronline/Code/Python/" . "qrcode/")
- ("/home/thaeronline/Code/" . "go/")
- ("/home/thaeronline/" . "git/")
+ ("/home/thaeronline/Code/" . "Python/")
+ ("/home/thaeronline/" . "MEGA/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
+ "/home/thaeronline/MEGA/Tweaks/"
+ "/home/thaeronline/Emacs/"
+ "/home/thaeronline/Code/Python/qrcode/"
  "/home/thaeronline/git/dotfiles/emacs.d/"
  "/home/thaeronline/Code/go/"
  "/home/thaeronline/"
  "/home/thaeronline/go/"
- "/home/thaeronline/Code/Python/qrcode/"
- "/home/thaeronline/MEGA/Tweaks/"
  "/home/thaeronline/MEGA/"
- "/home/thaeronline/Emacs/"
  "/home/thaeronline/.config/mpv/"
  "/home/thaeronline/git/dotfiles/vifm/"
  "/home/thaeronline/MEGA/Github/"
@@ -41,31 +41,33 @@
 
 ;; ----- ido-work-file-list -----
 (
- "init.el"
- ".#init.el"
- "hello.go"
- ".bash_logout"
- "qr.py"
  "problems"
- "quotes"
  "Test.org"
+ "qr.py"
+ "init.el"
+ "hello.go"
+ ".#init.el"
+ ".bash_logout"
+ "quotes"
  "mpv.conf"
  "vifmrc"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/thaeronline/git/dotfiles/emacs.d/" (25184 38023 431448 242000) "init.el~" "session.25d4ca973-4fab-4e7e-8245-1b1bdc00d00f" "transient/" "eshell/" "projectile-bookmarks.eld" "./" "elpy/" "ido.last" "tutorial/" "emacs-lght" "ido.last~" "auto-save-list/" "#ido.last#" "url/" "elpa/" "../" "init.el" "snippets/")
+ ("/home/thaeronline/" (25187 20312 371580 406000) ".git-credential-cache/" ".zcompdump-arch-laptop-5.8.1" "play.sh" "yay-git/" ".icewm/" "repos/" "Pictures/" ".rtorrent.rc" ".steampid" "go/" "pychess.scout" "git/" ".zshenv" ".manjaro-xfce.draft.txt" ".mozilla/" ".lesshst" ".wget-hsts" ".aliases-old" "pychess.pgn" "./" ".templateengine/" "Test/" ".zcompdump-arch-laptop-5.8" "nvim" ".tmux.conf" ".aliases" ".steam/" ".cert/" "Templates/" ".bash_profile" ".thunderbird/" "hacking/" "rtorrent/" ".bashrc" "Documents/" ".fzf.zsh" "Emacs/" "pychess.sqlite" ".git-credentials" ".viminfo" ".gnupg/" ".bash_history" ".dotnet/" "mpv-shot0001.jpg" ".fehbg" "youtube/" ".fzf.bash" ".festivalrc" ".cargo/" "Downloads/" "Videos/" ".fonts/" ".zsh_history" "gnugame.pgn" "VirtualBox VMs/" ".pki/" ".streamlit/" ".xinitrc" ".gnome/" ".steampath" "Stremio/" ".xmonad/" ".surf/" ".vim" ".pulse-cookie" ".vscode-oss/" ".fzf/" ".oh-my-zsh/" ".npm/" "../" ".nuget/" ".ICEauthority" ".zshrc" ".vscode/" ".config/" ".python_history" "Desktop/" ".emacs.d/" "openvpn/" ".ipython/" "Public/" ".gitconfig" ".tmux/" ".anydesk/" ".stremio-server/" "Code/" ".local/" ".cache/" "MEGA/" ".bash_logout" ".omnisharp/" ".ssh/" ".vim-fuf-data/" ".festival_history" "LucasChessR/" "Music/" ".emacs.d-old/" "Acc/" "tmp/" ".password-store/")
+
+ ("/home/thaeronline/Emacs/" (25187 9110 598286 548000) "Test.html" "Test.odt" "./" "Test.org_archive~" "#Test.org#" "Test.org_archive" "Test.org~" "../" "Test.org")
+
+ ("/home/thaeronline/git/dotfiles/emacs.d/" (25185 30650 906285 56000) "init.el~" "session.25d4ca973-4fab-4e7e-8245-1b1bdc00d00f" "transient/" "eshell/" "projectile-bookmarks.eld" "./" "elpy/" "ido.last" "tutorial/" "emacs-lght" "ido.last~" "auto-save-list/" "#ido.last#" "url/" "elpa/" "../" "init.el" "snippets/")
+
+ ("/home/thaeronline/Code/go/" (25184 47104 37346 200000) "hello.go" "./" "hello.go~" "hello" "../" "pkg/")
 
  ("/home/thaeronline/git/dotfiles/emacs.d/auto-save-list/" (25184 36863 89115 104000) ".saves-303910-arch-laptop~" "./" ".saves-5078-arch-laptop~" ".saves-2526-arch-laptop~" ".saves-496758-arch-laptop~" ".saves-5576-arch-laptop~" ".saves-910371-arch-laptop~" "../")
-
- ("/home/thaeronline/Code/go/" (25184 36863 29115 421000) "hello.go" "./" "hello.go~" "hello" "../" "pkg/")
 
  ("/home/thaeronline/.emacs.d/" (25184 36336 32998 92000) "init.el~" "session.25d4ca973-4fab-4e7e-8245-1b1bdc00d00f" "transient/" "eshell/" "projectile-bookmarks.eld" "./" "elpy/" "ido.last" "tutorial/" "emacs-lght" "ido.last~" "auto-save-list/" "#ido.last#" "url/" "elpa/" "../" "init.el" "snippets/")
 
  ("/home/thaeronline/go/" (25184 33145 687653 81000) "./" "../" "pkg/")
-
- ("/home/thaeronline/" (25184 35332 593556 894000) ".git-credential-cache/" ".zcompdump-arch-laptop-5.8.1" "play.sh" "yay-git/" ".icewm/" "repos/" "Pictures/" ".rtorrent.rc" ".steampid" "go/" "pychess.scout" "git/" ".zshenv" ".mozilla/" ".lesshst" ".wget-hsts" ".aliases-old" "pychess.pgn" "./" ".templateengine/" "Test/" ".zcompdump-arch-laptop-5.8" "nvim" ".tmux.conf" ".aliases" ".steam/" ".cert/" "Templates/" ".bash_profile" ".thunderbird/" "hacking/" "rtorrent/" ".bashrc" "Documents/" ".fzf.zsh" "Emacs/" "pychess.sqlite" ".git-credentials" ".viminfo" ".gnupg/" ".bash_history" ".dotnet/" "mpv-shot0001.jpg" ".fehbg" "youtube/" ".fzf.bash" ".festivalrc" ".cargo/" "Downloads/" "Videos/" ".fonts/" ".zsh_history" "gnugame.pgn" ".pki/" ".streamlit/" ".xinitrc" ".gnome/" ".steampath" "Stremio/" ".xmonad/" ".surf/" ".vim" ".pulse-cookie" ".vscode-oss/" ".fzf/" ".oh-my-zsh/" ".npm/" "../" ".nuget/" ".ICEauthority" ".zshrc" ".vscode/" ".config/" ".python_history" "Desktop/" ".emacs.d/" "openvpn/" ".ipython/" "Public/" ".gitconfig" ".tmux/" ".anydesk/" ".stremio-server/" "Code/" ".local/" ".cache/" "MEGA/" ".bash_logout" ".omnisharp/" ".ssh/" ".vim-fuf-data/" ".festival_history" "LucasChessR/" "Music/" ".emacs.d-old/" "Acc/" "tmp/" ".password-store/")
 
  ("/home/thaeronline/Code/" (25184 32537 769934 857000) "go/" "./" "CSharp/" "Python/" "Rust/" "C/" "../" "php/")
 
@@ -74,8 +76,6 @@
  ("/home/thaeronline/git/dotfiles/vifm/" (25184 10121 514501 586000) "vifminfo.json" "./" "vifmrc" "colors/" "vifminfo" "../" "scripts/" "vifm-help.txt")
 
  ("/home/thaeronline/.config/mpv/" (25182 62982 139337 345000) "./" "../")
-
- ("/home/thaeronline/Emacs/" (25183 18621 621537 33000) "Test.html" "Test.odt" "./" "Test.org_archive~" "#Test.org#" "Test.org_archive" "Test.org~" "../" "Test.org")
 
  ("/home/thaeronline/MEGA/Github/" (25182 61117 730249 422000) "./" "Authentication~" "../" "Authentication")
 

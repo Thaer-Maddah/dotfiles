@@ -100,6 +100,7 @@ alias old-windows='cd /run/media/Old-Windows'
 
 
 # NeoVim Aliases
+alias v="nvim"
 alias nvimrc='nvim ~/.config/nvim/init.vim'
 alias vimrc='vim ~/.vimrc'
 

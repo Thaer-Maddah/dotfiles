@@ -66,4 +66,4 @@ PROMPT_COMMAND=set_bash_prompt_color
 # PROMPT_COMMAND='PS1="\u@${_GREEN}\W$(__git_ps1 " (%s)")➜ "'
 
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf.bash ] && source "$HOME"/.fzf.bash

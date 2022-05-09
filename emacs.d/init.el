@@ -18,7 +18,7 @@
 (tool-bar-mode 0)
 (scroll-bar-mode -1)
 ;; use larger font
-(setq default-frame-alist '((font . "Monospace-12")))
+(setq default-frame-alist '((font . "Monospace-11")))
 
 ;; Enable Ido-mode
 (ido-mode t)
@@ -34,6 +34,7 @@
 (global-visual-line-mode t)
 (global-display-line-numbers-mode t)
 (setq column-number-mode t)
+(setq pixel-scroll-mode t)
 
 
 ;; Beacon Mode
@@ -49,7 +50,7 @@
 (setq-default display-fill-column-indicator-character ?\N{U+2506})
 
 ;; Transparency 
-(set-frame-parameter (selected-frame) 'alpha '(90 . 50))
+(set-frame-parameter (selected-frame) 'alpha '(75 . 50))
 ;; (add-to-list 'default-frame-alist '(alpha . (85 . 50)))
 
 (defun toggle-transparency ()
@@ -126,9 +127,9 @@
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
  '(command-log-mode t t)
- '(custom-enabled-themes '(tango-dark))
+ '(custom-enabled-themes '(taylor))
  '(custom-safe-themes
-   '("81c3de64d684e23455236abde277cda4b66509ef2c28f66e059aa925b8b12534" "e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" default))
+   '("317a45f190eaa3ccf8af6168aa89112d9cb794f87f409bc7a0638edee20d07fd" "6b5c518d1c250a8ce17463b7e435e9e20faa84f3f7defba8b579d4f5925f60c1" default))
  '(display-battery-mode t)
  '(display-time-mode t)
  '(global-command-log-mode nil)
@@ -138,7 +139,7 @@
    '(("melpa" . "http://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-selected-packages
-   '(go-complete go-projectile go-mode beacon minimap engine-mode i3wm-config-mode i3wm org-modern org-download org org-bullets dracula-theme transpose-frame virtualenv lsp-jedi jedi command-log-mode popup yasnippet blacken flycheck py-autopep8 better-defaults elpy projectile magit zenburn-theme)))
+   '(vterm gruvbox-theme color-theme-modern go-complete go-projectile go-mode beacon minimap engine-mode i3wm-config-mode i3wm org-modern org-download org org-bullets dracula-theme transpose-frame virtualenv lsp-jedi jedi command-log-mode popup yasnippet blacken flycheck py-autopep8 better-defaults elpy projectile magit zenburn-theme)))
 
 ;; Minimap Mode
 (minimap-mode t)

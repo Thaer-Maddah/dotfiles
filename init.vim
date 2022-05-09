@@ -14,7 +14,7 @@ Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Automatic quite bracket completion
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 
 " Code auto-format plugin
 Plug 'sbdchd/neoformat'
@@ -24,6 +24,7 @@ Plug 'junegunn/vim-easy-align'
 
 " Vim airline
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Any valid git URL is allowed
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
@@ -105,6 +106,10 @@ Plug 'nvim-telescope/telescope.nvim'
 " Go Language
 Plug 'fatih/vim-go'
 
+" Markdown
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
+
 call plug#end()
 
 
@@ -118,6 +123,9 @@ set noerrorbells         " don't beep
 set path+=**
 " Display all matching files when we tab complete
 set wildmenu
+" save file with sudo privileges 
+let g:sudo_askpass='/usr/lib/openssh/gnome-ssh-askpass'
+let g:airline_theme='base16'
 "
 " Initialize plugin system
 
@@ -127,6 +135,8 @@ filetype plugin indent on
 " Code highlighting
 syntax on
 
+" Markdown Settings 
+set conceallevel=2
 " Show whitespace
 " MUST be inserted BEFORE the colorscheme command
 " autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
@@ -143,6 +153,7 @@ colorscheme gruvbox
 set background=dark " use dark mode
 
 " Showing line numbers and length
+set number 
 set relativenumber " show line numbers
 " set relativenumber
 highlight ColorColumn ctermbg=233
@@ -351,6 +362,6 @@ nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
-" Making the background trancparent
+" Making the background transparent
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none

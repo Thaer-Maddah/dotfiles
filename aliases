@@ -29,10 +29,10 @@ alias rm='rm -i'
 
 
 # Bash shell 
-#alias load='source ~/.bashrc'
+alias load='source ~/.bashrc'
 
 # ZSH shell 
-alias load='source ~/.zshrc && clear'
+#alias load='source ~/.zshrc && clear'
 alias zshconfig="nvim ~/.zshrc"
 alias myzsh="nvim ~/.oh-my-zsh"
 
@@ -88,7 +88,7 @@ alias dev='cd /dev'
 alias share='cd /usr/share'
 alias .share='cd ~/.local/share'
 alias .config='cd ~/.config'
-alias i3config='nvim ~/.config/i3/config'
+alias i3config='vim ~/.config/i3/config'
 alias proxychains='proxychains4'
 
 #mountd partitions
@@ -99,12 +99,14 @@ alias old-windows='cd /run/media/Old-Windows'
 
 
 # NeoVim Aliases
-alias v="nvim"
-alias nvimrc='nvim ~/.config/nvim/init.vim'
+alias v="vim"
+alias vi="vim"
+alias nv='nvim'
+alias nvimrc='vim ~/.config/nvim/init.vim'
 alias vimrc='vim ~/.vimrc'
 
 # Multimedia Stuff
-alias play='du -a | cut -f2- | grep -iE "mp4$|mp3$|webm$|m4a$|wav$|ogg$|mkv$" | dmenu -i -l 30 -sb "#C95A49" | xargs -I "{}" mpv "{}"' # || clear && dialog --msgbox "MPV does not support selected file format" 5 45'
+alias play='du -a | cut -f2- | grep -iE "mp4$|mp3$|webm$|m4a$|wav$|ogg$|mkv$" | dmenu -i -l 30 -sb "#C95A49" | xargs -0I "{}" mpv "{}"' # || clear && dialog --msgbox "MPV does not support selected file format" 5 45'
 
 # OS release
 alias release='lsb_release -a'

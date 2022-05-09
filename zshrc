@@ -116,13 +116,14 @@ source $ZSH/oh-my-zsh.sh
 
 #if not running interactively, do not do anything
 [[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux 
-# tmux kill-sessions -a &
+[[ -z "$TMUX" ]] && exec tmux
+# exec tmux source-file ~/git/dotfiles/tmux/tmux.conf
+#tmux kill-sessions -a &
 
 #screenfetch
 
 # If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+#[[ $- != *i* ]] && return
 
 # Extract Files and Folders
 extract () {

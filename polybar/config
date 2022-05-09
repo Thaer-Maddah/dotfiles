@@ -72,7 +72,7 @@ font-2 = siji:pixelsize=10;1
 modules-left = bspwm i3
 modules-center = mpd
 ; modules-right = xbacklight pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
-modules-right = xbacklight pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = pulseaudio xkeyboard memory cpu wlan eth battery date 
 
 ; Available positions:
 ;   left
@@ -89,7 +89,7 @@ tray-scale = 1.0
 
 ;wm-restack = bspwm
 ; wm-restack = i3
-
+ 
 ; override-redirect = true
 
 ;scroll-up = bspwm-desknext
@@ -355,7 +355,7 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 type = internal/battery
 battery = BAT0
 adapter = ADP0
-full-at = 98
+full-at = 100
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #ffb52a
@@ -408,7 +408,7 @@ type = custom/menu
 
 expand-right = true
 
-format-spacing = 1
+format-spacing = 5
 
 label-open = 
 label-open-foreground = ${colors.secondary}

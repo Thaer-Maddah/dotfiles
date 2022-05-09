@@ -1,0 +1,69 @@
+#!/bin/bash
+# ~/.bashrc
+
+# Set font configurations
+# do not use tput command because missing up the long lines in terminal
+# do not use code like Bla='\e[0;30m' because it does the same thing as tput 
+# _BOLD=$(tput bold)
+_RED="\[\033[1;31m\]"
+_GREEN="\[\033[1;32m\]"
+_YELLOW="\[\033[1;33m\]"
+_BLUE="\[\033[1;34m\]"
+_MAGENTA="\[\033[1;35m\]"
+_CYAN="\[\033[1;36m\]"
+_WHITE="\[\033[1;37m\]"
+_RESET="\[\033[0;0m\]"  # reset color to default color
+
+# alias tmux='TERM=screen-256color tmux'
+
+# Add seahorse pacakge to check sudo privileges on neovim
+# when save file by command :w !sudo tee %
+export SUDO_ASKPASS=/usr/bin/seahorse
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+# [ -f /etc/bash_completio ] && source /etc/bash_completion
+[[ -z "$TMUX" ]] && exec tmux
+[[ -f "$HOME"/.fzf.bash ]] && source "$HOME"/.fzf.bash
+[[ -f "$HOME"/.aliases ]] && source "$HOME"/.aliases
+[[ -f "$HOME"/.git-status.sh ]] && source "$HOME"/.git-status.sh
+[[ -f "$HOME"/Code/bash/unix ]] && clear && neofetch --source "$HOME"/Code/bash/unix
+
+# Zsh like completion
+bind 'set completion-ignore-case On'
+bind 'set show-all-if-ambiguous on'
+bind 'TAB:menu-complete'
+
+# SSH prompt
+# local SSH_IP=`echo $SSH_CLIENT | awk '{ print $1 }'`
+# local SSH2_IP=`echo $SSH2_CLIENT | awk '{ print $1 }'`
+# if [ $SSH2_IP ] || [ $SSH_IP ] ; then
+#     local SSH_FLAG="@\h"
+   
+# Display git status
+# https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+[ -f "$HOME"/.git-prompt.sh  ] &&  source "$HOME"/.git-prompt.sh
+
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWCOLORHINTS=1
+
+# don't put duplicate lines or lines starts with space in the history. See bash(1) for more options
+export HISTCONTROL=ignoreboth
+shopt -s histappend
+shopt -s histreedit
+shopt -s histverify
+#PROMPT_COMMAND="history -a;history -c;history -r; $PROMPT_COMMAND"
+# export HISTTIMEFORMAT="[%d-%m %T] "
+export HISTIGNORE="ls:history"
+HISTSIZE= HISTFILESIZE= #Infinite 
+alias ls='ls --color=auto'
+
+set_bash_prompt_color() {
+    PS1="${_GREEN}\u@${_CYAN}\W$(__git_ps1 " (%s)")${_GREEN}➜ ${_RESET}"
+}
+PROMPT_COMMAND=set_bash_prompt_color
+# PROMPT_COMMAND='PS1="\u@${_GREEN}\W$(__git_ps1 " (%s)")➜ "'
+
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -317,6 +317,8 @@ set $bg_image ~/.config/i3/wallpapers/64365.jpg
 set $bg_dir ~/Pictures/wallpapers/*
 
 exec_always feh --bg-fill --randomize $bg_dir
+    
+
 
 #exec_always conky
 #exec --no-startup-id conky

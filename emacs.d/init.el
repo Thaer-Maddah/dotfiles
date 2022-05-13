@@ -139,7 +139,8 @@
    '(("melpa" . "http://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-selected-packages
-   '(vterm gruvbox-theme color-theme-modern go-complete go-projectile go-mode beacon minimap engine-mode i3wm-config-mode i3wm org-modern org-download org org-bullets dracula-theme transpose-frame virtualenv lsp-jedi jedi command-log-mode popup yasnippet blacken flycheck py-autopep8 better-defaults elpy projectile magit zenburn-theme)))
+   '(vterm gruvbox-theme color-theme-modern go-complete go-projectile go-mode beacon minimap engine-mode i3wm-config-mode i3wm org-modern org-download org org-bullets dracula-theme transpose-frame virtualenv lsp-jedi jedi command-log-mode popup yasnippet blacken flycheck py-autopep8 better-defaults elpy projectile magit zenburn-theme))
+ '(warning-suppress-log-types '((auto-save))))
 
 ;; Minimap Mode
 (minimap-mode t)

@@ -16,12 +16,13 @@ _RESET="\[\033[0;0m\]"  # reset color to default color
 
 # alias tmux='TERM=screen-256color tmux'
 
-# Add seahorse pacakge to check sudo privileges on neovim
+# Add x11-ssh-askpass pacakge to check sudo privileges on neovim
 # when save file by command :w !sudo tee %
-export SUDO_ASKPASS=/usr/bin/seahorse
+export SUDO_ASKPASS=/usr/lib/ssh/x11-ssh-askpass
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+# [[ -f "$HOME"/git/dotfiles/wallpaper.sh ]] && sh wallpaper.sh &
 # [ -f /etc/bash_completio ] && source /etc/bash_completion
 [[ -z "$TMUX" ]] && exec tmux
 [[ -f "$HOME"/.fzf.bash ]] && source "$HOME"/.fzf.bash

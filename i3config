@@ -267,8 +267,8 @@ for_window [class="(?i)monitor"] floating enable
 for_window [class="(?i)archive"] floating enable
 for_window [class="(?i)cheese"] floating enable
 # resize save as dialog on office
-for_window [title="(?i)save"] #resize set 640 480
-for_window [title="(?i)open"] #resize set 640 480
+for_window [title="(?i)save"] resize set 640 480
+for_window [title="(?i)open"] resize set 640 480
 # for_window [title="(?i)close"] floating enable
 # for_window [title="(?i)quit"] floating enable
 

@@ -60,9 +60,16 @@ export HISTIGNORE="ls:history"
 HISTSIZE= HISTFILESIZE= #Infinite 
 alias ls='ls --color=auto'
 
-set_bash_prompt_color() {
+if [[ $UID == 0 || $EUID == 0 ]]; then
+    set_bash_prompt_color() {
+    PS1="${_GREEN}\u@${_CYAN}\W$(__git_ps1 " (%s)")${_GREEN}# ${_RESET}"
+    }
+else
+    set_bash_prompt_color() {
     PS1="${_GREEN}\u@${_CYAN}\W$(__git_ps1 " (%s)")${_GREEN}➜ ${_RESET}"
-}
+    }
+fi
+
 PROMPT_COMMAND=set_bash_prompt_color
 # PROMPT_COMMAND='PS1="\u@${_GREEN}\W$(__git_ps1 " (%s)")➜ "'
 

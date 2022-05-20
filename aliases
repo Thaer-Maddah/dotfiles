@@ -117,7 +117,7 @@ alias grub='sudo grub2-mkconfig -o /boot/grub2/grub.cfg'
 # VPN Stuff
 alias vpn='sudo openvpn --config'
 
-#Network Stuff
+# Network Stuff
 alias nethogs='sudo nethogs wlp2s0'
 alias powertop='sudo powertop'
 alias iftop='sudo iftop -i wlp2s0'

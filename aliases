@@ -23,7 +23,7 @@ alias 777='sudo chmod -R 777'
 
 alias chown='sudo chown -R'
 
-alias aux='ps aux | grep -i'
+alias aux='ps aux | head -n -1 | grep -i --color'
 alias mv='mv -i'
 alias rm='rm -i'
 

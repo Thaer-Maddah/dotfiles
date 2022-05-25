@@ -138,7 +138,7 @@ mode "$mode_system" {
     # bindsym s exec systemctl suspend, mode "default"
     
     # exec i3lock if we have not run lightDM 
-    bindsym s exec --no-startup-id systemctl suspend && $locker, mode "default"
+    bindsym s exec  systemctl suspend --quiet && $locker, mode "default"
     
     # Lock screen
     bindsym l exec $locker, mode "default"
@@ -267,8 +267,9 @@ for_window [class="(?i)monitor"] floating enable
 for_window [class="(?i)archive"] floating enable
 for_window [class="(?i)cheese"] floating enable
 # resize save as dialog on office
-for_window [title="(?i)save"] resize set 640 480
-for_window [title="(?i)open"] resize set 640 480
+for_window [title="(?i)save"] resize set 640 480 move position center
+for_window [title="(?i)open"] resize set 640 480 move position center
+
 # for_window [title="(?i)close"] floating enable
 # for_window [title="(?i)quit"] floating enable
 

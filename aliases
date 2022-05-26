@@ -109,7 +109,7 @@ alias nvimrc='vim ~/.config/nvim/init.vim'
 alias vimrc='vim ~/.vimrc'
 
 # Multimedia Stuff
-alias play='sh $dir/play.sh'
+alias play='sh $dir/scripts/play.sh'
 
 # OS release
 alias release='lsb_release -a'

@@ -14,6 +14,9 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 
+import XMonad.Layout.Gaps
+import XMonad.Layout.Spacing
+
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
@@ -32,7 +35,7 @@ myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 2
+myBorderWidth   = 1
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -67,6 +70,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch dmenu
     , ((modm,               xK_p     ), spawn "dmenu_run")
+    , ((modm,               xK_d     ), spawn "rofi -show run 'System San Francisco Display 10'")
 
     -- launch gmrun
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
@@ -195,7 +199,12 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
+--myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
+--myLayout = gaps [(U,24), (D,5), (R,5), (L,5)] $ Tall 1 (3/100) (1/2) ||| Full
+myLayout =  gaps [(U,24), (R,4), (L,4), (D,4)] $ spacing 3 $ (tiled ||| Mirror tiled ||| Full)
+--myLayout = spacing 5 $ Tall (1 (3/100) (1/2)) ||| Full
+--myLayout = spacingRaw True (Border 15 15 15 15) True (Border 15 15 15 15) True $ Tall (2 (3/100) (1/2)) ||| Full
+
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio

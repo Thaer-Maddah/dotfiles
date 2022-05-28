@@ -16,6 +16,8 @@ import XMonad.Util.SpawnOnce
 
 import XMonad.Layout.Gaps
 import XMonad.Layout.Spacing
+import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
+import XMonad.Hooks.ManageHelpers
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -35,7 +37,7 @@ myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 1
+myBorderWidth   = 2
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -58,7 +60,7 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#ff0000"
+myFocusedBorderColor = "#9c4922"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -202,21 +204,22 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 --myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
 --myLayout = gaps [(U,24), (D,5), (R,5), (L,5)] $ Tall 1 (3/100) (1/2) ||| Full
 myLayout =  gaps [(U,24), (R,4), (L,4), (D,4)] $ spacing 3 $ (tiled ||| Mirror tiled ||| Full)
+               where
+                   -- default tiling algorithm partitions the screen into two panes
+                   tiled   = Tall nmaster delta ratio
+
+                   -- The default number of windows in the master pane
+                   nmaster = 1
+
+                   -- Default proportion of screen occupied by master pane
+                   ratio   = 1/2
+
+                   -- Percent of screen to increment by when resizing panes
+                   delta   = 3/100
+
 --myLayout = spacing 5 $ Tall (1 (3/100) (1/2)) ||| Full
 --myLayout = spacingRaw True (Border 15 15 15 15) True (Border 15 15 15 15) True $ Tall (2 (3/100) (1/2)) ||| Full
 
-  where
-     -- default tiling algorithm partitions the screen into two panes
-     tiled   = Tall nmaster delta ratio
-
-     -- The default number of windows in the master pane
-     nmaster = 1
-
-     -- Default proportion of screen occupied by master pane
-     ratio   = 1/2
-
-     -- Percent of screen to increment by when resizing panes
-     delta   = 3/100
 
 ------------------------------------------------------------------------
 -- Window rules:
@@ -233,11 +236,17 @@ myLayout =  gaps [(U,24), (R,4), (L,4), (D,4)] $ spacing 3 $ (tiled ||| Mirror t
 -- To match on the WM_NAME, you can use 'title' in the same way that
 -- 'className' and 'resource' are used below.
 --
+myManageHook::ManageHook
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
+    , className  =? "Qalculate-gtk"  --> doFloat
+    , className  =? "Gnome-system-monitor"  --> doFloat
+    , isDialog                          --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
+        <+> manageDocks
+
 
 ------------------------------------------------------------------------
 -- Event handling
@@ -269,6 +278,7 @@ myLogHook = return ()
 myStartupHook = do
         spawnOnce "feh --bg-fill --randomize ~/Pictures/wallpapers/*"
         spawnOnce "picom -b -i 1.0"
+        -- spawnOnce "nm-applet &"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.

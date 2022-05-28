@@ -1,3 +1,11 @@
+#!/bin/bash
+#
+#Environment Variables
+export EDITOR=nvim
+
+# [[ "$((tty))" = "/dev/tty1" ]]; startx ~/.config/X11/qtie/xinitrc 
+# [[ "$((tty))" = "/dev/tty2" ]]; startx  ~/.config/X11/xmonad/xinitrc
+
 #Xsecurelock variables --------{{{
 # Xsecurelock Variables
 export XSECURELOCK_PASSWORD_PROMPT=asterisks
@@ -10,6 +18,5 @@ export XSECURELOCK_IMAGE_DURATION_SECONDS=10
 #}}}
 
 
-#Environment Variables
-export EDITOR=nvim
+
 

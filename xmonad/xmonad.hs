@@ -58,7 +58,7 @@ myModMask       = mod4Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
+myWorkspaces    = [" 1 "," 2 "," 3 "," 4 "," 5 "," 6 "," 7 "," 8 "," 9 "]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -136,7 +136,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
     -- Quit xmonad
-    , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
+    , ((modm .|. shiftMask .|. controlMask, xK_q     ), io (exitWith ExitSuccess))
 
     -- Restart xmonad
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart;")
@@ -147,6 +147,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Volume control
     , ((modm, xK_Home),  spawn "pactl set-sink-volume @DEFAULT_SINK@ +10%")
     , ((modm, xK_End),  spawn "pactl set-sink-volume @DEFAULT_SINK@ -10%")
+    , ((modm, xK_m),  spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
 
     -- Brightness control
     , ((modm, xK_Prior),  spawn "brightnessctl  set +50")
@@ -154,6 +155,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Suspend
     , ((modm .|. shiftMask, xK_s),  spawn "systemctl suspend")
+
+    , ((modm, xK_Print),  spawn "gnome-screenshot -i")
     ]
     ++
 
@@ -277,6 +280,7 @@ myEventHook = mempty
 myLogHook xmproc = dynamicLogWithPP $ xmobarPP
     { ppOutput = hPutStrLn xmproc
     , ppTitle = xmobarColor "darkorange" "" . shorten 50
+    --, ppTitle = const "" 
     , ppCurrent             = xmobarColor   "orange"       "white"
     , ppUrgent              = xmobarColor   "darkred"      "blue"
     , ppVisible             = xmobarColor   "yellow"       "Gray"

@@ -105,7 +105,7 @@ Config {
         , Run Date           "<fc=#ABABAB>%F (%a) %T</fc>" "date" 10
 
         -- keyboard layout indicator
-        , Run Kbd            [ ("ara" , "<fc=#f50202>Ar</fc>")
+            , Run Kbd            [ ("ara" , "<fc=#f27222>Ar</fc>")
                              , ("us"         , "<fc=#ACACAC>US</fc>")
                              ]
 

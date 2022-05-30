@@ -23,13 +23,9 @@ export XDG_CONFIG_HOME=~/.config
 export SUDO_ASKPASS=/usr/lib/ssh/x11-ssh-askpass
 
 
-if [[ -f ~/bashrc ]]; then 
-       	. ~/.bashrc
-fi
+[[ -f ~/bashrc ]] && 	. "$HOME"/.bashrc
 
-if [[ -f ~/.profile ]]; then 
-	. ~/.profile
-fi
+[[ -f ~/.profile ]] && . "$HOME"/.profile
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -40,7 +36,7 @@ fi
 [[ -f "$HOME"/.aliases ]] && source "$HOME"/.aliases
 [[ -f "$HOME"/.git-status.sh ]] && source "$HOME"/.git-status.sh
 [[ -f "$HOME"/Code/bash/unix ]] && clear && neofetch --source "$HOME"/Code/bash/unix
-
+[[ -f /usr/bin/numlockx ]] && numlockx
 # Zsh like completion
 bind 'set completion-ignore-case On'
 bind 'set show-all-if-ambiguous on'
@@ -84,5 +80,3 @@ fi
 PROMPT_COMMAND=set_bash_prompt_color
 # PROMPT_COMMAND='PS1="\u@${_GREEN}\W$(__git_ps1 " (%s)")➜ "'
 
-
-[ -f ~/.fzf.bash ] && source "$HOME"/.fzf.bash

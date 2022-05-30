@@ -13,11 +13,14 @@ import System.Exit
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
+import XMonad.Hooks.DynamicLog
+import XMonad.Actions.Commands
 
 import XMonad.Layout.Gaps
 import XMonad.Layout.Spacing
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.FadeInactive
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -60,7 +63,8 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#9c4922"
+--myFocusedBorderColor = "#9c4922"
+myFocusedBorderColor = "#b54b09"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -135,7 +139,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
 
     -- Restart xmonad
-    , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+    , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart;")
 
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
@@ -203,7 +207,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 --
 --myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
 --myLayout = gaps [(U,24), (D,5), (R,5), (L,5)] $ Tall 1 (3/100) (1/2) ||| Full
-myLayout =  gaps [(U,24), (R,4), (L,4), (D,4)] $ spacing 3 $ (tiled ||| Mirror tiled ||| Full)
+myLayout =  gaps [(U,30), (R,4), (L,4), (D,4)] $ spacing 3 $ (tiled ||| Mirror tiled ||| Full)
                where
                    -- default tiling algorithm partitions the screen into two panes
                    tiled   = Tall nmaster delta ratio
@@ -240,8 +244,10 @@ myManageHook::ManageHook
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
-    , className  =? "Qalculate-gtk"  --> doFloat
-    , className  =? "Gnome-system-monitor"  --> doFloat
+    , className =? "Qalculate-gtk"  --> doFloat
+    , className =? "gnome-calculator"  --> doFloat
+    , className =? "Gnome-system-monitor"  --> doFloat
+    , className =? "mpv"              --> doFloat
     , isDialog                          --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
@@ -265,7 +271,20 @@ myEventHook = mempty
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = return ()
+--myLogHook = return ()
+--myLogHook = dynamicLog
+-- myLogHook = dynamicLogWithPP $ def { ppOutput = hPutStrLn xmproc }
+myLogHook xmproc = dynamicLogWithPP $ xmobarPP
+    { ppOutput = hPutStrLn xmproc
+    , ppTitle = xmobarColor "darkorange" "" . shorten 50
+    , ppCurrent             = xmobarColor   "orange"       "white"
+    , ppUrgent              = xmobarColor   "darkred"      "blue"
+    , ppVisible             = xmobarColor   "yellow"       "Gray"
+    , ppHidden              = xmobarColor   "Gray"      "Gray"
+--    , ppHiddenNoWindows     = xmobarColor   "gray"       "Gray"
+    }
+dimLogHook = fadeInactiveLogHook fadeAmount
+    where fadeAmount = 1
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -285,9 +304,12 @@ myStartupHook = do
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
+-- main = xmonad =<< xmobar defaults
 main = do
-    xmproc <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc"    
-    xmonad $ docks defaults
+--    xmonad =<< myBar myPP 
+    --xmproc <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc"    
+    xmproc <- spawnPipe "xmobar"    
+    xmonad $ docks defaults  { logHook = dimLogHook >> (myLogHook xmproc) }
 
 
 -- A structure containing your configuration settings, overriding
@@ -296,6 +318,7 @@ main = do
 --
 -- No need to modify this.
 --
+-- The main function.
 defaults = def {
       -- simple stuff
         terminal           = myTerminal,
@@ -315,8 +338,33 @@ defaults = def {
         layoutHook         = myLayout,
         manageHook         = myManageHook,
         handleEventHook    = myEventHook,
-        logHook            = myLogHook,
+        --logHook            = dimLogHook >> (myLogHook xmproc),
+        -- logHook            = myLogHook,
         startupHook        = myStartupHook
+--                      -- XMOBAR SETTINGS
+--              { ppOutput = \x -> hPutStrLn xmproc0 x   -- xmobar on monitor 1
+--                -- Current workspace
+--              , ppCurrent = xmobarColor color06 "" . wrap
+--                            ("<box type=Bottom width=2 mb=2 color=" ++ color06 ++ ">") "</box>"
+--                -- Visible but not current workspace
+--              , ppVisible = xmobarColor color06 "" . clickable
+--                -- Hidden workspace
+--              , ppHidden = xmobarColor color05 "" . wrap
+--                           ("<box type=Top width=2 mt=2 color=" ++ color05 ++ ">") "</box>" . clickable
+--                -- Hidden workspaces (no windows)
+--              , ppHiddenNoWindows = xmobarColor color05 ""  . clickable
+--                -- Title of active window
+--              , ppTitle = xmobarColor color16 "" . shorten 60
+--                -- Separator character
+--              , ppSep =  "<fc=" ++ color09 ++ "> <fn=1>|</fn> </fc>"
+--                -- Urgent workspace
+--              , ppUrgent = xmobarColor color02 "" . wrap "!" "!"
+--                -- Adding # of windows on current workspace to the bar
+--              , ppExtras  = [windowCount]
+--                -- order of things in xmobar
+--              , ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
+--              }
+
     }
 
 -- | Finally, a copy of the default bindings in simple textual tabular format.

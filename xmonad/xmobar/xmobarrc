@@ -50,7 +50,7 @@ Config {
         -- network activity monitor (dynamic interface resolution)
         , Run DynNetwork     [ "--template" , "<dev>: <tx> kB/s|<rx> kB/s"
                              , "--Low"      , "25000"       -- units: B/s
-                             , "--High"     , "3000000"       -- units: B/s
+                             , "--High"     , "300000"       -- units: B/s
                              , "--low"      , "grey"
                              , "--normal"   , "green"
                              , "--high"     , "red"

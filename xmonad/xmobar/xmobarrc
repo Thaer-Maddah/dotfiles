@@ -7,14 +7,14 @@ Config {
    , fgColor =      "#ACACAC"
    , alpha =        180    
    , position =     Static { xpos = 5 , ypos = 5, width = 1354, height = 24 }
-   , border =       BottomB
+   , border =       BottomBM 2
    , borderColor =  "darkorange"
    , iconRoot     = ".xmonad/xpm/"  -- default: "."
 
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = " <icon=haskell_20.xpm/>   <fc=#666666>|</fc> %UnsafeStdinReader% }{ | %battery% | %multicpu% | %memory% | %dynnetwork% | %OSDI% | %date% | %kbd%  "
+   , template = " <icon=haskell_20.xpm/>   <fc=#666666>|</fc> %UnsafeStdinReader% }{ | %volume%| %battery% | %multicpu% | %memory% | %dynnetwork% | %wifi% |  %date% | %kbd%  "
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -48,7 +48,7 @@ Config {
         , Run UnsafeStdinReader
 
         -- network activity monitor (dynamic interface resolution)
-        , Run DynNetwork     [ "--template" , "<dev>: <tx> kB/s|<rx> kB/s"
+        , Run DynNetwork     [ "--template" , "<dev>: <rx> kB/s|<tx> kB/s"
                              , "--Low"      , "25000"       -- units: B/s
                              , "--High"     , "300000"       -- units: B/s
                              , "--low"      , "grey"
@@ -60,9 +60,9 @@ Config {
         , Run MultiCpu       [ "--template" , "Cpu: <total0>%|<total1>%"
                              , "--Low"      , "50"         -- units: %
                              , "--High"     , "85"         -- units: %
-                             , "--low"      , "darkgreen"
-                             , "--normal"   , "darkorange"
-                             , "--high"     , "darkred"
+                             , "--low"      , "green"
+                             , "--normal"   , "orange"
+                             , "--high"     , "red"
                              ] 10
 
         -- cpu core temperature monitor
@@ -78,26 +78,26 @@ Config {
         , Run Memory         [ "--template" ,"Mem: <usedratio>%"
                              , "--Low"      , "20"        -- units: %
                              , "--High"     , "90"        -- units: %
-                             , "--low"      , "darkgreen"
-                             , "--normal"   , "darkorange"
-                             , "--high"     , "darkred"
+                             , "--low"      , "green"
+                             , "--normal"   , "orange"
+                             , "--high"     , "red"
                              ] 10
 
         -- battery monitor
         , Run Battery        [ "--template" , "Batt: <acstatus>"
-                             , "--Low"      , "30"        -- units: %
+                             , "--Low"      , "40"        -- units: %
                              , "--High"     , "80"        -- units: %
-                             , "--low"      , "darkred"
-                             , "--normal"   , "darkorange"
-                             , "--high"     , "darkgreen"
+                             , "--low"      , "red"
+                             , "--normal"   , "orange"
+                             , "--high"     , "green"
 
                              , "--" -- battery specific options
                                        -- discharging status
                                        , "-o"	, "<left>% (<timeleft>)"
                                        -- AC "on" status
-                                       , "-O"	, "<fc=#dAA520>Charging</fc>"
+                                       , "-O"	, "<fc=#f27222>Charging</fc>"
                                        -- charged status
-                                       , "-i"	, "<fc=#006000>Charged</fc>"
+                                       , "-i"	, "<fc=#3af719>Charged</fc>"
                              ] 50
 
         -- time and date indicator 
@@ -105,9 +105,14 @@ Config {
         , Run Date           "<fc=#ABABAB>%F (%a) %T</fc>" "date" 10
 
         -- keyboard layout indicator
-            , Run Kbd            [ ("ara" , "<fc=#f27222>Ar</fc>")
+        , Run Kbd            [ ("ara" , "<fc=#f27222>Ar</fc>")
                              , ("us"         , "<fc=#ACACAC>US</fc>")
                              ]
+        -- Volume script
+        , Run Com "/bin/bash" ["-c", "~/git/dotfiles/xmonad/scripts/volume.sh"] "volume" 10 
+        -- Wifi script
+        , Run Com "/bin/bash" ["-c", "~/git/dotfiles/xmonad/scripts/wifi.sh"] "wifi" 50 
+
 
         ]
    }

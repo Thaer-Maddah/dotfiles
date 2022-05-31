@@ -1,12 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 
 # Wifi interface
 wi=wlp0s20f0u3
-
-iwconfig $wi 2>&1 | grep -q no\ wireless\ extensions\. && {
-  echo wired
-  exit 0
-}
+[[  $(ip link show | grep $wi) == "" ]] &&  echo "Wired" && exit 0;
+#iwconfig $wi 2>&1 | grep -q "no wireless extensions." && {
+#  echo wired
+#  exit 0
+#}
 
 essid=$(iwconfig $wi | awk -F '"' '/ESSID/ {print $2}')
 signal=$(iwconfig $wi | awk -F '=' '/Quality/ {print $2}' | cut -d '/' -f 1)
@@ -25,3 +25,4 @@ esac
 echo "$essid $bar"
 
 exit 0
+

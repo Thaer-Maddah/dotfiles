@@ -154,8 +154,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_Next),  spawn "brightnessctl  set 50-")
 
     -- Suspend
-    , ((modm .|. shiftMask, xK_s),  spawn "systemctl suspend")
+    , ((modm .|. shiftMask, xK_s),  spawn "systemctl suspend && xsecurelock")
 
+    -- Capture screen 
     , ((modm, xK_Print),  spawn "gnome-screenshot -i")
     ]
     ++

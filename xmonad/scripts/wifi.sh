@@ -1,13 +1,16 @@
 #!/bin/sh
 
-iwconfig wlp0s20f0u3 2>&1 | grep -q no\ wireless\ extensions\. && {
+# Wifi interface
+wi=wlp0s20f0u3
+
+iwconfig $wi 2>&1 | grep -q no\ wireless\ extensions\. && {
   echo wired
   exit 0
 }
 
-essid=`iwconfig wlp0s20f0u3 | awk -F '"' '/ESSID/ {print $2}'`
-stngth=`iwconfig wlp0s20f0u3 | awk -F '=' '/Quality/ {print $2}' | cut -d '/' -f 1`
-bars=`expr $stngth / 10`
+essid=$(iwconfig $wi | awk -F '"' '/ESSID/ {print $2}')
+signal=$(iwconfig $wi | awk -F '=' '/Quality/ {print $2}' | cut -d '/' -f 1)
+bars=$((signal / 10))
 
 case $bars in
   0)     bar='[-----]' ;;
@@ -19,6 +22,6 @@ case $bars in
   *)     bar='[--!--]' ;;
 esac
 
-echo $essid $bar
+echo "$essid $bar"
 
 exit 0

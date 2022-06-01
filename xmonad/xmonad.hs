@@ -21,6 +21,8 @@ import XMonad.Layout.Spacing
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.FadeInactive
+--import XMonad.Layout.Fullscreen
+import XMonad.Hooks.EwmhDesktops
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -90,6 +92,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     --  Reset the layouts on the current workspace to default
     , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
 
+    -- Toggle layout full screen
+    --, ((modm,               xK_f), toggleFull)
+
     -- Resize viewed windows to the correct size
     , ((modm,               xK_n     ), refresh)
 
@@ -133,7 +138,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.
     --
-    -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
+    , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
     -- Quit xmonad
     , ((modm .|. shiftMask .|. controlMask, xK_q     ), io (exitWith ExitSuccess))
@@ -147,7 +152,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Volume control
     , ((modm, xK_Home),  spawn "pactl set-sink-volume @DEFAULT_SINK@ +10%")
     , ((modm, xK_End),  spawn "pactl set-sink-volume @DEFAULT_SINK@ -10%")
-    , ((modm, xK_m),  spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
+    , ((modm .|. shiftMask, xK_m),  spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
 
     -- Brightness control
     , ((modm, xK_Prior),  spawn "brightnessctl  set +50")
@@ -158,6 +163,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Capture screen 
     , ((modm, xK_Print),  spawn "gnome-screenshot -i")
+
+    -- Change background asciitilde see xmodmap -pke
+    , ((modm, xK_grave),  spawn "feh --bg-fill --randomize ~/Pictures/wallpapers/*")
     ]
     ++
 
@@ -267,7 +275,8 @@ myManageHook = composeAll
 -- return (All True) if the default handler is to be run afterwards. To
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
-myEventHook = mempty
+--myEventHook = mempty
+myEventHook = ewmhDesktopsEventHook
 
 ------------------------------------------------------------------------
 -- Status bars and logging
@@ -342,7 +351,8 @@ defaults = def {
       -- hooks, layouts
         layoutHook         = myLayout,
         manageHook         = myManageHook,
-        handleEventHook    = myEventHook,
+        --handleEventHook    = myEventHook,
+        handleEventHook    = fullscreenEventHook,
         --logHook            = dimLogHook >> (myLogHook xmproc),
         -- logHook            = myLogHook,
         startupHook        = myStartupHook

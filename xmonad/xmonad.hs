@@ -19,6 +19,8 @@ import XMonad.Actions.Commands
 import XMonad.Layout.Gaps
 import XMonad.Layout.Spacing
 import qualified XMonad.Layout.NoBorders as BO
+import XMonad.Layout.MultiToggle
+import XMonad.Layout.MultiToggle.Instances
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.FadeInactive
@@ -166,6 +168,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Change background asciitilde see xmodmap -pke
     , ((modm, xK_grave),  spawn "feh --bg-fill --randomize ~/Pictures/wallpapers/*")
+
+    -- Toggle full screen
+    , ((modm, xK_f), sendMessage $ Toggle FULL)
     ]
     ++
 
@@ -219,8 +224,9 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 --
 --myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
 --myLayout = gaps [(U,24), (D,5), (R,5), (L,5)] $ Tall 1 (3/100) (1/2) ||| Full
---
-myLayout = BO.lessBorders BO.Never $ gaps [(U,30), (R,4), (L,4), (D,4)] $ spacing 3 $ (tiled ||| Mirror tiled ||| Full)
+-- We can add (BO.lessBorders BO.Never) to set full screen borderless 
+-- Set mkToggle for full screen shortcut 
+myLayout =  BO.smartBorders $ mkToggle (NOBORDERS ?? FULL ?? EOT) $ gaps [(U,30), (R,4), (L,4), (D,4)] $ spacing 3 $ (tiled ||| Mirror tiled ||| Full)
                where
                    -- default tiling algorithm partitions the screen into two panes
                    tiled   = Tall nmaster delta ratio

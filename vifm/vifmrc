@@ -199,9 +199,11 @@ filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus
        \ {Play using mpv}
        " \ ffplay -nodisp -autoexit %c,
        " \ i3-msg workspace 10 && ffplay -showmode 1 -autoexit %c </dev/null &>/dev/null &,
-       \ i3-msg workspace 10 && mpv --window-scale=1 --force-window=yes %f </dev/null &>/dev/null &,
+       " \ i3-msg workspace 10 && mpv --window-scale=1 --force-window=yes %f </dev/null &>/dev/null &,
+       \ mpv --window-scale=1 --force-window=yes %f </dev/null &>/dev/null &,
        \ {Play using MPlayer}
-       \ i3-msg workspace 10 && mplayer %f,
+       " \ i3-msg workspace 10 && mplayer %f,
+       \ mplayer %f,
 fileviewer *.mp3 mp3info
 fileviewer *.flac soxi
 
@@ -217,11 +219,13 @@ filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
 	\ {View using mpv}
     " i3-msg -s  /run/user/1000/i3/ipc-socket.*" for ipce-socket error 
     " or $(i3 --get-socketpath)
-	\ i3-msg  workspace 10 && mpv --window-scale=1 --force-window=yes %f </dev/null &>/dev/null & ,
+	" \ i3-msg  workspace 10 && mpv --window-scale=1 --force-window=yes %f </dev/null &>/dev/null & ,
+	\ mpv --window-scale=1 --force-window=yes %f </dev/null &>/dev/null & ,
 	\ {View using Dragon}
 	\ dragon %f:p,
 	\ {View using mpv}
-	\ i3-msg workspace 10 && mpv %f &,
+	" \ i3-msg workspace 10 && mpv %f &,
+	\ mpv %f &,
 fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
 	  \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
 	  \*.as[fx]

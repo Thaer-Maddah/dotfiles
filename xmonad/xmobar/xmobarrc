@@ -6,7 +6,8 @@ Config {
    --, fgColor =      "#646464"
    , fgColor =      "#ACACAC"
    , alpha =        180    
-   , position =     Static { xpos = 5 , ypos = 5, width = 1354, height = 24 }
+   , position =     Static { xpos = 7 , ypos = 4, width = 1352, height = 24 }
+   --, position =     TopW C 99
    , border =       BottomBM 2
    , borderColor =  "darkorange"
    , iconRoot     = ".xmonad/xpm/"  -- default: "."

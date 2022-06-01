@@ -1,0 +1,9 @@
+feh
+picom
+xsecurelock
+rofi
+dmenu
+xmonad
+xmonad-contrib
+xmobar
+notification-daemon

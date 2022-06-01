@@ -88,17 +88,19 @@ Config {
         -- battery monitor
         , Run Battery        [ "--template" , "Batt: <acstatus>"
                              , "--Low"      , "40"        -- units: %
-                             , "--High"     , "80"        -- units: %
+                             , "--High"     , "90"        -- units: %
                              , "--low"      , "red"
-                             , "--normal"   , "orange"
+                             , "--normal"   , "darkorange"
                              , "--high"     , "green"
 
                              , "--" -- battery specific options
-                                       -- discharging status
+                                       -- discharging status capacity 
                                        , "-o"	, "<left>% (<timeleft>)"
-                                       -- AC "on" status
-                                       , "-O"	, "<fc=#f27222>Charging</fc>"
-                                       -- charged status
+                                       -- notify if battery running out
+                                       , "-a", "notify-send -u critical 'Battery running out!!!!!!'"
+                                       -- AC "on" status capacity
+                                       , "-O"	, "<fc=#f27222>Charging</fc> <left>%"
+                                       -- charged status capacity
                                        , "-i"	, "<fc=#3af719>Charged</fc>"
                              ] 50
 

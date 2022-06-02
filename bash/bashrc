@@ -15,7 +15,9 @@ _WHITE="\[\033[1;37m\]"
 _RESET="\[\033[0;0m\]"  # reset color to default color
 
 # alias tmux='TERM=screen-256color tmux'
-
+DIR=$HOME/git
+DOTFILES=$HOME/git/dotfiles
+CODEDIR=$HOME/git/Code
 export XDG_CONFIG_HOME=~/.config
 
 # Add x11-ssh-askpass pacakge to check sudo privileges on neovim
@@ -33,10 +35,11 @@ export SUDO_ASKPASS=/usr/lib/ssh/x11-ssh-askpass
 # [ -f /etc/bash_completio ] && source /etc/bash_completion
 # [[ -z "$TMUX" ]] && exec tmux
 [[ -f "$HOME"/.fzf.bash ]] && source "$HOME"/.fzf.bash
-[[ -f "$HOME"/.aliases ]] && source "$HOME"/.aliases
-[[ -f "$HOME"/.git-status.sh ]] && source "$HOME"/.git-status.sh
-[[ -f "$HOME"/Code/bash/unix ]] && clear && neofetch --source "$HOME"/Code/bash/unix
+[[ -f "$DOTFILES"/bash/aliases ]] && source "$DOTFILES"/bash/aliases
+# [[ -f "$HOME"/.git-status.sh ]] && source "$HOME"/.git-status.sh
+[[ -f "$CODEDIR"/bash/unix ]] && clear && neofetch --source "$CODEDIR"/bash/unix
 [[ -f /usr/bin/numlockx ]] && numlockx
+
 # Zsh like completion
 bind 'set completion-ignore-case On'
 bind 'set show-all-if-ambiguous on'
@@ -48,14 +51,6 @@ bind 'TAB:menu-complete'
 # if [ $SSH2_IP ] || [ $SSH_IP ] ; then
 #     local SSH_FLAG="@\h"
    
-# Display git status
-# https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
-[ -f "$HOME"/.git-prompt.sh  ] &&  source "$HOME"/.git-prompt.sh
-
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWUNTRACKEDFILES=1
-GIT_PS1_SHOWCOLORHINTS=1
-
 # don't put duplicate lines or lines starts with space in the history. See bash(1) for more options
 export HISTCONTROL=ignoreboth
 shopt -s histappend
@@ -67,14 +62,35 @@ export HISTIGNORE="ls:history"
 HISTSIZE= HISTFILESIZE= #Infinite 
 alias ls='ls --color=auto'
 
-if [[ $UID == 0 || $EUID == 0 ]]; then
-    set_bash_prompt_color() {
-    PS1="${_GREEN}\u@${_CYAN}\W$(__git_ps1 " (%s)")${_GREEN}# ${_RESET}"
-    }
-else
-    set_bash_prompt_color() {
-    PS1="${_GREEN}\u@${_CYAN}\W$(__git_ps1 " (%s)")${_GREEN}➜ ${_RESET}"
-    }
+# Display git status
+# https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+if [[ -f "$DOTFILES"/bash/git-prompt.sh  ]]; then
+    source "$DOTFILES"/bash/git-prompt.sh 
+
+    GIT_PS1_SHOWDIRTYSTATE=1
+    GIT_PS1_SHOWUNTRACKEDFILES=1
+    GIT_PS1_SHOWCOLORHINTS=1
+
+    if [[ $UID == 0 || $EUID == 0 ]]; then
+        set_bash_prompt_color() {
+        PS1="${_GREEN}\u@${_CYAN}\W$(__git_ps1 " (%s)")${_GREEN}# ${_RESET}"
+        }
+    else
+        set_bash_prompt_color() {
+        PS1="${_GREEN}\u@${_CYAN}\W$(__git_ps1 " (%s)")${_GREEN}➜ ${_RESET}"
+        }
+    fi
+else 
+
+    if [[ $UID == 0 || $EUID == 0 ]]; then
+        set_bash_prompt_color() {
+        PS1="${_GREEN}\u@${_CYAN}\W${_GREEN}# ${_RESET}"
+        }
+    else
+        set_bash_prompt_color() {
+        PS1="${_GREEN}\u@${_CYAN}\W${_GREEN}➜ ${_RESET}"
+        }
+    fi
 fi
 
 PROMPT_COMMAND=set_bash_prompt_color

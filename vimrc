@@ -21,8 +21,8 @@ Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 " PLug NerdTree
 Plug 'preservim/nerdtree'
 
-" Add icons to NerdTree 
-Plug 'ryanoasis/vim-devicons'
+" Add icons to NerdTree. make some problems on view
+" Plug 'ryanoasis/vim-devicons'
 
 " Plug for css color
 Plug 'ap/vim-css-color' 
@@ -110,10 +110,10 @@ map <Leader>t <plug>NERDTreeTabsToggle<CR>
 "}}}
 
 " Bash language server
-if executable('bash-language-server')
-    au User lsp_setup call lsp#register_server({
-            \ 'name': 'bash-language-server',
-            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
-            \ 'allowlist': ['sh'],
-            \})
-endif
+" if executable('bash-language-server')
+"     au User lsp_setup call lsp#register_server({
+"             \ 'name': 'bash-language-server',
+"             \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+"             \ 'allowlist': ['sh'],
+"             \})
+" endif

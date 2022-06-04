@@ -300,7 +300,7 @@ myLogHook xmproc = dynamicLogWithPP $ xmobarPP
     --, ppTitle = const "" 
     , ppCurrent             = xmobarColor   "orange"       "white"
     , ppUrgent              = xmobarColor   "darkred"      "blue"
-    , ppVisible             = xmobarColor   "yellow"       "Gray"
+    , ppVisible             = xmobarColor   "yellow"       "Gray" 
     , ppHidden              = xmobarColor   "Gray"      "Gray"
 --    , ppHiddenNoWindows     = xmobarColor   "gray"       "Gray"
     }

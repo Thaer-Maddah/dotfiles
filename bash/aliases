@@ -25,11 +25,11 @@ alias 775='sudo chmod -R 775'
 alias 777='sudo chmod -R 777'
 
 alias chown='sudo chown -R'
-
+alias grep='grep --color'
 alias aux='ps aux | head -n -1 | grep -i --color'
 alias mv='mv -i'
 alias rm='rm -i'
-
+alias dnld='youtube-dl -f 22'
 
 # Bash shell 
 alias load='source ~/.bashrc'
@@ -104,6 +104,7 @@ alias old-windows='cd /run/media/Old-Windows'
 # NeoVim Aliases
 alias v="vim"
 alias vi="vim"
+alias vim=/usr/local/bin/vim
 alias nv='nvim'
 alias nvimrc='vim ~/.config/nvim/init.vim'
 alias vimrc='vim ~/.vimrc'

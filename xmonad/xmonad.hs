@@ -163,6 +163,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Suspend
     , ((modm .|. shiftMask, xK_s),  spawn "systemctl suspend && xsecurelock")
 
+    -- Lock screen
+    , ((modm .|. shiftMask, xK_l),  spawn "xsecurelock")
     -- Capture screen 
     , ((modm, xK_Print),  spawn "gnome-screenshot -i")
 
@@ -318,6 +320,7 @@ dimLogHook = fadeInactiveLogHook fadeAmount
 myStartupHook = do
         spawnOnce "feh --bg-fill --randomize ~/Pictures/wallpapers/*"
         spawnOnce "picom -b -i 1.0"
+        spawnOnce "nm-applet &"
         -- spawnOnce "nm-applet &"
 
 ------------------------------------------------------------------------

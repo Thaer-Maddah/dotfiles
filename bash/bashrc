@@ -58,7 +58,7 @@ shopt -s histreedit
 shopt -s histverify
 #PROMPT_COMMAND="history -a;history -c;history -r; $PROMPT_COMMAND"
 # export HISTTIMEFORMAT="[%d-%m %T] "
-export HISTIGNORE="ls*:history:man*:pwd:fg:exit:clear"
+export HISTIGNORE="ls *:history:man *:pwd:fg:exit:clear"
 HISTSIZE= HISTFILESIZE= #Infinite 
 alias ls='ls --color=auto'
 

@@ -101,7 +101,8 @@ keys = [
     Key([mod, "control"], "s", lazy.spawn("systemctl suspend")),
     # Key([mod, "control"],  "tab", lazy.widget["keyboardlayout"].next_keyboard(), desc="Next keyboard layout."),
 
-    Key([mod, "control"], "l", lazy.spawn('xsecurelock')),
+    # Lock screen
+    # Key([mod, "control"], "l", lazy.spawn('xsecurelock')),
 
 ]
 

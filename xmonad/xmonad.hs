@@ -24,6 +24,7 @@ import XMonad.Layout.MultiToggle.Instances
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.FadeInactive
+
 --import XMonad.Layout.Fullscreen
 import XMonad.Hooks.EwmhDesktops
 import qualified XMonad.StackSet as W
@@ -32,7 +33,7 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "kitty"
+myTerminal      = "konsole"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -135,7 +136,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Deincrement the number of windows in the master area
     , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
-
     -- Toggle the status bar gap
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.
@@ -228,7 +228,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 --myLayout = gaps [(U,24), (D,5), (R,5), (L,5)] $ Tall 1 (3/100) (1/2) ||| Full
 -- We can add (BO.lessBorders BO.Never) to set full screen borderless 
 -- Set mkToggle for full screen shortcut 
-myLayout =  BO.smartBorders $ mkToggle (NOBORDERS ?? FULL ?? EOT) $ gaps [(U,30), (R,4), (L,4), (D,4)] $ spacing 3 $ (tiled ||| Mirror tiled ||| Full)
+myLayout =  BO.smartBorders $ mkToggle (NOBORDERS ?? FULL ?? EOT) $ gaps [(U,30), (R,4), (L,4), (D,4)] $ spacing 3 $ (tiled ||| Mirror tiled |||  Full)
                where
                    -- default tiling algorithm partitions the screen into two panes
                    tiled   = Tall nmaster delta ratio
@@ -321,7 +321,6 @@ myStartupHook = do
         spawnOnce "feh --bg-fill --randomize ~/Pictures/wallpapers/*"
         spawnOnce "picom -b -i 1.0"
         spawnOnce "nm-applet &"
-        -- spawnOnce "nm-applet &"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.

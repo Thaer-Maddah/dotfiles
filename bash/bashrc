@@ -44,6 +44,7 @@ export SUDO_ASKPASS=/usr/lib/ssh/x11-ssh-askpass
 bind 'set completion-ignore-case On'
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
+complete -cf doas
 
 # SSH prompt
 # local SSH_IP=`echo $SSH_CLIENT | awk '{ print $1 }'`
@@ -54,6 +55,7 @@ bind 'TAB:menu-complete'
 # don't put duplicate lines or lines starts with space in the history. See bash(1) for more options
 export HISTCONTROL=ignoreboth
 shopt -s histappend
+
 shopt -s histreedit
 shopt -s histverify
 #PROMPT_COMMAND="history -a;history -c;history -r; $PROMPT_COMMAND"

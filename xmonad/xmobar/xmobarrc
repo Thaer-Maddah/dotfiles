@@ -56,7 +56,7 @@ Config {
                              , "--low"      , "grey"
                              , "--normal"   , "green"
                              , "--high"     , "red"
-                             ] 10
+                             ] 20
 
         -- cpu activity monitor
         , Run MultiCpu       [ "--template" , "Cpu: <total0>%|<total1>%"
@@ -65,7 +65,7 @@ Config {
                              , "--low"      , "green"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
-                             ] 10
+                             ] 20
 
         -- cpu core temperature monitor
 --        , Run CoreTemp       [ "--template" , "Temp: <core0>°C|<core1>°C"
@@ -83,7 +83,7 @@ Config {
                              , "--low"      , "green"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
-                             ] 10
+                             ] 100
 
         -- battery monitor
         , Run Battery        [ "--template" , "Batt: <acstatus>"
@@ -102,23 +102,22 @@ Config {
                                        , "-O"	, "<fc=#f27222>Charging</fc> <left>%"
                                        -- charged status capacity
                                        , "-i"	, "<fc=#3af719>Charged</fc>"
-                             ] 100
+                             ] 200
 
-        -- time and date indicator 
-        --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
-        , Run Date           "<fc=#ABABAB>%F (%a) %T</fc>" "date" 10
+        -- time and date indicator
+        -- to view seconds replace %R with %T
+        --   (%F = y-m-d date, %a = day of week, %R = h:m:s time)
+        , Run Date           "<fc=#ABABAB>%F (%a) %R</fc>" "date" 600
 
         -- keyboard layout indicator
         , Run Kbd            [ ("ara" , "<fc=#f27222>Ar</fc>")
                              , ("us"         , "<fc=#ACACAC>US</fc>")
                              ]
         -- Volume script
-        , Run Com "/bin/bash" ["-c", "~/git/dotfiles/xmonad/scripts/volume.sh"] "volume" 10 
+        , Run Com "/bin/bash" ["-c", "~/git/dotfiles/xmonad/scripts/volume.sh"] "volume" 20 
         -- Wifi script
         , Run Com "/bin/bash" ["-c", "~/git/dotfiles/xmonad/scripts/wifi.sh"] "wifi" 50 
 
-        -- Screen width
-        , Run Com "/bin/bash" ["-c", "~/git/dotfiles/xmonad/scripts/volume.sh"] "width0" 100 
 
 
         ]

@@ -317,10 +317,12 @@ dimLogHook = fadeInactiveLogHook fadeAmount
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
-myStartupHook = do
-        spawnOnce "feh --bg-fill --randomize ~/Pictures/wallpapers/*"
-        spawnOnce "picom -b -i 1.0"
-        spawnOnce "nm-applet &"
+-- We have moved startup commands to bash profile to exceute regardless of the WM
+myStartupHook = do 
+        Nothing
+        --spawnOnce "feh --bg-fill --randomize ~/Pictures/wallpapers/*"
+        --spawnOnce "picom -b -i 1.0"
+        --spawnOnce "nm-applet &"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
@@ -361,10 +363,10 @@ defaults = def {
         layoutHook         = myLayout,
         manageHook         = myManageHook,
         --handleEventHook    = myEventHook,
-        handleEventHook    = fullscreenEventHook,
+        handleEventHook    = fullscreenEventHook
         --logHook            = dimLogHook >> (myLogHook xmproc),
         -- logHook            = myLogHook,
-        startupHook        = myStartupHook
+        --startupHook        = myStartupHook
 --                      -- XMOBAR SETTINGS
 --              { ppOutput = \x -> hPutStrLn xmproc0 x   -- xmobar on monitor 1
 --                -- Current workspace

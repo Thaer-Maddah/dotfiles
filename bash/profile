@@ -2,7 +2,7 @@
 #
 #Environment Variables
 export EDITOR=nvim
-
+feh --bg-fill --randomize ~/Pictures/wallpapers/* & > /dev/null 2>&1
 # [[ -z "$TMUX" ]] && exec tmux
 [[ -f /usr/bin/numlockx ]] && numlockx
 # [[ "$((tty))" = "/dev/tty1" ]]; startx ~/.config/X11/qtie/xinitrc 
@@ -18,7 +18,3 @@ export XSECURELOCK_IMAGE_DURATION_SECONDS=10
 #export XSECURELOCK_SHOW_DATETIME=1
  
 #}}}
-
-
-
-

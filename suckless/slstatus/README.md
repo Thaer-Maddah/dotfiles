@@ -1,6 +1,4 @@
-# DWM status bar __slstatus__
+# DWM status bar slstatus
 
-We can run slstatus bar at statrtup by add systemd user service
-<sup>
-~/.config/systemd/user/slstatus.service
-</sup>
+We can run slstatus bar at __statrtup__ by adding systemd user service:
+> ~/.config/systemd/user/slstatus.service

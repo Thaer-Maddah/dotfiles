@@ -1,0 +1,12 @@
+# Volume control
+super+{Home, End, Delete}
+    {pactl set-sink-volume @DEFAULT_SINK@ +10%, pactl set-sink-volume @DEFAULT_SINK@ -10%,\ 
+    pactl set-sink-mute @DEFAULT_SINK@ toggle}
+
+# Brightness control
+super+{Prior, Next}
+    {brightnessctl  set +50, brightnessctl  set 50-}
+
+# Power control
+super+{s}
+    systemctl suspend && xsecurelock

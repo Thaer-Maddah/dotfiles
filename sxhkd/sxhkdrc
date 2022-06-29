@@ -8,5 +8,16 @@ super+{Prior, Next}
     {brightnessctl  set +50, brightnessctl  set 50-}
 
 # Power control
-super+{s}
-    systemctl suspend && xsecurelock
+super+{s, shift+r, Pause}
+    systemctl {suspend && xsecurelock, reboot, poweroff}
+
+super+shift+l
+    xsecurelock
+# Printi screen
+super+Print
+    gnome-screenshot -i
+
+# Run programs
+super+o
+    dmenu_run -i -l 15 -sb "#C95A49" # red color
+    #dmenu_run -i -l 15 -sb "#C95000" # orange color

@@ -164,7 +164,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_s),  spawn "systemctl suspend && xsecurelock")
 
     -- Lock screen
-    , ((modm .|. shiftMask, xK_l),  spawn "xsecurelock")
+    --, ((modm .|. shiftMask, xK_l),  spawn "xsecurelock")
     -- Capture screen 
     , ((modm, xK_Print),  spawn "gnome-screenshot -i")
 
@@ -319,9 +319,9 @@ dimLogHook = fadeInactiveLogHook fadeAmount
 -- By default, do nothing.
 -- We have moved startup commands to bash profile to exceute regardless of the WM
 myStartupHook = do 
-        Nothing
+        -- Nothing
         --spawnOnce "feh --bg-fill --randomize ~/Pictures/wallpapers/*"
-        --spawnOnce "picom -b -i 1.0"
+        spawnOnce "picom -b -i 1.0"
         --spawnOnce "nm-applet &"
 
 ------------------------------------------------------------------------
@@ -363,10 +363,10 @@ defaults = def {
         layoutHook         = myLayout,
         manageHook         = myManageHook,
         --handleEventHook    = myEventHook,
-        handleEventHook    = fullscreenEventHook
+        handleEventHook    = fullscreenEventHook,
         --logHook            = dimLogHook >> (myLogHook xmproc),
         -- logHook            = myLogHook,
-        --startupHook        = myStartupHook
+        startupHook        = myStartupHook
 --                      -- XMOBAR SETTINGS
 --              { ppOutput = \x -> hPutStrLn xmproc0 x   -- xmobar on monitor 1
 --                -- Current workspace

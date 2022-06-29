@@ -1,0 +1,11 @@
+[Unit]
+Description=Simple X Hotkey Daemon
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/sxhkd 
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=default.target

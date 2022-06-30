@@ -30,6 +30,9 @@ import XMonad.Hooks.EwmhDesktops
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
+import XMonad.ManageHook
+import XMonad.Util.NamedScratchpad
+
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
@@ -173,6 +176,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Toggle full screen
     , ((modm, xK_f), sendMessage $ Toggle FULL)
+    -- scratchpad shortcuts
+     , ((modm, xK_y), namedScratchpadAction scratchpads "term")
+     , ((modm, xK_u), namedScratchpadAction scratchpads "ranger")
+     , ((modm, xK_n), namedScratchpadAction scratchpads "monitor")
     ]
     ++
 
@@ -361,7 +368,7 @@ defaults = def {
 
       -- hooks, layouts
         layoutHook         = myLayout,
-        manageHook         = myManageHook,
+        manageHook         = myManageHook <+> namedScratchpadManageHook scratchpads,
         --handleEventHook    = myEventHook,
         handleEventHook    = fullscreenEventHook,
         --logHook            = dimLogHook >> (myLogHook xmproc),
@@ -443,3 +450,21 @@ help = unlines ["The default modifier key is 'alt'. Default keybindings:",
     "mod-button1  Set the window to floating mode and move by dragging",
     "mod-button2  Raise the window to the top of the stack",
     "mod-button3  Set the window to floating mode and resize by dragging"]
+
+-- Scratchpad
+scratchpads = [
+-- run htop in xterm, find it by title, use default floating window placement
+    NS "term" "st" (title =? "st")
+        (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)) ,
+-- run stardict, find it by class name, place it in the floating window
+-- 1/6 of screen width from the left, 1/6 of screen height
+-- from the top, 2/3 of screen width by 2/3 of screen height
+    --NS "ranger" "st -r ranger" (className =? "ranger")
+    NS "ranger" "st -e ranger" (title =? "ranger")
+        (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)) ,
+
+-- run gvim, find by role, don't float
+    --NS "notes" "gvim --role notes ~/notes.txt" (role =? "notes") nonFloating
+    NS "monitor" "gnome-system-monitor" (className =? "Gnome-system-monitor")
+        (customFloating $ W.RationalRect (1/6) (1/6) (16/1) (16/1))
+    ] where role = stringProperty "WM_WINDOW_ROLE"

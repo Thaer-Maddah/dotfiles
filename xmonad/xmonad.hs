@@ -36,7 +36,7 @@ import XMonad.Util.NamedScratchpad
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "kitty"
+myTerminal      = "st"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -454,7 +454,7 @@ help = unlines ["The default modifier key is 'alt'. Default keybindings:",
 -- Scratchpad
 scratchpads = [
 -- run htop in xterm, find it by title, use default floating window placement
-    NS "term" "st" (title =? "st")
+    NS "term" "konsole" (className =? "konsole")
         (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)) ,
 -- run stardict, find it by class name, place it in the floating window
 -- 1/6 of screen width from the left, 1/6 of screen height

@@ -22,6 +22,7 @@ import qualified XMonad.Layout.NoBorders as BO
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
+import XMonad.Hooks.StatusBar
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.FadeInactive
 
@@ -66,8 +67,16 @@ myModMask       = mod4Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = [" 1 "," 2 "," 3 "," 4 "," 5 "," 6 "," 7 "," 8 "," 9 "]
-
+-- Make xmobar clickable
+xmobarEscape = concatMap doubleLts
+  where doubleLts '<' = "<<"
+        doubleLts x    = [x]
+myWorkspaces            :: [String]
+myWorkspaces    = clickable . (map xmobarEscape) $ [" 1 "," 2 "," 3 "," 4 "," 5 "," 6 "," 7 "," 8 "," 9 "]
+ where                                                                       
+         clickable l = [ "<action=xdotool key super+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
+                             (i,ws) <- zip [1..9] l,                                        
+                            let n = i ]
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = "#dddddd"
@@ -83,7 +92,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm,               xK_p     ), spawn "dmenu_run")
+    , ((modm,               xK_p     ), spawn "dmenu_run -i -l 15 -sb '#C95A49'")
     , ((modm,               xK_d     ), spawn "rofi -show run 'System San Francisco Display 10'")
 
     -- launch gmrun
@@ -292,7 +301,7 @@ myManageHook = composeAll
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
 --myEventHook = mempty
-myEventHook = ewmhDesktopsEventHook
+myEventHook = ewmh
 
 ------------------------------------------------------------------------
 -- Status bars and logging
@@ -338,10 +347,10 @@ myStartupHook = do
 --
 -- main = xmonad =<< xmobar defaults
 main = do
---    xmonad =<< myBar myPP 
+    --xmonad =<< myBar myPP 
     --xmproc <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc"    
     xmproc <- spawnPipe "xmobar"    
-    xmonad $ docks defaults  { logHook = dimLogHook >> (myLogHook xmproc) }
+    xmonad $ewmh $ docks defaults  { logHook = dimLogHook >> (myLogHook xmproc) }
 
 
 -- A structure containing your configuration settings, overriding
@@ -370,7 +379,7 @@ defaults = def {
         layoutHook         = myLayout,
         manageHook         = myManageHook <+> namedScratchpadManageHook scratchpads,
         --handleEventHook    = myEventHook,
-        handleEventHook    = fullscreenEventHook,
+        --handleEventHook    = ewmhFullscreen, -- fullscreenEventHook Deprecated
         --logHook            = dimLogHook >> (myLogHook xmproc),
         -- logHook            = myLogHook,
         startupHook        = myStartupHook
@@ -466,5 +475,5 @@ scratchpads = [
 -- run gvim, find by role, don't float
     --NS "notes" "gvim --role notes ~/notes.txt" (role =? "notes") nonFloating
     NS "monitor" "gnome-system-monitor" (className =? "Gnome-system-monitor")
-        (customFloating $ W.RationalRect (1/6) (1/6) (16/1) (16/1))
+        (customFloating $ W.RationalRect (1/6) (1/6) (6/2) (6/2))
     ] where role = stringProperty "WM_WINDOW_ROLE"

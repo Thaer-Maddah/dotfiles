@@ -1,0 +1,1 @@
+/home/thaeronline/git/dotfiles/wallpaper.sh

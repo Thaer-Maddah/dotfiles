@@ -314,7 +314,7 @@ exec $terminal
 exec_always --no-startup-id picom --backend glx --fade-exclude 'class_g = "xsecurelock"'  -b -i 1.0 
 
 # Set background 
-set $bg_image ~/.config/i3/wallpapers/64365.jpg
+# set $bg_image ~/.config/i3/wallpapers/64365.jpg
 set $bg_dir ~/Pictures/wallpapers/*
 
 exec_always feh --bg-fill --randomize $bg_dir

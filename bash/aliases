@@ -109,6 +109,9 @@ alias nv='nvim'
 alias nvimrc='vim ~/.config/nvim/init.vim'
 alias vimrc='vim ~/.vimrc'
 
+# Emacs stuff
+alias emacs="emacsclient -c"
+
 # Multimedia Stuff
 alias play='sh $dir/scripts/play.sh'
 

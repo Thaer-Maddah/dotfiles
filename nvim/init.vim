@@ -144,6 +144,9 @@ filetype plugin indent on
 " Code highlighting
 syntax on
 
+" Leader key
+let mapleader = " "
+
 " Markdown Settings 
 set conceallevel=2
 " Show whitespace
@@ -168,8 +171,8 @@ set relativenumber " show line numbers
 highlight ColorColumn ctermbg=233
 
 " Useful settings
-set history=700
-set undolevels=700
+set history=1000
+set undolevels=1000
 
 " Real programmers don't use TABs but spaces
 nnoremap <Tab> >>
@@ -181,11 +184,26 @@ set shiftwidth=4
 set shiftround
 set expandtab
 
+" Stop auto comminting 
+" set formatoptions-=cro
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Presistent undo even when we close nvim
+set undofile
+
+" Smart Wrapping
+set wrap
+set textwidth=79
+set formatoptions=qrnl
+
 " Make search case insensitive
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+
+" Keybindng 
+nnoremap <leader>nh :noh<CR>
 
 " Alt+q to quit buffer 
 map <M-q> :bd <CR>

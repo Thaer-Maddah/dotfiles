@@ -167,6 +167,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_Home),  spawn "pactl set-sink-volume @DEFAULT_SINK@ +10%")
     , ((modm, xK_End),  spawn "pactl set-sink-volume @DEFAULT_SINK@ -10%")
     , ((modm .|. shiftMask, xK_m),  spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
+    --, ((modm .|. shiftMask, xK_m),  spawn "pamixer --toggle-mute")
 
     -- Brightness control
     , ((modm, xK_Prior),  spawn "brightnessctl  set +50")

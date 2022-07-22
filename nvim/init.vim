@@ -392,3 +392,17 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 " Making the background transparent
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
+
+" Buffer transission
+nnoremap ]b :bn<cr>
+nnoremap [b :bp<cr>
+nnoremap [B :bfirst<cr>
+nnoremap ]B :blast<cr>
+
+lua << EOF
+local keymap = vim.keymap.set
+for i = 1,9,1
+    do
+    keymap('n', "<M-"..i..">", ":b"..i.."<CR>")
+    end
+EOF

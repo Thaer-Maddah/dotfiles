@@ -145,7 +145,10 @@ filetype plugin indent on
 syntax on
 
 " Leader key
-let mapleader = " "
+" let mapleader = " "
+
+set spelllang=en_us
+set spell
 
 " Markdown Settings 
 set conceallevel=2
@@ -206,7 +209,7 @@ set smartcase
 nnoremap <leader>nh :noh<CR>
 
 " Alt+q to quit buffer 
-map <M-q> :bd <CR>
+nnoremap <M-q> :bd<CR>
 
 " Run NERDTree
 map <C-o> :NERDTreeToggle<CR>
@@ -406,3 +409,9 @@ for i = 1,9,1
     keymap('n', "<M-"..i..">", ":b"..i.."<CR>")
     end
 EOF
+
+" Window resizing
+nmap <M-k> :vertical resize +5<CR>
+nmap <M-j> :vertical resize -5<CR>
+nmap <M-h> :resize +5<CR>
+nmap <M-l> :resize -5<CR>

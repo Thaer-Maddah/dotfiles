@@ -4,6 +4,8 @@
 # 
 # Variables
 dir=$HOME/git/dotfiles
+# Check shell type
+[[ $SHELL == "bash" ]] && shellrc=".bashrc" || shellrc=".kshrc"
 
 # Systemd Stuff
 alias start='sudo systemctl start'
@@ -31,8 +33,8 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias dnld='youtube-dl -f 22'
 
-# Bash shell 
-alias load='source ~/.bashrc'
+# reload shell 
+alias load=". ~/$shellrc"
 
 # ZSH shell 
 #alias load='source ~/.zshrc && clear'

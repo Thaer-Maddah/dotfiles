@@ -2,11 +2,18 @@
 #
 #Environment Variables
 export EDITOR=nvim
-feh --bg-fill --randomize ~/Pictures/wallpapers/* & > /dev/null 2>&1
+feh --bg-fill --randomize ~/Pictures/wallpapers/*  
+
 # [[ -z "$TMUX" ]] && exec tmux
 [[ -f /usr/bin/numlockx ]] && numlockx
 # [[ "$((tty))" = "/dev/tty1" ]]; startx ~/.config/X11/qtie/xinitrc 
 # [[ "$((tty))" = "/dev/tty2" ]]; startx  ~/.config/X11/xmonad/xinitrc
+
+# create history file for every tty
+if [[ $SHELL == "/bin/ksh" || $SHELL == "/bin/mksh" ]]; then
+    HISTFILE=~/.ksh_hist/ksh_hist.$(tty | sed 's;.*/;;')
+    HISTSIZE=10000
+fi
 
 #Xsecurelock variables --------{{{
 # Xsecurelock Variables

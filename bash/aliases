@@ -33,7 +33,7 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias dnld='youtube-dl -f 22'
 
-# reload shell 
+# reloading rc file
 alias load=". ~/$shellrc"
 
 # ZSH shell 

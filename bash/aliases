@@ -68,6 +68,8 @@ alias serve='php -S localhost:8888 &'
 alias php.ini='sudo vi /etc/php.ini'
 alias httpd.conf='sudo vi /etc/httpd/conf/httpd.conf'
 
+# List stuff
+alias ls="ls --color"
 
 # Folder Stuff
 alias nautilus='jhbuild run nautilus'

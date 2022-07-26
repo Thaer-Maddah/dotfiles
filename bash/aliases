@@ -73,13 +73,13 @@ alias httpd.conf='sudo vi /etc/httpd/conf/httpd.conf'
 alias nautilus='jhbuild run nautilus'
 alias ...='cd /'
 alias ..='cd ../'
-alias ~='cd ~'
+# alias ~='cd ~'
 alias Downloads='cd ~/Downloads'
 alias Documents='cd ~/Documents'
 alias Videos='cd ~/Videos'
 alias Music='cd ~/Music'
 alias Pictures='cd ~/Pictures'
-alias ~www='cd ~/www'
+# alias www='cd ~/www'
 alias www='cd /var/www/html'
 alias opt='cd /opt'
 alias usr='cd /usr'
@@ -113,7 +113,7 @@ alias vimrc='vim ~/.vimrc'
 alias emacs="emacsclient -c"
 
 # Multimedia Stuff
-alias play='sh $dir/scripts/play.sh'
+alias play="sh $dir/scripts/play.sh $1 $2"
 
 # OS release
 alias release='lsb_release -a'

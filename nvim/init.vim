@@ -381,10 +381,10 @@ let g:NERDToggleCheckAllLines = 1
 
 
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+" nnoremap <leader>ff <cmd>Telescope find_files<cr>
+" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+" nnoremap <leader>fb <cmd>Telescope buffers<cr>
+" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Using Lua functions
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
@@ -402,16 +402,17 @@ nnoremap [b :bp<cr>
 nnoremap [B :bfirst<cr>
 nnoremap ]B :blast<cr>
 
-lua << EOF
-local keymap = vim.keymap.set
-for i = 1,9,1
-    do
-    keymap('n', "<M-"..i..">", ":b"..i.."<CR>")
-    end
-EOF
+" lua << EOF
+" local bfn = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+" local keymap = vim.keymap.set
+" for i = 1,9 , 1
+"     do
+"     keymap('n', "<M-"..i..">", ":b"..i.."<CR>")
+"     end
+" EOF
 
 " Window resizing
-nmap <M-k> :vertical resize +5<CR>
-nmap <M-j> :vertical resize -5<CR>
-nmap <M-h> :resize +5<CR>
-nmap <M-l> :resize -5<CR>
+nnoremap <M-k> :vertical resize +5<CR>
+nnoremap <M-j> :vertical resize -5<CR>
+nnoremap <M-h> :resize +5<CR>
+nnoremap <M-l> :resize -5<CR>

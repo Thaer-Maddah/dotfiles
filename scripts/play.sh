@@ -8,7 +8,7 @@ ext="mp4$|mp3$|webm$|m4a$|wav$|ogg$|mkv$"
 # first argument option for video or audio, n for audio anything else for video
 # second argument fot directory, leave it empty for current directory
 [[ $1 == "n" || $1 == "no" ]] && { option="--no-video"; menu_color="#C95000"; } || { option="" & menu_color="#C95A49"; }
-[[ -n $2 ]] && file=$2 || { file="$PWD"; }
+[[ -n $2 ]] && file=$2 || { file="."; }
 echo $file
 echo $option
 # Playing video

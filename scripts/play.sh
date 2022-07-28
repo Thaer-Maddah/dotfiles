@@ -9,8 +9,6 @@ ext="mp4$|mp3$|webm$|m4a$|wav$|ogg$|mkv$"
 # second argument fot directory, leave it empty for current directory
 [[ $1 == "n" || $1 == "no" ]] && { option="--no-video"; menu_color="#C95000"; } || { option="" & menu_color="#C95A49"; }
 [[ -n $2 ]] && file=$2 || { file="."; }
-echo $file
-echo $option
 # Playing video
 du -a "$file" | cut -f2- | grep -iE "$ext" | dmenu -i -l 30 -sb "$menu_color"  | xargs -I "{}" mpv "$option" "{}" # || clear && dialog --msgbox "MPV does not support selected file format" 5 45'
 

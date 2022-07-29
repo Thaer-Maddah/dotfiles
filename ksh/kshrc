@@ -20,7 +20,7 @@ export XDG_CONFIG_HOME=~/.config
 [[ -f "$DOTFILES"/bash/aliases ]] && . "$DOTFILES"/bash/aliases
 
 # PS1='$LOGNAME-> '
-PS1='|-$(print "$_GREEN")${PWD}$(print "\n|-> $_RESET")'
+PS1='$(print "$_GREEN")|-${PWD}$(print "\n|-> $_RESET")'
 
 #PS1=$'\a\e[36m\a${USER:=$(ulimit -c 0; id -un 2>/dev/null || echo
 #\?)}@${HOSTNAME%%.*}\a\e[34m\a\e[0;33m\a$(local d=${PWD:-?} p=~; [[ $p = ?(*/) ]] || d=${d/#$p/~};
@@ -37,4 +37,4 @@ export PS1
 # export EDITOR="$VISUAL"
 set -o emacs
 
-bind ^L=clear-screen
+# bind ^L=clear-screen

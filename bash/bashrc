@@ -67,7 +67,7 @@ shopt -s histverify
 # export HISTTIMEFORMAT="[%d-%m %T] "
 export HISTIGNORE="ls *:history:man *:pwd:fg:exit:clear"
 HISTSIZE= HISTFILESIZE= #Infinite 
-alias ls='ls --color=auto'
+# alias ls='ls --color=auto'
 
 # Display git status
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh

@@ -114,7 +114,7 @@ alias nvimrc='vim ~/.config/nvim/init.vim'
 alias vimrc='vim ~/.vimrc'
 
 # Emacs stuff
-alias emacs="emacsclient -c"
+# alias emacs="emacsclient -c"
 
 # Multimedia Stuff
 alias play="sh $dir/scripts/play.sh $1 $2"
@@ -141,3 +141,6 @@ alias iftop='sudo iftop -i wlp2s0'
 # alias tsm-limit='transmission-remote --downlimit=300 --uplimit=60'
 #
 alias xseticon='sudo xseticon /usr/share/icons/Faenza/apps/64/utilities-terminal.png'
+
+# Browser Stuff
+alias brave="brave --enable-features=SharingQRCodeGenerator"

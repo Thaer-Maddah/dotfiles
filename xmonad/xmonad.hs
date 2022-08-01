@@ -382,7 +382,7 @@ defaults = def {
         manageHook         = myManageHook <+> namedScratchpadManageHook scratchpads,
         --handleEventHook    = myEventHook,
         --handleEventHook    = ewmhFullscreen,
-        -- Solve fullscreen problem for google-chrome, chromium and brave browser
+        -- Solve fullscreen problem for chromium based browsers
         handleEventHook = handleEventHook def <+> Hacks.windowedFullscreenFixEventHook,
 
         -- fullscreenEventHook Deprecated

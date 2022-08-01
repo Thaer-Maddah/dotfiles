@@ -30,6 +30,7 @@ import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.EwmhDesktops
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
+import qualified XMonad.Util.Hacks as Hacks
 
 import XMonad.ManageHook
 import XMonad.Util.NamedScratchpad
@@ -380,7 +381,11 @@ defaults = def {
         layoutHook         = myLayout,
         manageHook         = myManageHook <+> namedScratchpadManageHook scratchpads,
         --handleEventHook    = myEventHook,
-        --handleEventHook    = ewmhFullscreen, -- fullscreenEventHook Deprecated
+        --handleEventHook    = ewmhFullscreen,
+        -- Solve fullscreen problem for google-chrome, chromium and brave browser
+        handleEventHook = handleEventHook def <+> Hacks.windowedFullscreenFixEventHook,
+
+        -- fullscreenEventHook Deprecated
         --logHook            = dimLogHook >> (myLogHook xmproc),
         -- logHook            = myLogHook,
         startupHook        = myStartupHook

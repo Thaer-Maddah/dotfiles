@@ -31,6 +31,7 @@ import XMonad.Hooks.EwmhDesktops
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import qualified XMonad.Util.Hacks as Hacks
+import XMonad.Actions.WorkspaceNames
 
 import XMonad.ManageHook
 import XMonad.Util.NamedScratchpad
@@ -191,6 +192,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
      , ((modm, xK_y), namedScratchpadAction scratchpads "term")
      , ((modm, xK_u), namedScratchpadAction scratchpads "ranger")
      , ((modm, xK_n), namedScratchpadAction scratchpads "monitor")
+     -- Swap between workspaces by workspaceNamesEwmh
+     , ((modm .|. shiftMask, xK_Right ), swapTo Next)
+     , ((modm .|. shiftMask, xK_Left ), swapTo Prev)
     ]
     ++
 
@@ -340,6 +344,7 @@ myStartupHook = do
         -- Nothing
         --spawnOnce "feh --bg-fill --randomize ~/Pictures/wallpapers/*"
         spawnOnce "picom -b -i 1.0"
+        -- spawnOnce "xcompmgr -f -C -n -D 3"
         --spawnOnce "nm-applet &"
 
 ------------------------------------------------------------------------
@@ -352,7 +357,7 @@ main = do
     --xmonad =<< myBar myPP 
     --xmproc <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc"    
     xmproc <- spawnPipe "xmobar"    
-    xmonad $ewmh $ docks defaults  { logHook = dimLogHook >> (myLogHook xmproc) }
+    xmonad $ workspaceNamesEwmh . ewmh $ docks defaults  { logHook = dimLogHook >> (myLogHook xmproc) }
 
 
 -- A structure containing your configuration settings, overriding

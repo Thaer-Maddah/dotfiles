@@ -5,7 +5,7 @@
 # Variables
 dir=$HOME/git/dotfiles
 # Check shell type
-[[ $SHELL == "bash" ]] && shellrc=".bashrc" || shellrc=".kshrc"
+[[ $SHELL == "/bin/bash" ]] && shellrc=".bashrc" || shellrc=".kshrc"
 
 # Systemd Stuff
 alias start='sudo systemctl start'

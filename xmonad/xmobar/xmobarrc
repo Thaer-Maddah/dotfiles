@@ -1,7 +1,8 @@
 Config { 
 
    -- appearance
-     font =         "xft:System San Francisco Display:size=9:bold:antialias=true"
+     -- font =         "xft:System San Francisco Display:size=9:bold:antialias=true"
+     font =         "System San Francisco Display bold 9"
    , bgColor =      "black"
    --, fgColor =      "#646464"
    , fgColor =      "#ACACAC"
@@ -15,7 +16,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = " <icon=haskell_20.xpm/>   <fc=#666666>|</fc> %UnsafeStdinReader% }{ | %volume%| %battery% | %multicpu% | %memory% | %wifi%: %dynnetwork% | %date% | %kbd%  "
+   , template = " <icon=haskell_16.xpm/> <fc=#666666>|</fc> %UnsafeStdinReader%}{ | %volume%|  %battery% | %multicpu% | %memory% | %wifi%: %dynnetwork% | %date% | %kbd%  "
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -65,7 +66,7 @@ Config {
                              , "--low"      , "green"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
-                             ] 20
+                             ] 30
 
         -- cpu core temperature monitor
 --        , Run CoreTemp       [ "--template" , "Temp: <core0>°C|<core1>°C"
@@ -74,7 +75,7 @@ Config {
 --                             , "--low"      , "darkgreen"
 --                             , "--normal"   , "darkorange"
 --                             , "--high"     , "darkred"
---                             ] 50
+--                             ] 200
                           
         -- memory usage monitor
         , Run Memory         [ "--template" ,"Mem: <usedratio>%"
@@ -83,7 +84,7 @@ Config {
                              , "--low"      , "green"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
-                             ] 100
+                             ] 200
 
         -- battery monitor
         , Run Battery        [ "--template" , "Batt: <acstatus>"
@@ -102,7 +103,7 @@ Config {
                                        , "-O"	, "<fc=#f27222>Charging</fc> <left>%"
                                        -- charged status capacity
                                        , "-i"	, "<fc=#3af719>Charged</fc>"
-                             ] 200
+                             ] 100
 
         -- time and date indicator
         -- to view seconds replace %R with %T

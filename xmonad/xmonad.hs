@@ -322,10 +322,10 @@ myLogHook xmproc = dynamicLogWithPP $ xmobarPP
     { ppOutput = hPutStrLn xmproc
     , ppTitle = xmobarColor "darkorange" "" . shorten 50
     --, ppTitle = const "" 
-    , ppCurrent             = xmobarColor   "orange"       "white"
-    , ppUrgent              = xmobarColor   "darkred"      "blue"
-    , ppVisible             = xmobarColor   "yellow"       "Gray" 
-    , ppHidden              = xmobarColor   "Gray"      "Gray"
+    , ppCurrent             = xmobarColor   "orange"       "black"
+    , ppUrgent              = xmobarColor   "darkred"      "black"
+    , ppVisible             = xmobarColor   "yellow"       "black" 
+    , ppHidden              = xmobarColor   "Gray"      "black"
 --    , ppHiddenNoWindows     = xmobarColor   "gray"       "Gray"
     }
 dimLogHook = fadeInactiveLogHook fadeAmount

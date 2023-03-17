@@ -3,6 +3,6 @@
 #======================================================
 
 This is my configuration files
-You can download it and use it.
+You can download and use it without warranty.
 Good Luck!
 

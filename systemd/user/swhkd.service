@@ -1,0 +1,11 @@
+[Unit]
+Description=Simple Wayland Hotkey Daemon
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/swhkd 
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

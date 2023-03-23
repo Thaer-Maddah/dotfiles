@@ -1,0 +1,21 @@
+# Volume control
+super+{Home, End, Delete}
+    {pactl set-sink-volume @DEFAULT_SINK@ +10%, pactl set-sink-volume @DEFAULT_SINK@ -10%,\ 
+    pactl set-sink-mute @DEFAULT_SINK@ toggle}
+
+# Brightness control
+super+{Prior, Next}
+    {brightnessctl  set +50, brightnessctl  set 50-}
+
+# Power control
+super+{shift+l, shift+s, shift+r, shift+Pause}
+    systemctl {xscurelock, suspend && xsecurelock, reboot, poweroff}
+
+# Printi screen
+super+Print
+    gnome-screenshot -i
+
+# Run programs
+super+o
+    dmenu_run -i -l 15 -sb "#C95A49" # red color
+    #dmenu_run -i -l 15 -sb "#C95000" # orange color

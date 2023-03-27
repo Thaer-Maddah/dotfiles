@@ -97,7 +97,11 @@ highlight NonText ctermbg=none
 " We must remap alt key to Esc key in vim
 silent! execute "set <M-q>=\<Esc>q"
 " Alt+q to quit buffer 
-map <M-q> :bd <CR>
+map <M-q> :bd<CR>
+" Not working
+map <M-1> :b1<CR>
+map <M-2> :b2<CR>
+map <M-3> :b3<CR>
 
 " Run NERDTree
 map <C-o> :NERDTreeToggle<CR>

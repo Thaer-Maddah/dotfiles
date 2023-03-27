@@ -107,7 +107,7 @@ PROMPT_COMMAND=set_bash_prompt_color
 if ! pgrep -x "picom" > /dev/null; then 
     # redirect output messages to /dev/null becuase picom show message
     # when execute command from bash
-    picom -b -i 1.0  > /dev/null 2>&1
+    picom -b -i 1.0 --config $XDG_CONFIG_HOME/picom/picom.conf  > /dev/null 2>&1
 fi
 
 if ! pgrep -x "nm-applet" > /dev/null; then  
@@ -119,6 +119,10 @@ fi
 #fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Docker env
+# https://docs.docker.com/engine/security/rootless/
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
 # Extract Files and Folders
 extract () {
@@ -145,4 +149,3 @@ if [ -f $1 ] ; then
     file"
     fi
 }
-

@@ -127,6 +127,8 @@ alias grub='sudo grub2-mkconfig -o /boot/grub2/grub.cfg'
 
 # VPN Stuff
 alias vpn='sudo openvpn --config'
+alias connect="protonvpn-cli c"
+alias disconnect="protonvpn-cli d"
 
 # Network Stuff
 alias nethogs='sudo nethogs wlp2s0'

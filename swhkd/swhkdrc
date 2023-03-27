@@ -8,8 +8,8 @@ super+{Prior, Next}
     {brightnessctl  set +50, brightnessctl  set 50-}
 
 # Power control
-super+{shift+l, shift+s, shift+r, shift+Pause}
-    systemctl {xscurelock, suspend && xsecurelock, reboot, poweroff}
+# super+{shift+ctrl+l, shift+ctrl+s, shift+ctrl+r, shift+ctrl+Pause}
+#     systemctl {xscurelock, suspend && xsecurelock, reboot, poweroff}
 
 # Printi screen
 super+Print

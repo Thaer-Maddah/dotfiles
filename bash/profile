@@ -15,6 +15,13 @@ if [[ $SHELL == "/bin/ksh" || $SHELL == "/bin/mksh" ]]; then
     HISTSIZE=10000
 fi
 
+# if [[ $XDG_CURRENT_DESKTOP == "Hyprland"  ]]; then
+# killall xdg-desktop-portal-gnome
+# killall xdg-desktop-portal
+# killall xdg-desktop-portal-gtk
+# # /usr/lib/xdg-desktop-portal-hyprland &
+# fi
+
 #Xsecurelock variables --------{{{
 # Xsecurelock Variables
 export XSECURELOCK_PASSWORD_PROMPT=asterisks

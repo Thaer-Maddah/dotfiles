@@ -50,8 +50,8 @@
 (setq-default display-fill-column-indicator-character ?\N{U+2506})
 
 ;; Transparency 
-(set-frame-parameter (selected-frame) 'alpha '(75 . 50))
-;; (add-to-list 'default-frame-alist '(alpha . (85 . 50)))
+(set-frame-parameter (selected-frame) 'alpha '(80 . 50))
+(add-to-list 'default-frame-alist '(alpha . (80 . 50)))
 
 (defun toggle-transparency ()
   (interactive)
@@ -63,7 +63,7 @@
                     ;; Also handle undocumented (<active> <inactive>) form.
                     ((numberp (cadr alpha)) (cadr alpha)))
               100)
-         '(90 . 50) '(100 . 100)))))
+         '(80 . 50) '(100 . 100)))))
 (global-set-key (kbd "C-c t") 'toggle-transparency)
 
 

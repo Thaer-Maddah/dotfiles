@@ -68,6 +68,10 @@ require('lazy').setup({
 
   -- My colorscheme
   'morhetz/gruvbox',
+  --
+-- PLug NerdTred
+    -- 'preservim/nerdtree',
+    'kyazdani42/nvim-tree.lua',
 
   -- Git related plugins
   'tpope/vim-fugitive',
@@ -239,7 +243,7 @@ vim.o.termguicolors = true
 vim.o.conceallevel = 2
 
 -- We can set fdm to marker, diff, syntax, expr, indent 
-vim.o.foldmethod= 'marker'
+vim.o.foldmethod = 'marker'
 
 
 -- [[ Basic Keymaps ]]
@@ -296,11 +300,13 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
+--
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'help', 'vim' },
+
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
@@ -460,6 +466,11 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
+-- NvimTreeToggle
+local map = vim.api.nvim_set_keymap
+map('n', '<C-o>', [[:NvimTreeToggle<CR>]], {})
+-- map('n', '<C-o>', [[:NERDTreeToggle<CR>]], {})
+
 -- nvim-cmp setup
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
@@ -504,6 +515,8 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+-- PLUGINS: ensure that nvim-tree setup
+require('nvim-tree').setup{}
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -39,8 +39,8 @@ P.S. You can delete this when you're done too. It's your config now :)
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '   -- leader kyey is space key
-vim.g.maplocalleader = ' '
+vim.g.mapleader = ' '       -- leader kyey is space key
+vim.g.maplocalleader = ' '  -- leader kyey is space key
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim

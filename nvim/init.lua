@@ -235,6 +235,13 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+-- Markdown Settings
+vim.o.conceallevel = 2
+
+-- We can set fdm to marker, diff, syntax, expr, indent 
+vim.o.foldmethod= 'marker'
+
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience

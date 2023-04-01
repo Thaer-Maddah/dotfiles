@@ -67,7 +67,8 @@ require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
   -- My colorscheme
-  'morhetz/gruvbox',
+  -- 'morhetz/gruvbox',
+  'lunarvim/colorschemes',
   --
 -- PLug NerdTred
     -- 'preservim/nerdtree',
@@ -121,11 +122,11 @@ require('lazy').setup({
 
   { -- Theme inspired by Atom
     'navarasu/onedark.nvim',
-    --'morhetz/gruvbox.nvim',
+    -- 'morhetz/gruvbox.nvim',
     priority = 1000,
     config = function()
       --vim.cmd.colorscheme 'onedark'
-      vim.cmd.colorscheme 'gruvbox'
+      vim.cmd.colorscheme 'system76'
     end,
   },
 
@@ -135,7 +136,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'gruvbox',
+        theme = 'system76',
         component_separators = '|',
         section_separators = '',
       },
@@ -154,7 +155,7 @@ require('lazy').setup({
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
-
+  --
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
 

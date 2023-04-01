@@ -245,6 +245,8 @@ vim.o.conceallevel = 2
 -- We can set fdm to marker, diff, syntax, expr, indent 
 vim.o.foldmethod = 'marker'
 
+-- Set relative 
+vim.o.relativenumber = true
 
 -- [[ Basic Keymaps ]]
 

@@ -23,6 +23,10 @@ export XDG_CONFIG_HOME=~/.config
 # Add x11-ssh-askpass pacakge to check sudo privileges on neovim
 # when save file by command :w !sudo tee %
 export SUDO_ASKPASS=/usr/lib/ssh/x11-ssh-askpass
+# Adding environment variable for ssh-agent service
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/ssh-agent.socket
+# Get the colors in the opened man page itself
+export MANPAGER="sh -c 'col -bx | bat -l man -p --paging always'"
 
 
 [[ -f ~/bashrc ]] && 	. "$HOME"/.bashrc
@@ -88,7 +92,6 @@ if [[ -f "$DOTFILES"/bash/git-prompt.sh  ]]; then
         }
     fi
 else 
-
     if [[ $UID == 0 || $EUID == 0 ]]; then
         set_bash_prompt_color() {
         PS1="${_GREEN}\u@${_CYAN}\W${_GREEN}# ${_RESET}"
@@ -149,3 +152,4 @@ if [ -f $1 ] ; then
     file"
     fi
 }
+

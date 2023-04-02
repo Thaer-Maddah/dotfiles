@@ -1,0 +1,13 @@
+[Unit]
+Description=SSH Key Agent
+
+[Service]
+Type=simple
+Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
+ExecStart=-/usr/bin/ssh-agent -D -a $SSH_AUTH_SOCK
+# ExecStartPost=/usr/bin/ssh-add $KEY_FILE
+# ExecStop=kill -15 $MAINPID
+SuccessExitStatus=2
+
+[Install]
+WantedBy=default.target

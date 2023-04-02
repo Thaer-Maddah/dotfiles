@@ -59,6 +59,10 @@ alias pk9='sudo pkill -9'
 # Pacman Stuff
 alias update='sudo pacman -Syu'
 
+# Paru with fzf
+alias iparu="sh $dir/scripts/fparu.sh install" 	# Call install function 
+alias rparu="sh $dir/scripts/fparu.sh remove"	# call remove function
+
 # Python Stuff
 alias pserve='python -m SimpleHTTPServer &'
 
@@ -153,3 +157,4 @@ alias fman='sh $dir/scripts/fman.sh' 	# call fman function for searching man pag
 # Git Stuff
 alias git-diff="git diff | delta -n"
 alias git-status="git status --column"
+

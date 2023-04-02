@@ -158,3 +158,5 @@ alias fman='sh $dir/scripts/fman.sh' 	# call fman function for searching man pag
 alias git-diff="git diff | delta -n"
 alias git-status="git status --column"
 
+# fzf Stuff
+alias lfzf="sh $dir/scripts/fzf.sh"

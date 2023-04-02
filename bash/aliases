@@ -148,7 +148,7 @@ alias xseticon='sudo xseticon /usr/share/icons/Faenza/apps/64/utilities-terminal
 alias brave="brave --enable-features=SharingQRCodeGenerator"
 
 # Vew man pages with fzf
-alias fman='sh $dir/scripts/fman.sh;fman' 	# call fman function after calling script
+alias fman='sh $dir/scripts/fman.sh' 	# call fman function for searching man pages with fzf
 
 # Git Stuff
 alias git-diff="git diff | delta -n"

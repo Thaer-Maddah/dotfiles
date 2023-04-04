@@ -69,6 +69,7 @@ require('lazy').setup({
   -- My colorscheme
   -- 'morhetz/gruvbox',
   'lunarvim/colorschemes',
+  'Mofiqul/dracula.nvim',
   --
 -- PLug NerdTred
     -- 'preservim/nerdtree',
@@ -473,6 +474,11 @@ mason_lspconfig.setup_handlers {
 local map = vim.api.nvim_set_keymap
 map('n', '<C-o>', [[:NvimTreeToggle<CR>]], {})
 -- map('n', '<C-o>', [[:NERDTreeToggle<CR>]], {})
+
+-- remap for past last yanked text by user not by nvim
+-- delete last yanked text in register and go to the text before deleted one
+-- x for xnoremap
+map('x', '<leader>p', "\"_dP", {})
 
 -- nvim-cmp setup
 local cmp = require 'cmp'

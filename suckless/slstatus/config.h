@@ -65,8 +65,8 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-    { run_command, "         | %s", "/bin/sh ~/git/dotfiles/scripts/volume.sh" }, // adding spaces before | because barpadding patch cut slstatus text
-    { run_command, " | %s", "/bin/sh ~/git/dotfiles/scripts/wifi.sh" },
+    { run_command, "         | %s", "/bin/bash ~/git/dotfiles/scripts/volume.sh" }, // adding spaces before | because barpadding patch cut slstatus text
+    { run_command, " | %s", "/bin/bash ~/git/dotfiles/scripts/network.sh" },
 /*    { battery_state, "[BAT:%s",     "BAT0" },
     { battery_perc, "%s%%]",   "BAT0" },
     */

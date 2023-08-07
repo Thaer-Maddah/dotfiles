@@ -34,6 +34,7 @@ import os
 import subprocess
 
 mod = "mod4"
+alt = "mod1"
 # terminal = guess_terminal()
 terminal = "st"
 
@@ -45,7 +46,6 @@ keys = [
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
     Key([mod], "space", lazy.layout.next(),
         desc="Move window focus to other window"),
-
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
     Key([mod, "shift"], "h", lazy.layout.shuffle_left(),
@@ -99,10 +99,15 @@ keys = [
     # Power mode
     # Key([mod, "control"], "s", lazy.spawn("systemctl suspend && xsecurelock")),
     Key([mod, "control"], "s", lazy.spawn("systemctl suspend")),
-    # Key([mod, "control"],  "tab", lazy.widget["keyboardlayout"].next_keyboard(), desc="Next keyboard layout."),
 
     # Lock screen
     # Key([mod, "control"], "l", lazy.spawn('xsecurelock')),
+
+    # keyboard layout
+    Key([alt], "Caps_Lock",  lazy.widget["keyboardlayout"].next_keyboard()),
+    #Key([alt], "Shift_L", lazy.spawn('setxkbmap -layout ara')),
+    #Key([alt], "Shift_R", lazy.spawn('setxkbmap -layout us')),
+
 
 ]
 
@@ -144,7 +149,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='sans',
+    font='IBM Plex Pro',
     fontsize=12,
     padding=3,
 )
@@ -161,6 +166,7 @@ screens = [
                                 border_width=0,
                                 highlight_method="line",
                                 this_current_screen_border="#ffb52a",
+                                hide_unused=True
                                 ),
                 widget.Prompt(),
                 widget.WindowName(),
@@ -170,17 +176,16 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
+                widget.KeyboardLayout(configured_keyboards=['us', 'ara']),
+                widget.Sep(linewidth=3, size_percent=60),
                 widget.Net(),
-                widget.Sep(linewidth=3, size_percent=60),
-                widget.KeyboardLayout(configured_keyboards=['en', 'ar']),
-                widget.Sep(linewidth=3, size_percent=60),
-                widget.Backlight(backlight_name="intel_backlight",
-                                 update_interval=0.2),
+                # widget.Sep(linewidth=3, size_percent=60),
+                # widget.Backlight(backlight_name="intel_backlight", update_interval=0.2),
                 widget.Sep(linewidth=3, size_percent=60),
                 widget.PulseVolume(update_interval=0.1),
-                widget.Sep(linewidth=3, size_percent=60),
-                widget.Battery(update_interval=10),
-                widget.BatteryIcon(),
+                # widget.Sep(linewidth=3, size_percent=60),
+                # widget.Battery(update_interval=10),
+                # widget.BatteryIcon(),
                 # widget.Wlan(), # Display wifi
                 widget.Sep(linewidth=3, size_percent=60),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
@@ -221,6 +226,7 @@ floating_layout = layout.Floating(float_rules=[
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
     Match(wm_class='gnome-system-monitor'),  # Gnomw System Monitor
+    Match(wm_class='gnome-calculator'),  # Gnomw System Monitor
     Match(wm_class='Qalculator-gtk'),  # calculator
 ])
 auto_fullscreen = True

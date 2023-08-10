@@ -225,6 +225,12 @@ vim.wo.cursorline = true
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
+-- Making the background transparent
+vim.cmd.highlight("Normal guibg=none")
+vim.cmd.highlight("NonText guibg=none")
+
+
+
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`

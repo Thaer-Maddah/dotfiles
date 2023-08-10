@@ -129,13 +129,23 @@ require('lazy').setup({
     },
   },
 
+  --{
+  --  -- Theme inspired by Atom
+  --  'navarasu/onedark.nvim',
+  --  priority = 1000,
+  --  config = function()
+  --    vim.cmd.colorscheme 'onedark'
+  --  end,
+  --},
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    -- Theme gruvbox
+    'ellisonleao/gruvbox.nvim',
+    --'morhetz/gruvbox',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      vim.cmd.colorscheme 'gruvbox'
     end,
+
   },
 
   {
@@ -145,7 +155,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'gruvbox',
         component_separators = '|',
         section_separators = '',
       },
@@ -226,10 +236,16 @@ vim.wo.cursorline = true
 vim.o.mouse = 'a'
 
 -- Making the background transparent
+--vim.cmd.highlight("Normal ctermbg=none")
+--vim.cmd.highlight("NonText ctermbg=none")
 vim.cmd.highlight("Normal guibg=none")
 vim.cmd.highlight("NonText guibg=none")
+vim.cmd.highlight("EndOfBuffer guibg=none")
+--vim.cmd.highlight("Normal guifg=none")
+--vim.cmd.highlight("NonText guifg=none")
 
-
+-- Set local spell
+-- vim.cmd.setlocal('spell spelllang=en_us')
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.

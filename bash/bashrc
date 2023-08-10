@@ -26,7 +26,8 @@ export SUDO_ASKPASS=/usr/lib/ssh/x11-ssh-askpass
 # Adding environment variable for ssh-agent service
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/ssh-agent.socket
 # Get the colors in the opened man page itself
-export MANPAGER="sh -c 'col -bx | bat -l man -p --paging always'"
+#export MANPAGER="sh -c 'col -bx | bat -l man -p --paging always'"
+export MANPAGER="sh -c 'bat -l man -p --paging always'"
 
 # we can ls file without named a specific folder, not a good practice
 # ls **/filename
@@ -72,7 +73,7 @@ shopt -s histreedit
 shopt -s histverify
 #PROMPT_COMMAND="history -a;history -c;history -r; $PROMPT_COMMAND"
 # export HISTTIMEFORMAT="[%d-%m %T] "
-export HISTIGNORE="ls *:history:man *:pwd:fg:exit:clear"
+export HISTIGNORE=" *:history:man *:pwd:fg:exit:clear"
 HISTSIZE= HISTFILESIZE= #Infinite 
 # alias ls='ls --color=auto'
 
@@ -156,3 +157,7 @@ if [ -f $1 ] ; then
     fi
 }
 
+# Emacs 
+export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
+export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI mode

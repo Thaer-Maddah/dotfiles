@@ -16,7 +16,15 @@
 
 (menu-bar-mode 0)
 (tool-bar-mode 0)
-(scroll-bar-mode -1)
+;;(scroll-bar-mode -1)
+;;(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+;;(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+;;(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(defun my/disable-scroll-bars (frame)
+  (modify-frame-parameters frame
+                           '((vertical-scroll-bars . nil)
+                             (horizontal-scroll-bars . nil))))
+(add-hook 'after-make-frame-functions 'my/disable-scroll-bars)
 ;; use larger font
 (setq default-frame-alist '((font . "Monospace-11")))
 
@@ -26,7 +34,8 @@
 ;; Scroll line by line
 (setq scroll-step 1
       scroll-conservatively 10000)
-(linum-mode 1)
+
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (winner-mode 1)  ;; For undo and redo
 (setq tab-always-indent 'complete)
 (display-battery-mode 1)

@@ -33,7 +33,7 @@ are first encountering a few different constructs in your nvim config.
 I hope you enjoy your Neovim journey,
 - TJ
 
-P.S. You can delete this when you're done too. It's your config now :)
+P.S. You can delete this when you're done tovim.o. It's your config now :)
 --]]
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -137,16 +137,134 @@ require('lazy').setup({
   --    vim.cmd.colorscheme 'onedark'
   --  end,
   --},
-  {
-    -- Theme gruvbox
-    'ellisonleao/gruvbox.nvim',
-    --'morhetz/gruvbox',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'gruvbox'
-    end,
 
+  --{
+  --  -- Theme gruvbox
+  --  'ellisonleao/gruvbox.nvim',
+  --  --'morhetz/gruvbox',
+  --  priority = 1000,
+  --  config = function()
+  --    require("gruvbox").setup({
+  --      undercurl = true,
+  --      underline = true,
+  --      bold = true,
+  --      italic = {
+  --        strings = true,
+  --        comments = true,
+  --        operators = false,
+  --        folds = true,
+  --      },
+  --      strikethrough = true,
+  --      invert_selection = false,
+  --      invert_signs = false,
+  --      invert_tabline = false,
+  --      invert_intend_guides = false,
+  --      inverse = true, -- invert background for search, diffs, statuslines and errors
+  --      contrast = "", -- can be "hard", "soft" or empty string
+  --      palette_overrides = {},
+  --      overrides = {},
+  --      dim_inactive = false,
+  --      transparent_mode = true,
+  --    })
+  --    vim.cmd.colorscheme 'gruvbox'
+  --    --vim.o.background = "dark"
+  --  end,
+  --},
+
+  {
+    'sainnhe/gruvbox-material',
+    priority = 1000,
+    config = function(_, opts)
+      vim.g.gruvbox_material_transparent_background = 1 
+      vim.cmd.colorscheme 'gruvbox-material'
+      --vim.g.gruvbox_material_transparent_background = 'dark'
+    end
   },
+
+  --{
+  --  "folke/tokyonight.nvim",
+  --  priority = 1000,
+  --  opts = {
+  --    style = "storm",
+  --    transparent = true,
+  --    styles = {
+  --      sidebars = "transparent",
+  --      floats = "transparent",
+  --    },
+  --  },
+  --  config = function(_, opts)
+  --    local tokyonight = require "tokyonight"
+  --    tokyonight.setup(opts)
+  --    tokyonight.load()
+  --    vim.cmd.colorscheme 'tokyonight'
+  --  end
+  --},
+
+  --{
+  --'catppuccin/nvim',
+  --  name = "catppuccin",
+  --  priority = 1000,
+  --  setup = {
+  --  flavour = "mocha", -- latte, frappe, macchiato, mocha
+  --  background = { -- :h background
+  --      light = "latte",
+  --      dark = "mocha",
+  --  },
+  --  transparent_background = true, -- disables setting the background color.
+  --  show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+  --  term_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
+  --  dim_inactive = {
+  --      enabled = false, -- dims the background color of inactive window
+  --      shade = "dark",
+  --      percentage = 0.15, -- percentage of the shade to apply to the inactive window
+  --  },
+  --  no_italic = false, -- Force no italic
+  --  no_bold = false, -- Force no bold
+  --  no_underline = false, -- Force no underline
+  --  styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+  --      comments = { "italic" }, -- Change the style of comments
+  --      conditionals = { "italic" },
+  --      loops = {},
+  --      functions = {},
+  --      keywords = {},
+  --      strings = {},
+  --      variables = {},
+  --      numbers = {},
+  --      booleans = {},
+  --      properties = {},
+  --      types = {},
+  --      operators = {},
+  --  },
+  --  color_overrides = {},
+  --  custom_highlights = {},
+  --  integrations = {
+  --      cmp = true,
+  --      gitsigns = true,
+  --      nvimtree = true,
+  --      treesitter = true,
+  --      notify = false,
+  --      mini = false,
+  --      -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+  --  },
+  --},
+  --  opts = {
+  --    style = 'mocha',
+  --  transparent = true,
+  --  styles = {
+  --    sidebars = "transparent",
+  --    floats = "transparent",
+  --    background = 'transparent',
+  --  },
+  --},
+---- setup must be called before loading
+  --  config = function(_, opts)
+  --    local catppuccin = require 'catppuccin'
+  --    catppuccin.setup(opts)
+  --    catppuccin.load()
+  --    vim.cmd.colorscheme "catppuccin-mocha"
+  --  end
+  --},
+ 
 
   {
     -- Set lualine as statusline
@@ -216,7 +334,7 @@ require('lazy').setup({
 }, {})
 
 -- [[ Setting options ]]
--- See `:help vim.o`
+-- See `:help o`
 -- NOTE: You can change these options as you wish!
 
 -- Avoid compaatibility errors
@@ -235,14 +353,11 @@ vim.wo.cursorline = true
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
+
 -- Making the background transparent
---vim.cmd.highlight("Normal ctermbg=none")
---vim.cmd.highlight("NonText ctermbg=none")
-vim.cmd.highlight("Normal guibg=none")
-vim.cmd.highlight("NonText guibg=none")
-vim.cmd.highlight("EndOfBuffer guibg=none")
---vim.cmd.highlight("Normal guifg=none")
---vim.cmd.highlight("NonText guifg=none")
+--vim.cmd.highlight("Normal guibg=none ctermbg=none")
+--vim.cmd.highlight("NonText guibg=none ctermbg=none")
+--vim.cmd.highlight("EndOfBuffer guibg=none ctermbg=none")
 
 -- Set local spell
 -- vim.cmd.setlocal('spell spelllang=en_us')
@@ -454,9 +569,9 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  -- clangd = {},
+  clangd = {},
   -- gopls = {},
-  -- pyright = {},
+  pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
 

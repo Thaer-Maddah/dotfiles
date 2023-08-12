@@ -175,7 +175,10 @@ require('lazy').setup({
     'sainnhe/gruvbox-material',
     priority = 1000,
     config = function(_, opts)
-      vim.g.gruvbox_material_transparent_background = 1 
+      vim.g.gruvbox_material_transparent_background = 2
+      vim.g.gruvbox_material_float_style = bright
+      vim.g.gruvbox_material_sign_column_background = none
+      vim.g.gruvbox_material_ui_contrast = high
       vim.cmd.colorscheme 'gruvbox-material'
       --vim.g.gruvbox_material_transparent_background = 'dark'
     end
@@ -235,7 +238,36 @@ require('lazy').setup({
   --      types = {},
   --      operators = {},
   --  },
-  --  color_overrides = {},
+  --  color_overrides = {
+  --    --mocha = {
+  --    --  rosewater = "#efc9c2",
+  --    --  flamingo = "#ebb2b2",
+  --    --  pink = "#f2a7de",
+  --    --  mauve = "#b889f4",
+  --    --  red = "#a60312",
+  --    --  maroon = "#ea838c",
+  --    --  peach = "#f39967",
+  --    --  yellow = "#eaca89",
+  --    --  green = "#96d382",
+  --    --  teal = "#78cec1",
+  --    --  sky = "#91d7e3",
+  --    --  sapphire = "#68bae0",
+  --    --  blue = "#739df2",
+  --    --  lavender = "#a0a8f6",
+  --    --  text = "#b5c1f1",
+  --    --  subtext1 = "#a6b0d8",
+  --    --  subtext0 = "#959ec2",
+  --    --  overlay2 = "#848cad",
+  --    --  overlay1 = "#717997",
+  --    --  overlay0 = "#63677f",
+  --    --  surface2 = "#505469",
+  --    --  surface1 = "#3e4255",
+  --    --  surface0 = "#2c2f40",
+  --    --  base = "#1a1c2a",
+  --    --  mantle = "#141620",
+  --    --  crust = "#0e0f16",
+  --    --  },
+  --    },
   --  custom_highlights = {},
   --  integrations = {
   --      cmp = true,
@@ -244,23 +276,26 @@ require('lazy').setup({
   --      treesitter = true,
   --      notify = false,
   --      mini = false,
-  --      -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+  --      telescope = true,
+  --      harpoon = true,
+  --      mason = true,
+  --      neotest = true,
+---- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
   --  },
   --},
   --  opts = {
   --    style = 'mocha',
-  --  transparent = true,
-  --  styles = {
+  --  transparent_background = true,
+  --    styles = {
   --    sidebars = "transparent",
   --    floats = "transparent",
-  --    background = 'transparent',
   --  },
   --},
 ---- setup must be called before loading
   --  config = function(_, opts)
-  --    local catppuccin = require 'catppuccin'
-  --    catppuccin.setup(opts)
-  --    catppuccin.load()
+  --    --local catppuccin = require 'catppuccin'
+  --    require('catppuccin').setup(opts)
+  --    --catppuccin.load()
   --    vim.cmd.colorscheme "catppuccin-mocha"
   --  end
   --},
@@ -273,7 +308,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'gruvbox',
+        theme = 'gruvbox-material',
         component_separators = '|',
         section_separators = '',
       },
@@ -346,6 +381,7 @@ vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
+vim.wo.relativenumber = true
 
 -- Make cursorline
 vim.wo.cursorline = true
@@ -358,6 +394,10 @@ vim.o.mouse = 'a'
 --vim.cmd.highlight("Normal guibg=none ctermbg=none")
 --vim.cmd.highlight("NonText guibg=none ctermbg=none")
 --vim.cmd.highlight("EndOfBuffer guibg=none ctermbg=none")
+vim.cmd.highlight('Pmenu guibg=none')
+vim.cmd.highlight('PmenuExtra guibg=none ctermbg=none')
+vim.cmd.highlight('NormalFloat guibg=none')
+
 
 -- Set local spell
 -- vim.cmd.setlocal('spell spelllang=en_us')

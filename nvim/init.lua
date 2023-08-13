@@ -207,13 +207,13 @@ require('lazy').setup({
   --'catppuccin/nvim',
   --  name = "catppuccin",
   --  priority = 1000,
-  --  setup = {
+  --  opts = {
+  --  transparent_background = true,
   --  flavour = "mocha", -- latte, frappe, macchiato, mocha
   --  background = { -- :h background
   --      light = "latte",
   --      dark = "mocha",
   --  },
-  --  transparent_background = true, -- disables setting the background color.
   --  show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
   --  term_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
   --  dim_inactive = {
@@ -225,71 +225,73 @@ require('lazy').setup({
   --  no_bold = false, -- Force no bold
   --  no_underline = false, -- Force no underline
   --  styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
-  --      comments = { "italic" }, -- Change the style of comments
-  --      conditionals = { "italic" },
-  --      loops = {},
-  --      functions = {},
-  --      keywords = {},
-  --      strings = {},
-  --      variables = {},
-  --      numbers = {},
-  --      booleans = {},
-  --      properties = {},
-  --      types = {},
-  --      operators = {},
+  --    sidebars = "transparent",
+  --    floats = "transparent",
+  --    comments = { "italic" }, -- Change the style of comments
+  --    conditionals = { "italic" },
+  --    loops = {},
+  --    functions = {},
+  --    keywords = {},
+  --    strings = {},
+  --    variables = {},
+  --    numbers = {},
+  --    booleans = {},
+  --    properties = {},
+  --    types = {},
+  --    operators = {},
   --  },
-  --  color_overrides = {
-  --    --mocha = {
-  --    --  rosewater = "#efc9c2",
-  --    --  flamingo = "#ebb2b2",
-  --    --  pink = "#f2a7de",
-  --    --  mauve = "#b889f4",
-  --    --  red = "#a60312",
-  --    --  maroon = "#ea838c",
-  --    --  peach = "#f39967",
-  --    --  yellow = "#eaca89",
-  --    --  green = "#96d382",
-  --    --  teal = "#78cec1",
-  --    --  sky = "#91d7e3",
-  --    --  sapphire = "#68bae0",
-  --    --  blue = "#739df2",
-  --    --  lavender = "#a0a8f6",
-  --    --  text = "#b5c1f1",
-  --    --  subtext1 = "#a6b0d8",
-  --    --  subtext0 = "#959ec2",
-  --    --  overlay2 = "#848cad",
-  --    --  overlay1 = "#717997",
-  --    --  overlay0 = "#63677f",
-  --    --  surface2 = "#505469",
-  --    --  surface1 = "#3e4255",
-  --    --  surface0 = "#2c2f40",
-  --    --  base = "#1a1c2a",
-  --    --  mantle = "#141620",
-  --    --  crust = "#0e0f16",
-  --    --  },
-  --    },
-  --  custom_highlights = {},
+  --  custom_highlights = {
+  --    --Comment = { fg = "#9c9a9a"  },
+
+  --  },
   --  integrations = {
+  --      alpha = true,
   --      cmp = true,
   --      gitsigns = true,
   --      nvimtree = true,
   --      treesitter = true,
-  --      notify = false,
-  --      mini = false,
+  --      notify = true,
+  --      mini = true,
   --      telescope = true,
   --      harpoon = true,
   --      mason = true,
   --      neotest = true,
 ---- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
   --  },
-  --},
-  --  opts = {
-  --    style = 'mocha',
-  --  transparent_background = true,
-  --    styles = {
-  --    sidebars = "transparent",
-  --    floats = "transparent",
-  --  },
+  --  color_overrides = {
+  --    mocha = {
+  --      --rosewater = "#efc9c2",
+  --      --flamingo = "#ebb2b2",
+  --      --pink = "#f2a7de",
+  --      --mauve = "#b889f4",
+  --      --red = "#a60312",
+  --      --maroon = "#ea838c",
+  --      --peach = "#f39967",
+  --      --yellow = "#eaca89",
+  --      --green = "#96d382",
+  --      --teal = "#78cec1",
+  --      --sky = "#91d7e3",
+  --      --sapphire = "#68bae0",
+  --      --blue = "#739df2",
+  --      --lavender = "#a0a8f6",
+  --      --text = "#b5c1f1",
+  --      --subtext1 = "#a6b0d8",
+  --      --subtext0 = "#959ec2",
+  --      --overlay2 = "#848cad",
+  --      --overlay1 = "#717997",
+  --      --overlay0 = "#63677f",
+  --      --surface2 = "#505469",
+  --      --surface1 = "#3e4255",
+  --      --surface0 = "#2c2f40",
+  --      --base = "#1a1c2a",
+  --      --mantle = "#141620",
+  --      --crust = "#0e0f16",
+  --    --  base = "#000000",
+	--		--	mantle = "#000000",
+	--		--	crust = "#000000",
+  --      },
+  --    },
+
   --},
 ---- setup must be called before loading
   --  config = function(_, opts)
@@ -299,7 +301,6 @@ require('lazy').setup({
   --    vim.cmd.colorscheme "catppuccin-mocha"
   --  end
   --},
- 
 
   {
     -- Set lualine as statusline

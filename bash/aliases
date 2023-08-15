@@ -32,6 +32,8 @@ alias aux='ps aux | head -n -1 | grep -i --color'
 alias mv='mv -i'
 alias rm='rm -i'
 alias dnld='youtube-dl -f 22'
+# youtube downloader script
+alias yt='python ~/git/code/python/yt/yt.py'
 
 # reloading rc file
 alias load=". ~/$shellrc"
@@ -118,7 +120,8 @@ alias nvimrc='vim ~/.config/nvim/init.vim'
 alias vimrc='vim ~/.vimrc'
 
 # Emacs stuff
-# alias emacs="emacsclient -c"
+#alias emacs="emacsclient -c"
+alias emacs="emacsclient --create-frame --alternate-editor= &"
 
 # Multimedia Stuff
 alias play="sh $dir/scripts/play.sh $1 $2"
@@ -162,3 +165,6 @@ alias git-show="sh $dir/scripts/fshow.sh" 		# git commit browser
 
 # fzf Stuff
 alias lfzf="sh $dir/scripts/fzf.sh"
+
+# Terminals stuff
+alias st='st -A 0.82' 	# set opacity for st 

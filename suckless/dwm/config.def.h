@@ -74,7 +74,9 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
+// Set the st opacity with -A option 
+// must be patch 'alpha patch' with st 
+static const char *termcmd[]  = { "st", "-A 0.85", NULL };
 
 #include "movestack.c"
 static const Key keys[] = {

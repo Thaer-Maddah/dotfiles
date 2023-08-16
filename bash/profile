@@ -2,10 +2,6 @@
 #
 #Environment Variables
 export EDITOR=nvim
-feh --bg-fill --randomize ~/Pictures/wallpapers/*  
-
-# set the keyboard keystroks speed
-xset r rate 300 50
 
 # [[ -z "$TMUX" ]] && exec tmux
 [[ -f /usr/bin/numlockx ]] && numlockx
@@ -35,3 +31,4 @@ export XSECURELOCK_IMAGE_DURATION_SECONDS=10
 #export XSECURELOCK_SHOW_DATETIME=1
  
 #}}}
+

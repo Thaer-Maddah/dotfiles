@@ -1,6 +1,4 @@
 #!/bin/bash
-# ~/.bashrc
-
 # Set font configurations
 # do not use tput command because missing up the long lines in terminal
 # do not use code like Bla='\e[0;30m' because it does the same thing as tput 
@@ -111,15 +109,7 @@ PROMPT_COMMAND=set_bash_prompt_color
 # PROMPT_COMMAND='PS1="\u@${_GREEN}\W$(__git_ps1 " (%s)")➜ "'
 # Run commands at startup
 # Suckless section
-if ! pgrep -x "picom" > /dev/null; then 
-    # redirect output messages to /dev/null becuase picom show message
-    # when execute command from bash
-    picom -b -i 1.0 --config $XDG_CONFIG_HOME/picom/picom.conf  > /dev/null 2>&1
-fi
 
-if ! pgrep -x "nm-applet" > /dev/null; then  
-    nm-applet & > /dev/null 2>&1
-fi
 
 #if pgrep -x "dwm" > /dev/null && ! pgrep -x "slstatus" > /dev/null; then 
 #    slstatus & > /dev/null 2>&1

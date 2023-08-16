@@ -19,3 +19,7 @@ super+Print
 super+o
     dmenu_run -i -l 15 -sb "#C95A49" # red color
     #dmenu_run -i -l 15 -sb "#C95000" # orange color
+
+# open youtub videos from mpv by copy url 
+super+ctrl+o
+    mpv --ytdl-format="bestvideo[height<=?720]+bestaudio/best" $(xclip -o)

@@ -4,6 +4,9 @@
 export EDITOR=nvim
 feh --bg-fill --randomize ~/Pictures/wallpapers/*  
 
+# set the keyboard keystroks speed
+xset r rate 300 50
+
 # [[ -z "$TMUX" ]] && exec tmux
 [[ -f /usr/bin/numlockx ]] && numlockx
 # [[ "$((tty))" = "/dev/tty1" ]]; startx ~/.config/X11/qtie/xinitrc 

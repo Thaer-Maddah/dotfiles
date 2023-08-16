@@ -1,0 +1,19 @@
+# file location: ~/.xprofile
+if pgrep -x "dwm" > /dev/null && ! pgrep -x "slstatus" > /dev/null; then 
+    slstatus & > /dev/null 2>&1
+fi
+
+if ! pgrep -x "picom" > /dev/null; then 
+    # redirect output messages to /dev/null becuase picom show message
+    # when execute command from bash
+    picom -b -i 1.0 --config $XDG_CONFIG_HOME/picom/picom.conf  > /dev/null 2>&1
+fi
+
+if ! pgrep -x "nm-applet" > /dev/null; then  
+    nm-applet & > /dev/null 2>&1
+fi
+
+feh --bg-fill --randomize ~/Pictures/wallpapers/*  
+
+# set the keyboard keystroks speed
+xset r rate 300 50

@@ -1,4 +1,5 @@
 #!/bin/bash
+# animated wallpaper with video 
 
 PIDFILE="/var/run/user/$UID/bg.pid"
 
@@ -9,7 +10,7 @@ _screen() {
         --no-stop-screensaver \
         --vo=vdpau --hwdec=vdpau \
         --loop-file --no-audio --no-osc --no-osd-bar -wid WID --no-input-default-bindings \
-        "$2" &
+        "$2" &  # file name
     PIDs+=($!)
 }
 

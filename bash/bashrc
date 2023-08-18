@@ -51,7 +51,7 @@ export MANPAGER="sh -c 'bat -l man -p --paging always'"
 #[[ -f "$CODEDIR"/bash/unix ]] && clear && neofetch --source "$CODEDIR"/bash/unix
 [[ -f /usr/bin/numlockx ]] && numlockx
 
-# Zsh like completion
+# Zsh like completion for bash
 bind 'set completion-ignore-case On'
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
@@ -146,8 +146,8 @@ if [ -f $1 ] ; then
     file"
     fi
 }
-
+export EDITOR="nvim"
 # Emacs 
 export ALTERNATE_EDITOR=""
-export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
+#export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
 export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI mode

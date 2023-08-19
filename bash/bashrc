@@ -25,6 +25,8 @@ export SUDO_ASKPASS=/usr/lib/ssh/x11-ssh-askpass
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/ssh-agent.socket
 # Get the colors in the opened man page itself
 #export MANPAGER="sh -c 'col -bx | bat -l man -p --paging always'"
+# not working on void linux because man pages leaks some features 
+# https://github.com/sharkdp/bat/issues/1145
 export MANPAGER="sh -c 'bat -l man -p --paging always'"
 
 # we can ls file without named a specific folder, not a good practice
@@ -146,8 +148,7 @@ if [ -f $1 ] ; then
     file"
     fi
 }
-export EDITOR="nvim"
 # Emacs 
 export ALTERNATE_EDITOR=""
-#export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
+export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
 export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI mode

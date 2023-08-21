@@ -1,10 +1,11 @@
 ;; ====================================
-;; File Location: ~/.emacs.d/init.el  
+;; File Location: ~/.emacs.d/init.el
 ;; ====================================
 
 ;; Emacs file config
 ;; Written by Thaer Maddah
 
+;;;Code
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
@@ -45,6 +46,28 @@
 (setq column-number-mode t)
 (setq pixel-scroll-mode t)
 
+;; toggle between vertical and horizontal layout
+(defun toggle-window-split ()
+  "Toggle between horizontal and vertical split with two windows."
+  (interactive)
+  (if (> (length (window-list)) 2)
+      (error "Can't toggle with more than 2 windows!")
+    (let ((func (if (window-full-height-p)
+                    #'split-window-vertically
+                  #'split-window-horizontally)))
+      (delete-other-windows)
+      (funcall func)
+      (save-selected-window
+        (other-window 1)
+        (switch-to-buffer (other-buffer))))))
+
+(global-set-key (kbd "C-x |") 'toggle-window-split)
+
+;; swap window position
+(global-set-key (kbd "C-<left>") 'windmove-swap-states-left)
+(global-set-key (kbd "C-<right>") 'windmove-swap-states-right)
+(global-set-key (kbd "C-<up>") 'windmove-swap-states-up)
+(global-set-key (kbd "C-<down>") 'windmove-swap-states-down)
 
 ;; Beacon Mode
 ;; This mode highlighting cursor
@@ -55,10 +78,10 @@
 (setq x-select-enable-clipboard-manager nil)
 
 (setq-default fill-column 80)
-(global-display-fill-column-indicator-mode t)
+(global-display-fill-column-indicator-mode 0)
 (setq-default display-fill-column-indicator-character ?\N{U+2506})
 
-;; Transparency 
+;; Transparency
 (set-frame-parameter (selected-frame) 'alpha '(80 . 50))
 (add-to-list 'default-frame-alist '(alpha . (80 . 50)))
 
@@ -148,12 +171,12 @@
    '(("melpa" . "http://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-selected-packages
-   '(evil vterm gruvbox-theme color-theme-modern go-complete go-projectile go-mode beacon minimap engine-mode i3wm-config-mode i3wm org-modern org-download org org-bullets dracula-theme transpose-frame virtualenv lsp-jedi jedi command-log-mode popup yasnippet blacken flycheck py-autopep8 better-defaults elpy projectile magit zenburn-theme))
+   '(slime-company sly evil vterm gruvbox-theme color-theme-modern go-complete go-projectile go-mode beacon minimap engine-mode i3wm-config-mode i3wm org-modern org-download org org-bullets dracula-theme transpose-frame virtualenv lsp-jedi jedi command-log-mode popup yasnippet blacken flycheck py-autopep8 better-defaults elpy projectile magit zenburn-theme))
  '(warning-suppress-log-types '((auto-save))))
 
 ;; Minimap Mode
-(minimap-mode t)
-(setq minimap-window-location 'right)
+;(minimap-mode nil)
+;(setq minimap-window-location 'right)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -303,3 +326,10 @@
 ;; Enable Evil
 (require 'evil)
 (evil-mode 1)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;; init.el ends here

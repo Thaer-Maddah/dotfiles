@@ -5,7 +5,7 @@
 ;; Emacs file config
 ;; Written by Thaer Maddah
 
-;;;Code
+;;;Code:
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
@@ -69,6 +69,12 @@
 (global-set-key (kbd "C-<up>") 'windmove-swap-states-up)
 (global-set-key (kbd "C-<down>") 'windmove-swap-states-down)
 
+;; Resize windows
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
+
 ;; Beacon Mode
 ;; This mode highlighting cursor
 (beacon-mode t)
@@ -99,11 +105,6 @@
 (global-set-key (kbd "C-c t") 'toggle-transparency)
 
 
-;; Resize windows
-(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
-(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "S-C-<down>") 'shrink-window)
-(global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
 ;; draw colum at line 80
 ;; (require 'fill-column-indicator)
@@ -171,7 +172,7 @@
    '(("melpa" . "http://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-selected-packages
-   '(slime-company sly evil vterm gruvbox-theme color-theme-modern go-complete go-projectile go-mode beacon minimap engine-mode i3wm-config-mode i3wm org-modern org-download org org-bullets dracula-theme transpose-frame virtualenv lsp-jedi jedi command-log-mode popup yasnippet blacken flycheck py-autopep8 better-defaults elpy projectile magit zenburn-theme))
+   '(helm-sly sly evil vterm gruvbox-theme color-theme-modern go-complete go-projectile go-mode beacon minimap engine-mode i3wm-config-mode i3wm org-modern org-download org org-bullets dracula-theme transpose-frame virtualenv lsp-jedi jedi command-log-mode popup yasnippet blacken flycheck py-autopep8 better-defaults elpy projectile magit zenburn-theme))
  '(warning-suppress-log-types '((auto-save))))
 
 ;; Minimap Mode
@@ -237,6 +238,18 @@
 				(yas-activate-extra-mode 'fundamental-mode)))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Lisp preferences ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(setq inferior-lisp-program "/usr/bin/sbcl")
+
+;;Load sly when .lisp file is opened
+(add-hook 'sly-mode-hook
+          (lambda ()
+            (unless (sly-connected-p)
+              (save-excursion (sly))
+	      (helm-sly-mode t)
+	      )))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Go Preferences ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'go-mode-hook (lambda ()
     (setq tab-width 4)))
@@ -268,7 +281,7 @@
       helm-echo-input-in-header-line t)
 
 (require 'company) ; code completion framework
-(company-mode 1)
+(global-company-mode t)
 (require 'compile) ; per-language builds
 ;; (require 'go-complete)
 

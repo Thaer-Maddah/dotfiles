@@ -32,6 +32,10 @@
 ;; Enable Ido-mode
 (ido-mode t)
 
+;; enable history
+(savehist-mode 1)
+;; Dialogbox
+(setq use-dialog-box t)
 ;; Scroll line by line
 (setq scroll-step 1
       scroll-conservatively 10000)

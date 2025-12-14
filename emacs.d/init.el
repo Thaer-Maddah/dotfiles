@@ -1,9 +1,19 @@
-;; ====================================
-;; File Location: ~/.emacs.d/init.el
-;; ====================================
+;;; -*- lexical-binding: t -*-
+;;; init.el --- Thaer Maddah's Emacs configuration -*- lexical-binding: t; -*-
 
-;; Emacs file config
-;; Written by Thaer Maddah
+;; Author: Thaer Maddah
+;; Keywords: convenience
+;; Homepage: https://github.com/Thaer-Maddah/dotfiles/emacs.d
+;; Version: 1.0
+
+;; This file is not part of GNU Emacs.
+
+;;; Commentary:
+;; Personal Emacs configuration file
+
+;;; ====================================
+;;; File Location: ~/.emacs.d/init.el
+;;; ====================================
 
 ;;;Code:
 (require 'package)
@@ -12,12 +22,24 @@
 ;; and `package-pinned-packages`. Most users will not need or want to do this.
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
+;; Ensure packages are installed
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; Install use-package if not present
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+(require 'use-package)
+(setq use-package-always-ensure t)
 
 ;;;;;;;;;;;; Personal preferences ;;;;;;;;;;;;;;;;;;;;;;;
 
-(menu-bar-mode 0)
+(menu-bar-mode 1)
 (tool-bar-mode 0)
-;;(scroll-bar-mode -1)
+(scroll-bar-mode -1)
+(global-hl-line-mode +1)
+
 ;;(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 ;;(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 ;;(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -34,7 +56,7 @@
 
 ;; enable history
 (savehist-mode 1)
-;; Dialogbox
+;; Dialogbox(
 (setq use-dialog-box t)
 ;; Scroll line by line
 (setq scroll-step 1
@@ -62,7 +84,7 @@
       (delete-other-windows)
       (funcall func)
       (save-selected-window
-        (other-window 1)
+        (other-window t)
         (switch-to-buffer (other-buffer))))))
 
 (global-set-key (kbd "C-x |") 'toggle-window-split)
@@ -131,7 +153,7 @@
 ;; Set C-c, C-x, C-v and other shortcuts
 ;; (cua-mode t)
 
-;; Define C-/ to comment and uncomment regions and lines
+;; Define C-; to comment and uncomment regions and lines
 (defun comment-or-uncomment-line-or-region ()
     "Comments or uncomments the region or the current line if there's no active region."
     (interactive)
@@ -140,8 +162,9 @@
             (setq beg (region-beginning) end (region-end))
             (setq beg (line-beginning-position) end (line-end-position)))
         (comment-or-uncomment-region beg end)
-        (next-line)))
-(global-set-key (kbd "C-/") 'comment-or-uncomment-line-or-region)
+	))	;; (next-line))) ;; if I want to go to next line 
+	
+(global-set-key (kbd "C-;") 'comment-or-uncomment-line-or-region)
 
 ;; https://stackoverflow.com/questions/17958397/emacs-delete-whitespaces-or-a-word
 (defun kill-whitespace-or-word ()
@@ -163,10 +186,7 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
- '(command-log-mode t t)
- '(custom-enabled-themes '(taylor))
- '(custom-safe-themes
-   '("317a45f190eaa3ccf8af6168aa89112d9cb794f87f409bc7a0638edee20d07fd" "6b5c518d1c250a8ce17463b7e435e9e20faa84f3f7defba8b579d4f5925f60c1" default))
+ '(command-log-mode t)
  '(display-battery-mode t)
  '(display-time-mode t)
  '(global-command-log-mode nil)
@@ -176,9 +196,13 @@
    '(("melpa" . "http://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-selected-packages
-   '(helm-sly sly evil vterm gruvbox-theme color-theme-modern go-complete go-projectile go-mode beacon minimap engine-mode i3wm-config-mode i3wm org-modern org-download org org-bullets dracula-theme transpose-frame virtualenv lsp-jedi jedi command-log-mode popup yasnippet blacken flycheck py-autopep8 better-defaults elpy projectile magit zenburn-theme))
- '(warning-suppress-log-types '((auto-save))))
-
+   '(beacon better-defaults blacken color-theme-modern command-log-mode
+	    dracula-theme elpy emms engine-mode evil flycheck go-complete
+	    go-projectile gruvbox-theme helm-sly jedi lsp-jedi
+	    magit minimap org org-bullets org-download org-modern popup
+	    projectile py-autopep8 transpose-frame virtualenv vterm yasnippet
+	    zenburn-theme))
+'(warning-suppress-log-types '((auto-save))))
 ;; Minimap Mode
 ;(minimap-mode nil)
 ;(setq minimap-window-location 'right)
@@ -189,6 +213,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+;; load theme
+(load-theme 'gruvbox :no-confirm)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Python Preferences ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq
@@ -272,7 +298,7 @@
 
 ;; Helm: incremental completion and selection narrowing inside menus/lists
 (require 'helm)
-(require 'helm-config)
+;;(require 'helm-config)
 (require 'helm-projectile)
 (helm-mode 1)
 (helm-projectile-on)
@@ -341,10 +367,16 @@
   (package-install 'evil))
 
 ;; Enable Evil
-(require 'evil)
-(evil-mode 1)
+;(require 'evil)
+;(evil-mode t)
 
-
+;; EMMS player
+(require 'emms-setup)
+(emms-all)
+(emms-default-players)
+;; Optional: Set your default music directory
+(setq emms-source-file-default-directory "~/Music/")
+;;(setq emms-player-list '(emms-player-mpv))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -31,12 +31,15 @@ alias grep='grep --color'
 alias aux='ps aux | head -n -1 | grep -i --color'
 alias mv='mv -i'
 alias rm='rm -i'
-alias dnld='youtube-dl -f 22'
+alias dnld='yt-dlp -f 22'
 # youtube downloader script
 alias yt='python ~/git/code/python/yt/yt.py'
 
 # reloading rc file
 alias load=". ~/$shellrc"
+
+#  Bash Shell
+alias load='source ~/.bashrc && clear'
 
 # ZSH shell 
 #alias load='source ~/.zshrc && clear'
@@ -114,7 +117,6 @@ alias old-windows='cd /run/media/Old-Windows'
 # NeoVim Aliases
 alias v="vim"
 alias vi="vim"
-alias vim=/usr/local/bin/vim
 alias nv='nvim'
 alias nvimrc='vim ~/.config/nvim/init.vim'
 alias vimrc='vim ~/.vimrc'
@@ -154,8 +156,6 @@ alias xseticon='sudo xseticon /usr/share/icons/Faenza/apps/64/utilities-terminal
 # Browser Stuff
 alias brave="brave --enable-features=SharingQRCodeGenerator"
 
-# Vew man pages with fzf
-alias fman='sh $dir/scripts/fman.sh' 	# call fman function for searching man pages with fzf
 
 # Git Stuff
 alias git-diff="git diff | delta -n"
@@ -164,7 +164,8 @@ alias git-checkout="sh $dir/scripts/git-check.sh"	# git checkout
 alias git-show="sh $dir/scripts/fshow.sh" 		# git commit browser
 
 # fzf Stuff
-alias lfzf="sh $dir/scripts/fzf.sh"
+alias list="sh $dir/scripts/fzf.sh"
+alias fman='sh $dir/scripts/fman.sh' 	# call fman function for searching man pages with fzf
 
 # Terminals stuff
 alias st='st -A 0.82' 	# set opacity for st 

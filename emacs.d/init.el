@@ -198,11 +198,11 @@
  '(package-selected-packages
    '(beacon better-defaults blacken color-theme-modern command-log-mode
 	    dracula-theme elpy emms engine-mode evil flycheck go-complete
-	    go-projectile gruvbox-theme helm-sly jedi lsp-jedi
-	    magit minimap org org-bullets org-download org-modern popup
+	    go-projectile gruvbox-theme helm-sly jedi lsp-jedi magit minimap
+	    multiple-cursors org org-bullets org-download org-modern popup
 	    projectile py-autopep8 transpose-frame virtualenv vterm yasnippet
 	    zenburn-theme))
-'(warning-suppress-log-types '((auto-save))))
+ '(warning-suppress-log-types '((auto-save))))
 ;; Minimap Mode
 ;(minimap-mode nil)
 ;(setq minimap-window-location 'right)
@@ -380,5 +380,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Multiple cursors 
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(define-key region-bindings-mode-map "a" 'mc/mark-all-like-this)
+(define-key region-bindings-mode-map "p" 'mc/mark-previous-like-this)
+(define-key region-bindings-mode-map "n" 'mc/mark-next-like-this)
+(define-key region-bindings-mode-map "m" 'mc/mark-more-like-this-extended)
+
 
 ;;; init.el ends here

@@ -1,0 +1,9 @@
+  /home/thaeronline/git/dotfiles/hypr:
+  drwxr-xr-x  4 thaeronline thaeronline  4096 Dec 15 05:25 .
+  drwxr-xr-x 29 thaeronline thaeronline  4096 Dec 16 03:21 ..
+  -rwxr-xr-x  1 thaeronline thaeronline   326 Dec  8 02:19 autostart
+  drwxr-xr-x  7 thaeronline thaeronline  4096 Dec 16 04:07 .git
+  -rw-r--r--  1 thaeronline thaeronline 11931 Dec 15 04:27 hyprland.conf
+  -rw-r--r--  1 thaeronline thaeronline   962 Dec 15 04:29 hyprlock.conf
+  -rw-r--r--  1 thaeronline thaeronline   130 Dec  8 02:19 hyprpaper.conf
+D drwxr-xr-x  3 thaeronline thaeronline  4096 Dec 16 04:03 scripts

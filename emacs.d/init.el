@@ -18,20 +18,23 @@
 ;;;Code:
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
-;; and `package-pinned-packages`. Most users will not need or want to do this.
-;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
-;; Ensure packages are installed
-(unless package-archive-contents
+
+;; Initialize package system
+(unless (bound-and-true-p package--initialized)
+  (package-initialize))
+
+;; Refresh package contents if needed
+(unless (and (boundp 'package-archive-contents) 
+             package-archive-contents)
   (package-refresh-contents))
 
 ;; Install use-package if not present
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
-(require 'use-package)
-(setq use-package-always-ensure t)
+;; (require 'use-package)
+;; (setq use-package-always-ensure t)
 
 ;;;;;;;;;;;; Personal preferences ;;;;;;;;;;;;;;;;;;;;;;;
 

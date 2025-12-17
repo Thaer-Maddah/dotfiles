@@ -96,11 +96,11 @@ if [[ -f "$DOTFILES"/bash/git-prompt.sh  ]]; then
     if [[ $UID == 0 || $EUID == 0 ]]; then
         set_bash_prompt_color() {
             # PS1="${_GREEN}\u@${_CYAN}\W$(__git_ps1 " (%s)")${_GREEN}# ${_RESET}
-            PS1="${_G}\u${_YELLOW}@${_CYAN}\W$(__git_ps1 " (%s)")${_G}# ${_RESET}"
+            PS1="${_G}\u${_YELLOW}@${_CYAN}\W${_YELLOW}$(__git_ps1 " (%s)")${_G}# ${_RESET}"
         }
     else
         set_bash_prompt_color() {
-        PS1="${_G}\u${_YELLOW}@${_CYAN}\W$(__git_ps1 " (%s)")${_G}➜ ${_RESET}"
+        PS1="${_G}\u${_YELLOW}@${_CYAN}\W${_YELLOW}$(__git_ps1 " (%s)")${_G}➜ ${_RESET}"
         }
     fi
 else 
@@ -115,15 +115,33 @@ else
     fi
 fi
 
-PROMPT_COMMAND=set_bash_prompt_color
 # PROMPT_COMMAND='PS1="\u@${_GREEN}\W$(__git_ps1 " (%s)")➜ "'
 # Run commands at startup
 # Suckless section
 
+# set time 
+ prompt_command() {
+    local label=$(date +"%H:%M":%S)
+    # Save cursor position
+    tput sc
+    # Move to right edge
+    tput cuf 999
+    # Move back by label length
+    tput cub ${#label}
+    # Print label without newline
+   # printf '%s\r' "$label"
+    echo -n "$label"
+    # Restore cursor position
+     tput rc
+ }
 
+ 
+# PROMPT_COMMAND="set_bash_prompt_color;prompt_command;"
+PROMPT_COMMAND="prompt_command;set_bash_prompt_color;"
 #if pgrep -x "dwm" > /dev/null && ! pgrep -x "slstatus" > /dev/null; then 
 #    slstatus & > /dev/null 2>&1
 #fi
+
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
@@ -160,3 +178,4 @@ if [ -f $1 ] ; then
 export ALTERNATE_EDITOR="vim"
 export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
 export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI mode
+set -o emacs

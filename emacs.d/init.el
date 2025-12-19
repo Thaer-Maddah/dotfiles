@@ -210,7 +210,7 @@
  '(global-display-line-numbers-mode t)
  '(inhibit-startup-screen t)
  '(org-babel-load-languages
-   '((css . t) (latex . t) (sql . t) (C . t) (awk . t) (shell . t)))
+   '((css . t) (latex . t) (sql . t) (C . t) (awk . t) (shell . t) (emacs-lisp . t)))
  '(package-archives
    '(("melpa" . "http://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
@@ -416,5 +416,25 @@
 (define-key region-bindings-mode-map "n" 'mc/mark-next-like-this)
 (define-key region-bindings-mode-map "m" 'mc/mark-more-like-this-extended)
 
+;; When you have LaTeX math in Org Mode (like $E=mc^2$), Emacs needs to convert it to an image to display it. This configuration tells Org Mode how to do that conversion.
+(setq org-preview-latex-process-alist  ; Sets a variable that controls LaTeX preview
+      '((dvipng                        ; Using the "dvipng" method (one of several options)
+         :programs ("latex" "dvipng")  ; Requires these two programs installed on your system
+         
+         :description "dvi > png"      ; Human-readable description: converts DVI to PNG
+         
+         :image-input-type "dvi"       ; Intermediate format: LaTeX → DVI file
+         :image-output-type "png"      ; Final output: PNG image
+         
+         :image-size-adjust (1.0 . 1.0) ; Scaling factors (width . height)
+         
+         ; Command to compile LaTeX to DVI
+         :latex-compiler ("latex -interaction nonstopmode -output-directory %o %f")
+         ; %o = output directory, %f = input .tex file
+         
+         ; Command to convert DVI to PNG
+         :image-converter ("dvipng -D %D -T tight -o %O %f")
+         ; %D = DPI resolution, %O = output PNG file, %f = input DVI file
+         )))
 
 ;;; init.el ends here

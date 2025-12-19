@@ -195,6 +195,8 @@
  '(global-command-log-mode nil)
  '(global-display-line-numbers-mode t)
  '(inhibit-startup-screen t)
+ '(org-babel-load-languages
+   '((css . t) (latex . t) (sql . t) (C . t) (awk . t) (shell . t)))
  '(package-archives
    '(("melpa" . "http://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
@@ -203,8 +205,8 @@
 	    dracula-theme elpy emms engine-mode evil flycheck go-complete
 	    go-projectile gruvbox-theme helm-sly jedi lsp-jedi magit minimap
 	    multiple-cursors org org-bullets org-download org-modern popup
-	    projectile py-autopep8 region-bindings-mode transpose-frame
-	    virtualenv vterm yasnippet zenburn-theme))
+	    projectile py-autopep8 region-bindings-mode spacious-padding
+	    transpose-frame virtualenv vterm yasnippet zenburn-theme))
  '(warning-suppress-log-types '((auto-save))))
 ;; Minimap Mode
 ;(minimap-mode nil)
@@ -394,6 +396,7 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this-word)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this-word)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this-word)
+
 (define-key region-bindings-mode-map "a" 'mc/mark-all-like-this)
 (define-key region-bindings-mode-map "p" 'mc/mark-previous-like-this)
 (define-key region-bindings-mode-map "n" 'mc/mark-next-like-this)

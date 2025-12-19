@@ -41,7 +41,7 @@
 (menu-bar-mode 1)
 (tool-bar-mode 0)
 (scroll-bar-mode -1)
-(global-hl-line-mode +1)
+(global-hl-line-mode 1)
 
 ;;(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 ;;(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -91,6 +91,7 @@
         (switch-to-buffer (other-buffer))))))
 
 (global-set-key (kbd "C-x |") 'toggle-window-split)
+
 
 ;; swap window position
 (global-set-key (kbd "C-<left>") 'windmove-swap-states-left)
@@ -166,8 +167,21 @@
             (setq beg (line-beginning-position) end (line-end-position)))
         (comment-or-uncomment-region beg end)
 	))	;; (next-line))) ;; if I want to go to next line 
-	
 (global-set-key (kbd "C-;") 'comment-or-uncomment-line-or-region)
+
+;; Duplicate line 
+(defun duplicate-line ()
+  "Duplicate current line"
+  (interactive)
+  (let ((column (-(point) (pos-bol)))
+    (line (let ((s (thing-at-point 'line t)))
+	    (if s (string-remove-suffix "\n" s) ""))))
+  (move-end-of-line 1)
+  (newline)
+  (insert line)
+  (move-beginning-of-line 1)
+  (forward-char column)))
+(global-set-key (kbd "C-,") 'duplicate-line)
 
 ;; https://stackoverflow.com/questions/17958397/emacs-delete-whitespaces-or-a-word
 (defun kill-whitespace-or-word ()

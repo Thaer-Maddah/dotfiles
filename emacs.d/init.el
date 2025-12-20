@@ -1,5 +1,5 @@
-;;; -*- lexical-binding: t -*-
-;;; init.el --- Thaer Maddah's Emacs configuration -*- lexical-binding: t; -*-
+;;; -*- lexical map: t -*-
+;;; init.el --- Thaer Maddah's Emacs configuration -*- lexical map: t; -*-
 
 ;; Author: Thaer Maddah
 ;; Keywords: convenience
@@ -24,12 +24,15 @@
 
 (require 'use-package)
 (setq use-package-always-ensure t)
-
 ;;;;;;;;;;;; Personal preferences ;;;;;;;;;;;;;;;;;;;;;;;
 
-(menu-bar-mode 1)
+(menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode -1)
+
+;; Key map for menu
+(global-set-key [f5] 'menu-bar-mode)
+(global-set-key  [f12] 'menu-bar-open)
 
 (defun my/disable-scroll-bars (frame)
   (modify-frame-parameters frame
@@ -124,7 +127,7 @@
 ;; Show the matching parenthesis
 (show-paren-mode t)
 
-;; Define C-; to comment and uncomment regions and lines
+;; Define C-] to comment and uncomment regions and lines under GUI and TUI
 (defun comment-or-uncomment-line-or-region ()
   "Comments or uncomments the region or the current line if there's no active region."
   (interactive)
@@ -133,7 +136,7 @@
         (setq beg (region-beginning) end (region-end))
       (setq beg (line-beginning-position) end (line-end-position)))
     (comment-or-uncomment-region beg end)))
-(global-set-key (kbd "C-;") 'comment-or-uncomment-line-or-region)
+(global-set-key (kbd "C-]") 'comment-or-uncomment-line-or-region) 
 
 ;; Duplicate line
 (defun duplicate-line ()
@@ -299,10 +302,12 @@
 
 (use-package emms
   :config
+  (global-set-key (kbd "M-m") 'emms-play-directory)
   (require 'emms-setup)
   (emms-all)
   (emms-default-players)
   (setq emms-source-file-default-directory "~/Music/"))
+
 
 (use-package region-bindings-mode
   :config
@@ -383,7 +388,10 @@
  '(inhibit-startup-screen t)
  '(org-babel-load-languages
    '((css . t) (latex . t) (sql . t) (C . t) (awk . t) (shell . t) (emacs-lisp . t)))
- '(package-selected-packages nil)
+ '(package-selected-packages
+   '(beacon command-log-mode elpy emms engine-mode evil flycheck go-mode
+	    gruvbox-theme helm-projectile helm-sly lsp-mode magit
+	    multiple-cursors popup py-autopep8 region-bindings-mode))
  '(warning-suppress-log-types '((auto-save))))
 
 (custom-set-faces
@@ -392,5 +400,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
 
 ;;; init.el ends here

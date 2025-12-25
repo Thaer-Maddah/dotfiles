@@ -401,6 +401,18 @@
  ;; If there is more than one, they won't work right.
  )
 
+(use-package spacious-padding
+  :ensure t
+  :if (display-graphic-p)
+  :hook (after-init . spacious-padding-mode))
 
+(setq spacious-padding-widths
+      '(:internal-border-width 4
+        :header-line-width 4
+        :mode-line-width 6
+        :tab-width 4
+        :right-divider-width 30
+        :scroll-bar-width 8
+        :fringe-width 8))
 
 ;;; init.el ends here

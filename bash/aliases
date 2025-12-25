@@ -34,6 +34,8 @@ alias rm='rm -i'
 alias dnld='yt-dlp -f 22'
 # youtube downloader script
 alias yt='python ~/git/code/python/yt/yt.py'
+alias yt-m4a='yt-dlp -f 140'
+alias yt-mp4-1280='yt-dlp -f 95'
 
 # reloading rc file
 alias load=". ~/$shellrc"
@@ -63,6 +65,12 @@ alias pk9='sudo pkill -9'
 
 # Pacman Stuff
 alias update='sudo pacman -Syu'
+alias s='pacman -Ss'
+alias q='pacman -Qs'
+alias qi='pacman -Qi'
+alias si='pacman -Si'
+alias i='sudo pacman -S '
+
 
 # Paru with fzf
 alias iparu="sh $dir/scripts/fparu.sh install" 	# Call install function 
@@ -123,7 +131,7 @@ alias vimrc='vim ~/.vimrc'
 
 # Emacs stuff
 #alias emacs="emacsclient -c"
-alias emacs="emacsclient --create-frame --alternate-editor= &"
+#alias emacs="emacsclient --create-frame --alternate-editor= &"
 
 # Multimedia Stuff
 alias play="sh $dir/scripts/play.sh $1 $2"

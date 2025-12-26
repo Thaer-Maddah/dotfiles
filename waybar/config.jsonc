@@ -1,4 +1,8 @@
 {
+"include": [
+  "$HOME/.config/waybar/ModulesWorkspaces",
+  ],
+
     "layer": "top",
     "position": "top",
     "mod": "dock",
@@ -8,7 +12,8 @@
     "height": 0,
     "modules-left": [
     "custom/arch",
-    "hyprland/workspaces",
+    // Workspaces import from Modulesworkspaces
+    "hyprland/workspaces#rw",
     	"clock",
 	"cpu",
 	"memory",
@@ -18,10 +23,8 @@
         "hyprland/window"
     ],
     "modules-right": [
-        // "hyprland/language",
 	"custom/keyboard",
 	"custom/network",
-	// "battery",
 	"custom/battery",
 	"custom/backlight",
         "pulseaudio",

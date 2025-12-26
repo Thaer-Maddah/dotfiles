@@ -27,16 +27,18 @@ tooltip {
 
 #workspaces button {
     padding: 5px;
-    color: #313244;
+    /* color: #cdd6f4; */
+    color: #6c7ccc;
     margin-right: 5px;
 }
 
 #workspaces button.active {
-    color: #a6adc8;
+    color: #f9e2af;
+    /* color: #fa9c57; */
 }
 
 #workspaces button.focused {
-    color: #a6adc8;
+    color: #a61118;
     background: #eba0ac;
     border-radius: 5px;
 }
@@ -48,10 +50,19 @@ tooltip {
 }
 
 #workspaces button:hover {
-    background: #11111b;
+    /* background: #556789; */
     color: #cdd6f4;
     border-radius: 5px;
 }
+#workspaces button.unfocused {
+    /* Explicit unfocused style */
+    color: #633086;
+    opacity: 0.7;
+}
+#workspaces button.empty {
+    color: #6c7ccc;
+}
+
 
 #custom-keyboard,
 #custom-updates,
@@ -64,7 +75,7 @@ tooltip {
 #custom-battery,
 #pulseaudio,
 #custom-network,
-#workspaces,
+#workspaces-rw,
 #tray,
 #custom-backlight,
 #custom-arch,

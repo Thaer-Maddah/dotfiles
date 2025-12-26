@@ -1,7 +1,10 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: Cartograph CF Nerd Font, monospace;
+    /* font-family: Cartograph CF Nerd Font, monospace; */
+    font-family: "JetBrainsMono Nerd Font", "FiraCode Nerd Font", "Mononoki Nerd Font", 
+                 "Hack Nerd Font", "CaskaydiaCove Nerd Font", "MesloLGS Nerd Font",
+                 monospace;
     /* font-family: JetBrain Nerd Font, cantarell; */
         /* font-family: "FontAwesome", "Noto Sans", sans-serif; */
     font-weight: bold;
@@ -63,6 +66,7 @@ tooltip {
 #custom-network,
 #workspaces,
 #tray,
+#custom-backlight,
 #backlight {
     background: #1e1e2e;
     padding: 0px 10px;
@@ -165,6 +169,12 @@ tooltip {
 
 #custom-weather {
     border-radius: 0px 5px 5px 0px;
+    border-right: 0px;
+    margin-left: 0px;
+}
+#custom-backlight {
+        font-family: inherit;
+    color: #ffffff;
     border-right: 0px;
     margin-left: 0px;
 }

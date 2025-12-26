@@ -1,11 +1,12 @@
 * {
     border: none;
     border-radius: 0;
-    /* font-family: Cartograph CF Nerd Font, monospace;*/
-    font-family: JetBrain Nerd Font, cantarell;
+    font-family: Cartograph CF Nerd Font, monospace;
+    /* font-family: JetBrain Nerd Font, cantarell; */
+        /* font-family: "FontAwesome", "Noto Sans", sans-serif; */
     font-weight: bold;
-    font-size: 12px;
-    min-height: 0;
+    font-size: 13px;
+    /* min-height: 0; */
 }
 
 window#waybar {
@@ -55,9 +56,11 @@ tooltip {
 #custom-weather,
 #window,
 #clock,
+#memory,
+#cpu,
 #battery,
 #pulseaudio,
-#network,
+#custom-network,
 #workspaces,
 #tray,
 #backlight {
@@ -123,13 +126,19 @@ tooltip {
 }
 
 #clock {
-    color: #fab387;
-    border-radius: 5px 0px 0px 5px;
-    margin-left: 5px;
+    color: #f9e2af;
+    border-left: 0px;
     border-right: 0px;
 }
 
-#network {
+#cpu {
+    color: #ffffff;
+    border-left: 0px;
+    border-right: 0px;
+    
+}
+
+#custom-network {
     color: #f9e2af;
     border-left: 0px;
     border-right: 0px;

@@ -2,9 +2,10 @@
 
 # Wifi interface
 #wi=wlp0s20f0u3
+# wi=wlan0 in realtek 
 wi=$(ip route get 8.8.8.8 | awk '{print $5}' | awk /./)
 
-if [[ $wi =~ "wlp" ]]; then 
+if [[ $wi =~ "wlan0" ]]; then 
     essid=$(iwconfig "$wi" | awk -F '"' '/ESSID/ {print $2}')
     signal=$(iwconfig "$wi" | awk -F '=' '/Quality/ {print $2}' | cut -d '/' -f 1)
     bars=$((signal / 10))

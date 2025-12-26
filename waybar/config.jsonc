@@ -7,29 +7,30 @@
     "gtk-layer-shell": true,
     "height": 0,
     "modules-left": [
-        "clock",
-        // "cpu",
-        // "memory",
-        "custom/weather",
-        "wlr/workspaces"
+    "tray",
+    "hyprland/workspaces",
+    	"clock",
+        "custom/weather"
     ],
     "modules-center": [
         "hyprland/window"
     ],
     "modules-right": [
-        "tray",
-        // "custom/updates",
-        // "custom/language",
         "hyprland/language",
-        "battery",
-        // "sway/language",
+	"custom/network",
+	// "network#speed",
+	"cpu",
+	"memory",
+	"battery",
         "pulseaudio",
-        "pulseaudio#microphone"
+        "pulseaudio#microphone",
+	"tray"
     ],
     "hyprland/window": {
-        "format": "{}"
+        "format": "{}",
+	        "max-length": 50,
     },
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1",
         "all-outputs": true,
@@ -48,32 +49,36 @@
     },
     "cpu": {
         "interval": 10,
-        "format": " {}%",
+        "format": "\uf4bc   {}%",
         "max-length": 10,
         "on-click": ""
     },
-    // "memory": {
-    //     "interval": 30,
-    //     "format": " {}%",
-    //     "format-alt":" {used:0.1f}G",
-    //     "max-length": 10
-    // },
+     "memory": {
+         "interval": 30,
+         "format": " {}%",
+         "format-alt":" {used:0.1f}G",
+         "max-length": 10
+    },
     "custom/updates": {
         "exec": "(paru -Qua) | wc -l",
         "interval": 7200,
         "format": " {}"
     },
     "hyprland/language": {
-        "format": " {}",
+       "format": "\uf11c  {} ",
         "format-en": "us",
-        "format-ar": "ar"
+        "format-ara": "ar",
+	"name": "at-translated-set-2-keyboard"	,
+	    "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next",
+	        "signal": 9  // Listen for signal 8
+
     },
-    // "custom/language": {
-    //     "exec": "xkblayout",   // Must install xkblayout package
-    //     "interval": 1,
-    //     "format": " {}",
-    //     "tooltip": false
-    // },
+     "custom/language": {
+         "exec": "xkblayout",   // Must install xkblayout package
+         "interval": 1,
+         "format": " {}",
+         "tooltip": false
+     },
     "custom/weather": {
         "tooltip": true,
         "format": "{}",
@@ -87,12 +92,37 @@
         "spacing": 10
     },
     "clock": {
-        "format": "{:   %R     %d-%m-%Y}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
+        "format": "{:%R    -  %d-%m-%Y  }",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+	"calendar": {
+		"mode"          : "year",
+		"mode-mon-col"  : 3,
+		"weeks-pos"     : "right",
+		"on-scroll"     : 1,
+		"on-click-right": "mode",
+		"format": {
+			"months":     "<span color='#ffead3'><b>{}</b></span>",
+			"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+			"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+			"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+			"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+			}
+		},
+	"actions": {
+	// action belongs to clock
+		"on-click-right": "mode",
+		"on-click-forward": "tz_up",
+		"on-click-backward": "tz_down",
+		"on-scroll-up": "shift_up",
+		"on-scroll-down": "shift_down"
+	}
+},
+
+
     "pulseaudio": {
         "format": "{icon}   {volume}%",
         "tooltip": false,
+		"swap-icon-label": true,
         "format-muted": " Muted",
         "on-click": "pamixer -t",
         "on-scroll-up": "pamixer -i 5",
@@ -115,6 +145,7 @@
     "pulseaudio#microphone": {
         "format": "{format_source}",
         "tooltip": false,
+	"swap-icon-label": true,
         "format-source": " {volume}%",
         "format-source-muted": " Muted",
         "on-click": "pamixer --default-source -t",
@@ -123,21 +154,70 @@
         "scroll-step": 5
     },
     "battery": {
-        "bat": "BAT0",
+        "bat": "BAT1",
         "interval": 60,
+	"swap-icon-label": true,
         "states": {
             "good": 95,
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-icons": [
+        "format": "{icon} {capacity}%",
+    	"format-icons": [
             "",
             "",
             "",
             "",
             ""
         ],
-        "max-length": 25
-    }
+	
+        "max-length": 100
+    },
+    
+"network": {
+	"format": "{ifname}",
+	"format-wifi": "{icon}",
+	"format-ethernet": "󰌘",
+	"format-disconnected": "󰌙",
+	"tooltip-format": "{ipaddr}  {bandwidthUpBits}  {bandwidthDownBits}",
+	"format-linked": "󰈁 {ifname} (No IP)",
+	"tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+	"tooltip-format-ethernet": "{ifname} 󰌘",
+	"tooltip-format-disconnected": "󰌙 Disconnected",
+	"max-length": 30,
+	"format-icons": [
+		"󰤯", "󰤟", "󰤢", "󰤥", "󰤨"
+	],
+	"on-click-right": "$HOME/.config/hypr/scripts/WaybarScripts.sh --nmtui"
+},
+
+"network#speed": {
+	"interval": 1,
+	"format": "{ifname}",
+	"format-wifi": "{icon}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+	"format-ethernet": "󰌘  {bandwidthUpBytes}  {bandwidthDownBytes}",
+	"format-disconnected": "󰌙",
+	"tooltip-format": "{ipaddr}",
+	"format-linked": "󰈁 {ifname} (No IP)",
+	"tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+	"tooltip-format-ethernet": "{ifname} 󰌘",
+	"tooltip-format-disconnected": "󰌙 Disconnected",
+	"min-length": 24,
+	"max-length": 24,
+	"format-icons": [
+		"󰤯", "󰤟", "󰤢", "󰤥", "󰤨"
+	]
+},
+
+"custom/network": {
+    "format": "{}",
+    "interval": 1,
+    "exec": "~/.config/waybar/scripts/network.sh 2>&1 | tee ~/.cache/waybar-network.log",
+    "return-type": "json",
+    "on-error": "echo 'Error in network module' >> ~/.cache/waybar-errors.log",
+    "on-update": "echo 'Updated at $(date)' >> ~/.cache/waybar-network.log",
+    "min-length": 20,
+    "max-length": 40
+}
+
 }

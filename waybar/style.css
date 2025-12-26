@@ -53,7 +53,7 @@ tooltip {
     border-radius: 5px;
 }
 
-#custom-language,
+#custom-keyboard,
 #custom-updates,
 #custom-caffeine,
 #custom-weather,
@@ -67,6 +67,7 @@ tooltip {
 #workspaces,
 #tray,
 #custom-backlight,
+#custom-arch,
 #backlight {
     background: #1e1e2e;
     padding: 0px 10px;
@@ -75,6 +76,11 @@ tooltip {
     border: 1px solid #181825;
 }
 
+#custom-arch {
+    border-left: 0px;
+    border-right: 0px;
+    
+}
 #tray {
     border-radius: 5px;
     margin-right: 10px;
@@ -101,15 +107,15 @@ tooltip {
     border-right: 0px;
 }
 
-#language {
+#custom-keyboard {
     color: #f38ba8;
     border-left: 0px;
     border-right: 0px;
     border-radius: 5px 0px 0px 5px; 
     background: #1e1e2e;
-    font-family: Cartograph CF Nerd Font, monospace;
-    font-weight: bold;
-    font-size: 14px;
+    /* font-family: Cartograph CF Nerd Font, monospace; */
+    /* font-weight: bold; */
+    /* font-size: 12px; */
     padding-left: 10px;
     padding-left: 10px;
     border: none;

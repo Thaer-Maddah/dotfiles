@@ -61,7 +61,7 @@ tooltip {
 #clock,
 #memory,
 #cpu,
-#battery,
+#custom-battery,
 #pulseaudio,
 #custom-network,
 #workspaces,
@@ -166,7 +166,7 @@ tooltip {
     border-radius: 0 5px 5px 0;
 }
 
-#battery {
+#custom-battery {
     color: #a6e3a1;
     /*border-radius: 0 5px 5px 0;*/
     margin-right: 0px;

@@ -10,7 +10,9 @@
     "custom/arch",
     "hyprland/workspaces",
     	"clock",
-        "custom/weather"
+	"cpu",
+	"memory",
+	"custom/weather"
     ],
     "modules-center": [
         "hyprland/window"
@@ -19,9 +21,8 @@
         // "hyprland/language",
 	"custom/keyboard",
 	"custom/network",
-	"cpu",
-	"memory",
-	"battery",
+	// "battery",
+	"custom/battery",
 	"custom/backlight",
         "pulseaudio",
         "pulseaudio#microphone",
@@ -92,7 +93,7 @@
         "spacing": 10
     },
     "clock": {
-        "format": "{:%R   %d-%m-%Y  }",
+        "format": " {:%R  %d-%m-%Y}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
 	"calendar": {
 		"mode"          : "year",
@@ -207,5 +208,19 @@
         "tooltip": true,
 	"return-type": "json",
         "tooltip-format": "Click to toggle layout"
-    }
-}
+    },
+
+"custom/battery": {
+    "exec": "~/.config/waybar/scripts/battery.sh",
+    "interval": 5,
+    "tooltip": true,
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "hyprctl dispatch exec pavucontrol",
+    "on-click-right": "hyprctl dispatch exec kitty --hold bash -c 'upower -i /org/freedesktop/UPower/devices/battery_BAT0'",
+    "signal": 2
+},
+
+
+
+} // End of File

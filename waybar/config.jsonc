@@ -210,6 +210,7 @@
         "on-scroll-down": "bash -c '~/.config/waybar/scripts/backlight.sh --decrease'",
         "on-click-middle": "bash -c '~/.config/waybar/scripts/backlight.sh --toggle'",
         "on-click-right": "bash -c '~/.config/waybar/scripts/backlight.sh --set 50'",
+	"tooltip-format": "Click to increase backlight 5%",
         "signal": 1
 
     },
@@ -217,12 +218,12 @@
         "exec": "~/.config/waybar/scripts/keyboard.sh",
         "interval": 2,  // Update every 1 seconds
         "signal": 1,
-	"on-click": "~/.config/waybar/scripts/keyboard.sh toggle",
+	"on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next",
         "on-click-middle": "notify-send 'Keyboard Layout' 'Click to toggle between English and Arabic'",
         "format": "{}",
         "tooltip": true,
 	"return-type": "json",
-        "tooltip-format": "Click to toggle layout"
+        "tooltip-format": "Click to toggle between English and Arabic"
     },
 
 "custom/battery": {

@@ -407,6 +407,16 @@
  ;; If there is more than one, they won't work right.
  )
 
+(use-package json-mode
+  :ensure t ; Installs the package if not present (for Emacs < 29)
+  :mode "\\.jsonc\\'" ; Associate with .jsonc files
+  :config
+  (progn
+    ;; Enable C-style comments in json-mode buffers
+    (add-hook 'json-mode-hook (lambda () (setq comment-start "// " comment-end "")))
+    ;; Optional: customize indentation (default is 2)
+    (setq js-indent-level 4)))
+
 (use-package spacious-padding
   :ensure t
   :if (display-graphic-p)

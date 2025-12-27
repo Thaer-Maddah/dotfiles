@@ -10,8 +10,8 @@ _W='\[\e[1;0m\]'
 
 _RED="\[\033[1;31m\]"
 _GREEN="\[\033[1;32m\]"
-# _YELLOW="\[\033[1;33m\]"
-_YELLOW="\[\033[1;93m\]"
+_YELLOW="\[\033[1;33m\]"
+#_YELLOW="\[\033[1;93m\]"
 _BLUE="\[\033[1;34m\]"
 _MAGENTA="\[\033[1;35m\]"
 # _CYAN="\[\033[1;36m\]"
@@ -25,7 +25,7 @@ DOTFILES=$HOME/git/dotfiles
 CODEDIR=$HOME/git/Code
 export XDG_CONFIG_HOME=~/.config
 
-# Add x11-ssh-askpass pacakge to check sudo privileges on neovim
+ # Add x11-ssh-askpass pacakge to check sudo privileges on neovim
 # when save file by command :w !sudo tee %
 export SUDO_ASKPASS=/usr/lib/ssh/x11-ssh-askpass
 # Adding environment variable for ssh-agent service
@@ -120,22 +120,37 @@ fi
 # Suckless section
 
 # set time 
- prompt_command() {
-    local label=$(date +"%H:%M":%S)
-    # Save cursor position
-    tput sc
-    # Move to right edge
-    tput cuf 999
-    # Move back by label length
-    tput cub ${#label}
-    # Print label without newline
-   # printf '%s\r' "$label"
-    echo -n "$label"
-    # Restore cursor position
-     tput rc
- }
+ # prompt_command() {
+ #    local label=$(date +"%H:%M":%S)
+ #    # Save cursor position
+ #    tput sc
+ #    # Move to right edge
+ #    tput cuf 999
+ #    # Move back by label length
+ #    tput cub ${#label}
+ #    # Print label without newline
+ #   # printf '%s\r' "$label"
+ #    echo -n "$label"
+ #    # Restore cursor position
+ #    tput rc
+ # }
 
- 
+prompt_command() {
+    local label=$(date +"%H:%M:%S")
+    # Get terminal width
+    local cols=$(tput cols)
+    
+    # Clear from cursor to end of line
+    printf '\e[K'
+    
+    # Print label at right edge
+    # Set the postion to -1 for foot terminal 
+    printf '\e[%sG%s' $((cols - ${#label} -1)) "$label"
+    
+    # Return cursor to beginning
+    printf '\r'
+}
+
 # PROMPT_COMMAND="set_bash_prompt_color;prompt_command;"
 PROMPT_COMMAND="prompt_command;set_bash_prompt_color;"
 #if pgrep -x "dwm" > /dev/null && ! pgrep -x "slstatus" > /dev/null; then 
@@ -179,3 +194,14 @@ export ALTERNATE_EDITOR="vim"
 export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
 export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI mode
 set -o emacs
+
+# export DISPLAY=:1
+# export WAYLAND_DISPLAY=wayland-0
+# export XDG_SESSION_TYPE=wayland
+# GDK_BACKEND=wayland
+
+#  Run fresh Firefox on RAM at start
+# TMPDIR=$(mktemp -d)
+# firefox --profile "$TMPDIR" --no-remote
+# rm -rf "$TMPDIR"
+# env XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=Hyprland dbus-run-session Hyprland

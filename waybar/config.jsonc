@@ -6,12 +6,18 @@
     "layer": "bottom",
     "output": ["*"],	// Apply to all outputs
     "position": "top",
-    "mod": "dock",
+    "margin": 5,	// set gaps
+/*
+"margin-top": 10,
+    "margin-bottom": 5,
+    "margin-left": 5,
+    "margin-right": 5,
+*/
+"mod": "dock",
     "exclusive": true,
     "passtrough": false,
     "gtk-layer-shell": true,
-    "height": 0,
-    "reload_style_on_change": true,
+     "reload_style_on_change": true,
     "modules-left": [
     "custom/arch",
     // Workspaces import from Modulesworkspaces
@@ -31,7 +37,6 @@
 	"custom/backlight",
         "pulseaudio",
         "pulseaudio#microphone",
-	"tray"
     ],
     "hyprland/window": {
         "format": "{}",
@@ -57,12 +62,12 @@
     "custom/arch": {
       "format":"󰣇",
       "tooltip": false,
-      "on-click": "rofi -show drun"
+      "on-click": "rofi -theme sidebar -show drun"
 },
 
 "cpu": {
         "interval": 1,
-        "format": "\uf4bc {usage:>2}%",
+        "format": "\uf4bc{usage:>2}%",
        
         "on-click": ""
     },

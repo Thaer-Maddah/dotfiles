@@ -1,4 +1,15 @@
 * {
+/*
+  Declare variables gives error
+  domain: gtk-css-provider-error-quark
+  code  : 1
+  what  : style.css:3:4Expected semicolon
+
+--border-line: 1px solid #b55602;
+    --border-color: #b55602;
+    --border-thick: 1px;
+    --border-solid: solid;
+*/
     border: none;
     border-radius: 0;
     /* font-family: Cartograph CF Nerd Font, monospace; */
@@ -26,10 +37,10 @@ tooltip {
 }
 
 #workspaces button {
-    padding: 5px;
+    /* padding: 5px; */
     /* color: #cdd6f4; */
     color: #6c7ccc;
-    margin-right: 5px;
+    /* margin-right: 5px; */
 }
 
 #workspaces button.active {
@@ -40,19 +51,19 @@ tooltip {
 #workspaces button.focused {
     color: #a61118;
     background: #eba0ac;
-    border-radius: 5px;
+    /* border-radius: 5px; */
 }
 
 #workspaces button.urgent {
     color: #11111b;
         background: #a6e3a1;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 #workspaces button:hover {
     /* background: #556789; */
     color: #cdd6f4;
-    border-radius: 5px;
+    /* border-radius: 5px; */
 }
 #workspaces button.unfocused {
     /* Explicit unfocused style */
@@ -75,7 +86,7 @@ tooltip {
 #custom-battery,
 #pulseaudio,
 #custom-network,
-#workspaces-rw,
+#workspaces,
 #tray,
 #custom-backlight,
 #custom-arch,
@@ -87,9 +98,9 @@ tooltip {
     border: 1px solid #181825;
 }
 
-#custom-arch {
-    border-left: 0px;
-    border-right: 0px;
+#arch {
+    border-left: 5px;
+    border-right: 5px;
     
 }
 #tray {
@@ -128,7 +139,6 @@ tooltip {
     /* font-weight: bold; */
     /* font-size: 12px; */
     padding-left: 10px;
-    padding-left: 10px;
     border: none;
     margin-top: 10px;
     margin-bottom: 3px;
@@ -142,14 +152,17 @@ tooltip {
 
 #window {
     border-radius: 5px;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 0px;
+    margin-right: 0px;
+    /* border: 1px solid #9c4b03; */
 }
 
 #clock {
     color: #f9e2af;
     border-left: 0px;
     border-right: 0px;
+    /* border-top: var(--border-line); */
+    /* border-bottom: 1px solid #9c4b09; */
 }
 
 #cpu {
@@ -190,8 +203,9 @@ tooltip {
     margin-left: 0px;
 }
 #custom-backlight {
-        font-family: inherit;
+    font-family: inherit;
     color: #ffffff;
     border-right: 0px;
     margin-left: 0px;
 }
+

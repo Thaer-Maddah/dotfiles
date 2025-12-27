@@ -3,13 +3,15 @@
   "$HOME/.config/waybar/ModulesWorkspaces",
   ],
 
-    "layer": "top",
+    "layer": "bottom",
+    "output": ["*"],	// Apply to all outputs
     "position": "top",
     "mod": "dock",
     "exclusive": true,
     "passtrough": false,
     "gtk-layer-shell": true,
     "height": 0,
+    "reload_style_on_change": true,
     "modules-left": [
     "custom/arch",
     // Workspaces import from Modulesworkspaces
@@ -53,18 +55,22 @@
         }
     },
     "custom/arch": {
-      "format":" ",
+      "format":"󰣇",
       "tooltip": false,
       "on-click": "rofi -show drun"
 },
-    "cpu": {
-        "interval": 10,
-        "format": "\uf4bc {}%",
+
+"cpu": {
+        "interval": 1,
+        "format": "\uf4bc {usage:>2}%",
        
         "on-click": ""
     },
+
+
+
      "memory": {
-         "interval": 30,
+         "interval": 60,
          "format": " {}%",
          "format-alt":" {used:0.1f}G",
          "max-length": 10
@@ -191,6 +197,7 @@
 
     "custom/backlight": {
         "exec": "~/.config/waybar/scripts/backlight.sh",
+	"interval": 5,
         "return-type": "json",
         "format": "{text}",
         "on-click": "bash -c '~/.config/waybar/scripts/backlight.sh --increase'",
@@ -198,14 +205,14 @@
         "on-scroll-down": "bash -c '~/.config/waybar/scripts/backlight.sh --decrease'",
         "on-click-middle": "bash -c '~/.config/waybar/scripts/backlight.sh --toggle'",
         "on-click-right": "bash -c '~/.config/waybar/scripts/backlight.sh --set 50'",
-	"interval": 1,
         "signal": 1
 
     },
      "custom/keyboard": {
         "exec": "~/.config/waybar/scripts/keyboard.sh",
-        "interval": 1,  // Update every 1 seconds
-        "on-click": "~/.config/waybar/scripts/keyboard.sh toggle",
+        "interval": 2,  // Update every 1 seconds
+        "signal": 1,
+	"on-click": "~/.config/waybar/scripts/keyboard.sh toggle",
         "on-click-middle": "notify-send 'Keyboard Layout' 'Click to toggle between English and Arabic'",
         "format": "{}",
         "tooltip": true,
@@ -215,7 +222,7 @@
 
 "custom/battery": {
     "exec": "~/.config/waybar/scripts/battery.sh",
-    "interval": 5,
+    "interval": 10,
     "tooltip": true,
     "return-type": "json",
     "format": "{}",

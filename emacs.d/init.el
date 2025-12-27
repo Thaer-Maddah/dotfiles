@@ -48,11 +48,17 @@
 
 ;; enable history
 (savehist-mode 1)
+
 ;; Dialogbox
 (setq use-dialog-box t)
+
 ;; Scroll line by line
 (setq scroll-step 1
       scroll-conservatively 10000)
+
+;; Enable case conversion
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
 
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (winner-mode 1)  ;; For undo and redo
@@ -416,3 +422,4 @@
         :fringe-width 8))
 
 ;;; init.el ends here
+

@@ -96,6 +96,7 @@ tooltip {
 #tray,
 #custom-backlight,
 #custom-arch,
+#notify,
 #backlight {
     /* background: #1e1e2e; */
     /* padding: 0px 10px; */
@@ -104,6 +105,23 @@ tooltip {
     /* border: 1px solid #181825;    Enabling this property will cause breaks to appear between modules. */
 }
 
+#tray {
+        border-top: 1px solid orange;
+    border-bottom: 1px solid orange;
+    background-color: #1e1e2e;
+}
+
+#custom-updates {
+    padding-right: 5px;
+    padding-left: 5px;
+
+    color: #f5c2e7;
+    border-left: 0px;
+    border-right: 0px;
+    border-radius: 5px 0px 0px 5px;;
+}
+
+/* Left Modules */
 #custom-arch {
     padding-right: 10px;
     padding-left: 16px;
@@ -115,11 +133,6 @@ tooltip {
     background-color: #1e1e2e;
     
 }
-#tray {
-        border-top: 1px solid orange;
-    border-bottom: 1px solid orange;
-    background-color: #1e1e2e;
-}
 
 #workspaces {
     padding-right: 10px;
@@ -129,57 +142,6 @@ tooltip {
     border-top: 1px solid orange;
     border-bottom: 1px solid orange;
     /* border-left: 1px solid orange; */
-}
-
-#custom-caffeine {
-    color: #89dceb;
-    border-radius: 5px 0px 0px 5px;
-    border-right: 0px;
-    margin-left: 10px;
-}
-
-#custom-language {
-    padding-right: 5px;
-    padding-left: 5px;
-
-    color: #f38ba8;
-    border-left: 0px;
-    border-right: 0px;
-}
-
-#custom-keyboard {
-    padding-right: 10px;
-    padding-left: 5px;
-
-    color: #f38ba8;
-    border-radius: 5px 0px 0px 5px;
-    background: #1e1e2e;
-    /* font-family: Cartograph CF Nerd Font, monospace; */
-    /* font-weight: bold; */
-    /* font-size: 12px; */
-    padding-left: 10px;
-    border-top: 1px solid orange;
-    border-bottom: 1px solid orange;
-    border-left: 1px solid orange;
-        background-color: #1e1e2e;
-}
-#custom-updates {
-    padding-right: 5px;
-    padding-left: 5px;
-
-    color: #f5c2e7;
-    border-left: 0px;
-    border-right: 0px;
-    border-radius: 5px 0px 0px 5px;;
-}
-
-#window {
-    border-radius: 5px;
-    border: 1px solid orange;
-    padding-right: 10px;
-    padding-left: 10px;
-    background-color: #1e1e2e;
-    color: white;
 }
 
 #clock {
@@ -200,10 +162,76 @@ tooltip {
     border-bottom: 1px solid orange;
     
 }
+#memory {
+    padding-right: 10px;
+    padding-left: 5px;
+    background-color: #1e1e2e;   
+    border-top: 1px solid orange;
+    border-bottom: 1px solid orange;
+}
+
+#custom-weather {
+    background-color: #1e1e2e;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-radius: 0px 5px 5px 0px;
+    border-top: 1px solid orange;
+    border-bottom: 1px solid orange;
+    border-right: 1px solid orange;
+}
+
+/* Center Modules */
+#window {
+    border-radius: 5px;
+    border: 1px solid orange;
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: #1e1e2e;
+    color: white;
+}
+
+/* Right Modules*/
+#custom-keyboard {
+    padding-right: 10px;
+    padding-left: 5px;
+
+    color: #f38ba8;
+    border-radius: 5px 0px 0px 5px;
+    background: #1e1e2e;
+    /* font-family: Cartograph CF Nerd Font, monospace; */
+    /* font-weight: bold; */
+    /* font-size: 12px; */
+    padding-left: 10px;
+    border-top: 1px solid orange;
+    border-bottom: 1px solid orange;
+    border-left: 1px solid orange;
+        background-color: #1e1e2e;
+}
 
 #custom-network {
     background-color: #1e1e2e;
     color: #f9e2af;
+    border-top: 1px solid orange;
+    border-bottom: 1px solid orange;
+
+}
+#custom-battery {
+    padding-right: 5px;
+    padding-left: 12px;
+    background-color: #1e1e2e;
+    color: #a6e3a1;
+    /*border-radius: 0 5px 5px 0;*/
+    border-top: 1px solid orange;
+    border-bottom: 1px solid orange;
+
+}
+
+#custom-backlight {
+    padding-right: 10px;
+    padding-left: 10px;
+    font-family: inherit;
+        background-color: #1e1e2e;
+    color: #ffffff;
     border-top: 1px solid orange;
     border-bottom: 1px solid orange;
 
@@ -224,47 +252,18 @@ tooltip {
     padding-left: 5px;
     background-color: #1e1e2e;
     color: #cba6f7;
-    margin-right: 5px;
-    border-radius: 0 5px 5px 0;
     border-top: 1px solid orange;
     border-bottom: 1px solid orange;
-    border-right: 1px solid orange;
 }
 
-#custom-battery {
-    padding-right: 5px;
-    padding-left: 12px;
-    background-color: #1e1e2e;
-    color: #a6e3a1;
-    /*border-radius: 0 5px 5px 0;*/
-    border-top: 1px solid orange;
-    border-bottom: 1px solid orange;
-
-}
-
-#custom-weather {
-    background-color: #1e1e2e;
-    padding-right: 10px;
-    padding-left: 10px;
-    border-radius: 0px 5px 5px 0px;
-    border-top: 1px solid orange;
-    border-bottom: 1px solid orange;
-    border-right: 1px solid orange;
-}
-#custom-backlight {
-    padding-right: 10px;
-    padding-left: 10px;
-    font-family: inherit;
-        background-color: #1e1e2e;
-    color: #ffffff;
-    border-top: 1px solid orange;
-    border-bottom: 1px solid orange;
-
-}
-#memory {
+#notify {
     padding-right: 10px;
     padding-left: 5px;
+    border-radius: 0 5px 5px 0;
     background-color: #1e1e2e;   
     border-top: 1px solid orange;
     border-bottom: 1px solid orange;
+    border-right: 1px solid orange;
 }
+
+

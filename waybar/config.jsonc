@@ -1,6 +1,10 @@
 {
 "include": [
+  // "$HOME/.config/waybar/Modules",
   "$HOME/.config/waybar/ModulesWorkspaces",
+  "$HOME/.config/waybar/ModulesCustom",
+  "$HOME/.config/waybar/ModulesGroups"
+  // "$HOME/.config/waybar/UserModules",
   ],
 
     "layer": "bottom",
@@ -28,7 +32,7 @@
 	"custom/weather"
     ],
     "modules-center": [
-        "hyprland/window"
+      "hyprland/window"
     ],
     "modules-right": [
 	"custom/keyboard",
@@ -37,6 +41,7 @@
 	"custom/backlight",
         "pulseaudio",
         "pulseaudio#microphone",
+	"group/notify"
     ],
     "hyprland/window": {
         "format": "{}",

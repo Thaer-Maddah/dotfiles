@@ -77,6 +77,7 @@ tooltip {
 }
 #workspaces button.empty {
     color: orangered;
+    font-weight: bolder;
 }
 
 
@@ -106,7 +107,7 @@ tooltip {
 #custom-arch {
     padding-right: 10px;
     padding-left: 16px;
-    border-radius: 5px 0px 0px 0px;
+    border-radius: 5px 0px 0px 5px;
     border-left: 1px solid orange;
     /* border-right: 1px solid orange; */
     border-top: 1px solid orange;
@@ -151,7 +152,7 @@ tooltip {
     padding-left: 5px;
 
     color: #f38ba8;
-    border-radius: 3px 0px 0px 0px;
+    border-radius: 5px 0px 0px 5px;
     background: #1e1e2e;
     /* font-family: Cartograph CF Nerd Font, monospace; */
     /* font-weight: bold; */

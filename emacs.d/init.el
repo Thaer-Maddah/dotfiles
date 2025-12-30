@@ -144,6 +144,10 @@
     (comment-or-uncomment-region beg end)))
 (global-set-key (kbd "C-]") 'comment-or-uncomment-line-or-region) 
 
+ ;; Bind it to M-z (note: M-z is usually zap-to-char, so we use M-Z for zap-up-to-char)
+(global-set-key (kbd "M-Z") 'zap-up-to-char)
+
+
 ;; Duplicate line
 (defun duplicate-line ()
   "Duplicate current line"

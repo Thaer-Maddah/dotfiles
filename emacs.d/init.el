@@ -43,6 +43,11 @@
 ;; use larger font
 (setq default-frame-alist '((font . "Monospace-11")))
 
+;; Prevent Emacs from resizing the initial frame based on its own implied calculations
+(setopt frame-inhibit-implied-resize t)
+;; For consistency with subsequently spawned frames,
+(setopt frame-resize-pixelwise t)
+
 ;; Enable Ido-mode
 (ido-mode t)
 
@@ -110,9 +115,13 @@
 (global-display-fill-column-indicator-mode 0)
 (setq-default display-fill-column-indicator-character ?\N{U+2506})
 
-;; Transparency
-(set-frame-parameter (selected-frame) 'alpha '(80 . 50))
-(add-to-list 'default-frame-alist '(alpha . (80 . 50)))
+
+;; Transparency settings for X11 
+;; (add-to-list 'default-frame-alist '(background-mode . dark)) ; Optional: for dark themes
+;; If using a terminal, ensure its background matches the Emacs theme
+
+;; (set-fraem-parameter (selected-frame) 'alpha '(80 . 50))
+;; (add-to-list 'default-frame-alist '(alpha . (80 . 50)))
 
 (defun toggle-transparency ()
   (interactive)
@@ -400,8 +409,9 @@
    '((css . t) (latex . t) (sql . t) (C . t) (awk . t) (shell . t) (emacs-lisp . t)))
  '(package-selected-packages
    '(beacon command-log-mode elpy emms engine-mode evil flycheck go-mode
-	    gruvbox-theme helm-projectile helm-sly lsp-mode magit
-	    multiple-cursors popup py-autopep8 region-bindings-mode))
+	    gruvbox-theme helm-projectile helm-sly json-mode kdl-mode lsp-mode
+	    magit multiple-cursors popup py-autopep8 region-bindings-mode
+	    spacious-padding tree-sitter))
  '(warning-suppress-log-types '((auto-save))))
 
 (custom-set-faces
@@ -434,6 +444,27 @@
         :right-divider-width 30
         :scroll-bar-width 8
         :fringe-width 8))
+
+;; Install tree-sitter first
+(use-package tree-sitter
+  :ensure t
+  :config
+  ;; General tree-sitter configuration
+  (setq treesit-font-lock-level 4))
+
+;; Install kdl-mode separately
+(use-package kdl-mode
+  :ensure t
+  :after tree-sitter  ; Load after tree-sitter
+  :config
+  ;; kdl-mode specific configuration
+  (setq kdl-indent-level 2)
+  
+  ;; Check and install kdl tree-sitter grammar if functions exist
+  (when (and (fboundp 'kdl-tree-sitter-grammar-available-p)
+             (not (kdl-tree-sitter-grammar-available-p))
+             (fboundp 'kdl-install-tree-sitter-grammar))
+    (kdl-install-tree-sitter-grammar)))
 
 ;;; init.el ends here
 

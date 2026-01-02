@@ -100,7 +100,8 @@ if [[ -f "$DOTFILES"/bash/git-prompt.sh  ]]; then
         }
     else
         set_bash_prompt_color() {
-        PS1="${_G}\u${_YELLOW}@${_CYAN}\W${_YELLOW}$(__git_ps1 " (%s)")${_G}➜ ${_RESET}"
+            PS1="${_G}\u${_YELLOW}@${_CYAN}\W${_YELLOW}$(__git_ps1 " (%s)")${_G}-> ${_RESET}"
+	            # PS1="${_G}\u${_YELLOW}@${_CYAN}\W${_YELLOW}$(__git_ps1 " (%s)")${_G}➜ ${_RESET}"
         }
     fi
 else 
@@ -110,7 +111,8 @@ else
         }
     else
         set_bash_prompt_color() {
-        PS1="${_G}\u${_YELLOW}@${_CYAN}\W${_G}➜ ${_RESET}"
+            PS1="${_G}\u${_YELLOW}@${_CYAN}\W${_G}-> $ {_RESET}"
+	            # PS1="${_G}\u${_YELLOW}@${_CYAN}\W${_G}➜ ${_RESET}"
         }
     fi
 fi
@@ -194,6 +196,9 @@ export ALTERNATE_EDITOR="vim"
 export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
 export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI mode
 set -o emacs
+# if command -v notify-send &> /dev/null; then
+#     notify-send -t 5000 "welcome $USER to $XDG_CURRENT_DESKTOP"
+# fi
 
 # export DISPLAY=:1
 # export WAYLAND_DISPLAY=wayland-0

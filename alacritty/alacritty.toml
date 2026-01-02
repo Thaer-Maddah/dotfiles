@@ -1,0 +1,17 @@
+[font]
+size = 11
+normal = { family = "Fira Code", style = "Regular" }
+bold = { family = "Fira Code", style = "Bold" }
+italic = { family = "Fira Code", style = "Italic" }
+bold_italic = { family = "Fira Code", style = "Bold Italic" }
+
+
+# Consider adding cursor styling
+[cursor]
+style = "Block"
+blink_interval = 750
+
+[colors]
+primary = { background = "#292828", foreground = "#FEE7BF" }
+normal = { black = "#2E3436", red = "#CC0000", green = "#8AE234", yellow = "#C4A000", blue = "#7aa6da", magenta = "#75507B", cyan = "#34E2E2", white = "#FEE7BF" }
+bright = { black = "#2E3436", red = "#EF2929", green = "#8AE234", yellow = "#e7c547", blue = "#7aa6da", magenta = "#c397d8", cyan = "#34E2E2", white = "#FFFFFF" }

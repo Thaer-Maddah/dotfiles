@@ -40,8 +40,11 @@
                              (horizontal-scroll-bars . nil))))
 (add-hook 'after-make-frame-functions 'my/disable-scroll-bars)
 
-;; use larger font
-(setq default-frame-alist '((font . "Monospace-11")))
+;; use custom font
+;; (set-face-attribute 'default nil :family "JetBrains Mono" :height 106)
+(set-face-attribute 'default nil :family "Fira Code Retina" :height 110)
+;; (set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 110)
+
 
 ;; Prevent Emacs from resizing the initial frame based on its own implied calculations
 (setopt frame-inhibit-implied-resize t)

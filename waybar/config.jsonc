@@ -46,10 +46,18 @@
         "pulseaudio#microphone",
 	"group/notify"
     ],
+    
     "hyprland/window": {
-        "format": "{}",
-	        "max-length": 50,
+      "format": "{}",
+      "max-length": 50,
+      // Display Hyprland when no applications are open
+      "rewrite": {
+        "  ": "Hyprland",
+        "": "Hyprland",
+        "null": "Hyprland"
+      }
     },
+
     "hyprland/workspaces": {
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1",
@@ -245,15 +253,5 @@
     "signal": 2
 },
 
-
-"hyprland/window": {
-  "format": "{}",
-  // Display Hyprland when no applications are open
-    "rewrite": {
-        "  ": "Hyprland",
-        "": "Hyprland",
-        "null": "Hyprland"
-    }
-		 }
 		 
 } // End of File

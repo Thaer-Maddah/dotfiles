@@ -44,13 +44,20 @@ export MANPAGER="sh -c 'bat -l man -p --paging always'"
 
 [[ -f ~/.profile ]] && . "$HOME"/.profile
 
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
+
+
 # Export bin folder path
 [[ -d $HOME/.local/bin ]] && export PATH=$HOME/.local/bin:$PATH
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 # [[ -f "$HOME"/git/dotfiles/wallpaper.sh ]] && sh wallpaper.sh &
-# [ -f /etc/bash_completio ] && source /etc/bash_completion
+
 # [[ -z "$TMUX" ]] && exec tmux
 [[ -f "$HOME"/.fzf.bash ]] && source "$HOME"/.fzf.bash
 [[ -f "$DOTFILES"/bash/aliases ]] && source "$DOTFILES"/bash/aliases
@@ -210,3 +217,36 @@ set -o emacs
 # firefox --profile "$TMPDIR" --no-remote
 # rm -rf "$TMPDIR"
 # env XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=Hyprland dbus-run-session Hyprland
+
+
+# Simple yay completion
+_yay_completions() {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    
+    # Main yay commands
+    opts="-S -Syu -Syy -Su -Ssq -Si -Sl -Ss -Sc -Scc -R -Rs -Rns -Y -G -P -B --getpkgbuild"
+    
+    # If current word starts with dash, complete with options
+    if [[ ${cur} == -* ]]; then
+        local yay_opts="--version --help --save --nodiffmenu --cleanmenu --editmenu --combinedupgrade \
+          --nocleanmenu --noeditmenu --removemake --answerclean --answerdiff --answeredit \
+          --noconfirm --sudoloop --devel --timeupdate --redownload --redownloadall --cleanafter \
+          --rebuild --batchinstall --needed"
+        COMPREPLY=($(compgen -W "${yay_opts}" -- ${cur}))
+        return 0
+    fi
+    
+    # Complete package names for install/search
+    if [[ ${prev} == "-S" ]] || [[ ${prev} == "-Ss" ]] || [[ ${prev} == "-Si" ]] || [[ ${prev} == "-Ssq" ]]; then
+        # Read from package database (may be slow)
+        COMPREPLY=($(yay -Ssq ${cur} 2>/dev/null))
+        return 0
+    fi
+    
+    COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
+}
+
+complete -F _yay_completions yay

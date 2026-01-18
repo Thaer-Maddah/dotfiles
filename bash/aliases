@@ -122,9 +122,9 @@ alias windows='cd /run/media/Windows'
 alias old-windows='cd /run/media/Old-Windows'
 
 
-# NeoVim Aliases
-alias v="vim"
-alias vi="vim"
+# Vim Aliases
+alias vim="/usr/local/bin/vim"
+alias vi="/usr/local/bin/vim"
 alias nv='nvim'
 alias nvimrc='vim ~/.config/nvim/init.vim'
 alias vimrc='vim ~/.vimrc'

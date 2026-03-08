@@ -83,8 +83,7 @@
 
 "cpu": {
         "interval": 1,
-        "format": "\uf4bc{usage:>2}%",
-       
+        "format": "\uf4bc{usage:>3}%",
         "on-click": ""
     },
 

@@ -200,7 +200,7 @@ if [ -f $1 ] ; then
 }
 # Emacs 
 export ALTERNATE_EDITOR="vim"
-export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
+export EDITOR="emacsclient"                  # $EDITOR opens in terminal
 export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI mode
 set -o emacs
 # if command -v notify-send &> /dev/null; then

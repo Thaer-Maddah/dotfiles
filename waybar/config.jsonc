@@ -155,6 +155,7 @@
 		"swap-icon-label": true,
         "format-muted": " Muted",
         "on-click": "pamixer -t",
+	"on-click-right": "hyprctl dispatch exec pavucontrol",
         "on-scroll-up": "pamixer -i 5",
         "on-scroll-down": "pamixer -d 5",
         "scroll-step": 5,
@@ -179,6 +180,7 @@
         "format-source": " {volume}%",
         "format-source-muted": " Muted",
         "on-click": "pamixer --default-source -t",
+	"on-click-right": "hyprctl dispatch exec pavucontrol",
         "on-scroll-up": "pamixer --default-source -i 5",
         "on-scroll-down": "pamixer --default-source -d 5",
         "scroll-step": 5
@@ -247,8 +249,7 @@
     "tooltip": true,
     "return-type": "json",
     "format": "{}",
-    "on-click": "hyprctl dispatch exec pavucontrol",
-    "on-click-right": "hyprctl dispatch exec kitty --hold bash -c 'upower -i /org/freedesktop/UPower/devices/battery_BAT0'",
+    "on-click-right": "hyprctl dispatch exec alacritty --hold bash -c 'upower -i /org/freedesktop/UPower/devices/battery_BAT0'",
     "signal": 2
 },
 

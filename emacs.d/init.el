@@ -215,7 +215,7 @@
 (use-package py-autopep8
   :after elpy
   :config
-  (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+  (add-hook 'elpy-mode-hook 'py-autopep8-mode))
 
 (use-package popup
   :config
@@ -354,8 +354,18 @@
   (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Python Preferences ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (setq python-shell-interpreter "ipython"
+;;       python-shell-interpreter-args "-i")
+
 (setq python-shell-interpreter "ipython"
-      python-shell-interpreter-args "-i")
+      python-shell-interpreter-args "-i --simple-prompt")
+
+(with-eval-after-load 'python
+  (require 'elpy)
+  (elpy-enable))
+(add-hook 'elpy-mode-hook (lambda ()
+                            (add-hook 'before-save-hook 'elpy-format-code nil t)))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Go Preferences ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'go-mode-hook (lambda ()
@@ -413,8 +423,8 @@
  '(package-selected-packages
    '(beacon command-log-mode elpy emms engine-mode evil flycheck go-mode
 	    gruvbox-theme helm-projectile helm-sly json-mode kdl-mode lsp-mode
-	    magit multiple-cursors popup py-autopep8 region-bindings-mode
-	    spacious-padding tree-sitter))
+	    magit mu4e-contrib multiple-cursors popup py-autopep8
+	    region-bindings-mode spacious-padding tree-sitter))
  '(warning-suppress-log-types '((auto-save))))
 
 (custom-set-faces
@@ -468,6 +478,149 @@
              (not (kdl-tree-sitter-grammar-available-p))
              (fboundp 'kdl-install-tree-sitter-grammar))
     (kdl-install-tree-sitter-grammar)))
+
+
+;; ============================================
+;; GMAIL + MU4E CONFIGURATION
+;; ============================================
+
+;; Load mu4e from standard locations
+(require 'mu4e)
+
+;; Set mail directory
+(setq mu4e-maildir "~/Mail")
+
+;; Get mail command
+(setq mu4e-get-mail-command "mbsync -a"
+      mu4e-update-interval 300  ; check every 5 minutes
+      mu4e-hide-index-messages t)
+
+;; Gmail-specific folder mappings
+(setq
+ mu4e-sent-folder   "/gmail/[Gmail]/Sent Mail"
+ mu4e-drafts-folder "/gmail/[Gmail]/Drafts"
+ mu4e-trash-folder  "/gmail/[Gmail]/Trash"
+ mu4e-refile-folder "/gmail/[Gmail]/All Mail")
+
+;; For Gmail/IMAP
+(setq
+ mu4e-sent-messages-behavior 'delete  ; Gmail handles Sent
+ mu4e-trash-messages-behavior 'delete ; Gmail handles Trash
+ mu4e-use-fancy-chars t
+ mu4e-headers-auto-update t
+ mu4e-compose-format-flowed t
+ mu4e-view-show-addresses t)
+
+;; Mail directory shortcuts
+(setq mu4e-maildir-shortcuts
+      '(("/gmail/INBOX"             . ?i)
+        ("/gmail/[Gmail]/Sent Mail" . ?s)
+        ("/gmail/[Gmail]/Trash"     . ?t)
+        ("/gmail/[Gmail]/All Mail"  . ?a)
+        ("/gmail/[Gmail]/Starred"   . ?r)
+        ;; Custom folders/labels
+        ("/gmail/Sweida1_tc"            . ?1)
+	))
+
+;; SMTP configuration for sending mail
+(setq
+ message-send-mail-function 'message-send-mail-with-sendmail
+ sendmail-program "/usr/bin/msmtp"
+ sendmail-arguments '("--read-envelope-from" "--read-recipients")
+ mail-specify-envelope-from t
+ mail-envelope-from 'header
+ message-sendmail-envelope-from 'header)
+
+;; OR alternative SMTP configuration
+(setq
+ smtpmail-stream-type 'starttls
+ smtpmail-default-smtp-server "smtp.gmail.com"
+ smtpmail-smtp-server "smtp.gmail.com"
+ smtpmail-smtp-service 587
+ smtpmail-local-domain "gmail.com")
+
+;; HTML email viewing
+(require 'mu4e-contrib)
+  (setq mu4e-html2text-command "w3m -T text/html")
+  (setq mu4e-view-html-plaintext-ratio 70)
+
+;; Better date format
+(setq mu4e-headers-date-format "%Y-%m-%d %H:%M"
+      mu4e-headers-time-format "%H:%M")
+
+;; Bookmarks for quick access
+(setq mu4e-bookmarks
+      `(("flag:unread AND NOT flag:trashed" "Unread messages" ?u)
+        ("date:today..now" "Today's messages" ?t)
+        ("date:7d..now" "Last 7 days" ?w)
+        ("flag:flagged" "Starred messages" ?s)
+        ("maildir:/gmail/INBOX" "Inbox" ?i)))
+
+;; Contexts for multiple accounts
+(setq mu4e-contexts
+      `(,(make-mu4e-context
+          :name "gmail"
+          :enter-func (lambda () (mu4e-message "Entering Gmail context"))
+          :leave-func (lambda () (mu4e-message "Leaving Gmail context"))
+          :match-func (lambda (msg)
+                        (when msg
+                          (string-prefix-p "/gmail" (mu4e-message-field msg :maildir))))
+          :vars `((user-mail-address . "c.thmaddah@gmail.com")
+                  (user-full-name . "Thaer Maddah")
+                  (mu4e-sent-folder . "/gmail/[Gmail]/Sent Mail")
+                  (mu4e-drafts-folder . "/gmail/[Gmail]/Drafts")
+                  (mu4e-trash-folder . "/gmail/[Gmail]/Trash")
+                  (mu4e-refile-folder . "/gmail/[Gmail]/All Mail")
+                  (smtpmail-smtp-user . "c.thmaddah@gmail.com")
+                  (smtpmail-local-domain . "gmail.com")
+                  (smtpmail-default-smtp-server . "smtp.gmail.com")
+                  (smtpmail-smtp-server . "smtp.gmail.com")
+                  (smtpmail-smtp-service . 587)))))
+
+;; Default context
+(setq mu4e-context-policy 'pick-first
+      mu4e-compose-context-policy 'always-ask)
+
+;; Key bindings
+(global-set-key (kbd "C-x m") 'mu4e)
+(global-set-key (kbd "C-x M-m") 'mu4e-compose-new)
+
+;; View images in emails
+(setq mu4e-view-show-images t)
+(setq mu4e-view-image-max-width 800)
+
+;; Updates mu4e mail index and refreshes unread message count
+(global-set-key (kbd "C-x M-u") 'mu4e-update-index)
+
+;; Auto-update
+(setq mu4e-headers-auto-update t
+      mu4e-index-update-error-warning nil)
+
+;; Better header view
+(setq mu4e-headers-fields
+      '((:human-date . 12)
+        (:flags . 6)
+        (:from . 22)
+        (:subject)))
+
+;; Enable in message view
+(add-hook 'mu4e-view-mode-hook
+          (lambda ()
+            (setq truncate-lines nil)))
+(with-eval-after-load 'mu4e
+  ;; Update every 10 minutes (600 seconds)
+  (run-with-timer 0 600 'mu4e-update-mail-and-index))
+
+(message "Mu4e configured for: c.thmaddah@gmail.com")
+
+
+
+;; Shutdown PC
+(defun poweroff ()
+  "Power off the Linux system."
+  (interactive)
+  (when (y-or-n-p "Are you sure you want to power off the system? ")
+    (shell-command "poweroff")))
 
 ;;; init.el ends here
 

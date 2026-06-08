@@ -177,3 +177,8 @@ alias fman='sh $dir/scripts/fman.sh' 	# call fman function for searching man pag
 
 # Terminals stuff
 alias st='st -A 0.82' 	# set opacity for st 
+
+# Hermes stuff
+alias hgate-start='hermes gateway start'
+alias hgate-stop='hermes gateway stop'
+alias hgate-restart='hermes gateway restart'

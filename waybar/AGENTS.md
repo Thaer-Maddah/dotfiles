@@ -11,7 +11,6 @@ Hyprland/Niri waybar config with Catppuccin Mocha-inspired dark theme and orange
 - `ModulesWorkspaces` — Hyprland workspace config with extensive window-rewrite icon mappings
 - `ModulesWorkspaces-niri` — Niri workspace variant
 - `ModulesWorkspaces~` — Older workspace config (backup)
-- `old-style.css` — Previous stylesheet (backup)
 - `scripts/` — Custom shell/Python scripts for modules:
   - `network.sh` — Network status (returns JSON)
   - `backlight.sh` — Backlight control (increase/decrease/toggle/set)

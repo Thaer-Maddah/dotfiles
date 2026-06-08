@@ -96,6 +96,7 @@ tooltip {
 #tray,
 #custom-backlight,
 #custom-arch,
+#custom-bluetooth,
 #notify,
 #backlight {
     /* background: #1e1e2e; */
@@ -235,6 +236,19 @@ tooltip {
     border-top: 1px solid orange;
     border-bottom: 1px solid orange;
 
+}
+
+#custom-bluetooth {
+    padding-right: 5px;
+    padding-left: 10px;
+    background-color: #1e1e2e;
+    color: #89dceb;
+    border-top: 1px solid orange;
+    border-bottom: 1px solid orange;
+}
+
+#custom-bluetooth.off {
+    color: #585b70;
 }
 
 #pulseaudio {

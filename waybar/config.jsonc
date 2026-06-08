@@ -39,6 +39,7 @@
     ],
     "modules-right": [
 	"custom/keyboard",
+	"custom/bluetooth",
 	"custom/network",
 	"custom/battery",
 	"custom/backlight",
@@ -251,6 +252,17 @@
     "format": "{}",
     "on-click-right": "hyprctl dispatch exec alacritty --hold bash -c 'upower -i /org/freedesktop/UPower/devices/battery_BAT0'",
     "signal": 2
+},
+
+"custom/bluetooth": {
+    "exec": "~/.config/waybar/scripts/bluetooth.sh",
+    "interval": 30,
+    "return-type": "json",
+    "format": "{}  ",
+    "tooltip": true,
+    "on-click": "blueman-manager",
+    "on-click-right": "~/.config/waybar/scripts/bluetooth.sh --toggle",
+    "signal": 3
 },
 
 		 

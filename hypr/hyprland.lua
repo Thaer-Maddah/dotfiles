@@ -333,7 +333,7 @@ hl.config({
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("wl-clipboard-history -t")
---    hl.exec_cmd("/usr/lib/xdg-desktop-portal-hyprland")
+    hl.exec_cmd("systemctl --user start xdg-desktop-portal-hyprland.service")
     hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
     hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
     hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
@@ -343,5 +343,6 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("$HOME/.config/hypr/scripts/hypridle-switch.sh &")
     hl.exec_cmd("sleep 3 && notify-send -t 5000 \"welcome $USER to $XDG_CURRENT_DESKTOP\"")
     hl.exec_cmd("sleep 5 && swaync-client -C")
+    hl.exec_cmd("ssh-add /home/thaeronline/.ssh/id_ed25519_github")
 end)
 

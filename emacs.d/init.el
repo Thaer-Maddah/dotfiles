@@ -353,6 +353,12 @@
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")
+  (exec-path-from-shell-copy-env "SSH_AGENT_PID"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Python Preferences ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; (setq python-shell-interpreter "ipython"
 ;;       python-shell-interpreter-args "-i")
@@ -424,7 +430,7 @@
    '(beacon command-log-mode elpy emms engine-mode evil flycheck go-mode
 	    gruvbox-theme helm-projectile helm-sly json-mode kdl-mode lsp-mode
 	    magit mu4e-contrib multiple-cursors popup py-autopep8
-	    region-bindings-mode spacious-padding tree-sitter))
+	    region-bindings-mode spacious-padding sudo-edit tree-sitter))
  '(warning-suppress-log-types '((auto-save))))
 
 (custom-set-faces

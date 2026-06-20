@@ -60,10 +60,10 @@
     },
 
     "hyprland/workspaces": {
-        "on-scroll-up": "hyprctl dispatch workspace e+1",
-        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'",
+        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
         "all-outputs": true,
-        "on-click": "activate",
+        "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = {id} })'",
         "format": "{icon}",
         "format-icons": {
             "1": "",
@@ -156,8 +156,8 @@
 		"swap-icon-label": true,
         "format-muted": " Muted",
         "on-click": "pamixer -t",
-	"on-click-right": "hyprctl dispatch exec pavucontrol",
-        "on-scroll-up": "pamixer -i 5",
+	"on-click-right": "hyprctl dispatch 'hl.dsp.exec_cmd(\"pavucontrol\")'",
+	"on-scroll-up": "pamixer -i 5",
         "on-scroll-down": "pamixer -d 5",
         "scroll-step": 5,
         "format-icons": {
@@ -181,7 +181,7 @@
         "format-source": " {volume}%",
         "format-source-muted": " Muted",
         "on-click": "pamixer --default-source -t",
-	"on-click-right": "hyprctl dispatch exec pavucontrol",
+	"on-click-right": "hyprctl dispatch 'hl.dsp.exec_cmd(\"pavucontrol\")'",
         "on-scroll-up": "pamixer --default-source -i 5",
         "on-scroll-down": "pamixer --default-source -d 5",
         "scroll-step": 5

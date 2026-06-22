@@ -90,7 +90,7 @@ hl.animation({
     bezier = "default",
 })
 
-hl.bind("Print", hl.dsp.exec_cmd("~/git/dotfiles/scripts/capture.sh full"))
+hl.bind("Print", hl.dsp.exec_cmd("grim ~/Pictures/Screenshots/$(date +'%s').png"))
 
 hl.bind("SUPER + SHIFT + P", hl.dsp.exec_cmd("hyprpicker -a -n"))
 hl.bind("CTRL + ALT + L", hl.dsp.exec_cmd("hyprlock"))
